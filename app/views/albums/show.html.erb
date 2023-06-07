@@ -1,0 +1,15 @@
+<h2><%= @album.name %></h2>
+<br>
+<span><%= link_to "Edit", edit_album_path(@album) %></span>
+
+<br>
+<div class="d-flex p-2 flex-wrap albums_grid">
+<% @album.photos.each do |photo| %>
+
+  <div class="p-2 albums_image">
+    <p class="img_name" title="<%= photo.name %>"><%= photo.name %></p>
+    <%= image_tag photo.image_url, alt: photo.description %>
+  </div>
+
+<% end %>
+</div>

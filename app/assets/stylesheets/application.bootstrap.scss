@@ -1,0 +1,17 @@
+.albums_grid > .albums_image {
+  width: 200px;
+}
+
+.albums_grid > .albums_image img {
+  width:  100%;
+}
+
+.albums_image .img_name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';

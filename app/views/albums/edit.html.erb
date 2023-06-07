@@ -1,0 +1,19 @@
+<h2>Edit Album - <%= @album.name %></h2>
+<br>
+<span><%= link_to "View", album_path(@album) %></span>
+
+<br>
+<div class="error"><%= flash[:errors] %></div>
+<br>
+<%= form_for @album do |form| %>
+  <%= form.label :name, "Name" %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.label :description, "Description" %>
+  <%= form.text_area :description %>
+  <br>
+  <p>Add a new image:</p>
+  <%= form.file_field :images, multiple: true %>
+  <br>
+  <%= form.submit "Update" %>
+<% end %>

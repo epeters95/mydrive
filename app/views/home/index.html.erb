@@ -1,0 +1,35 @@
+<h2>Hi, Welcome to Chili's</h2>
+<p>Get ready...</p>
+<%= link_to "Create a New Album", new_album_path %>
+<br>
+<br>
+<br>
+
+<% unless @latest_album.nil? %>
+
+  <b><i><%= @latest_album.name %></i></b>
+  <br>
+  <p>Add a new image:</p>
+  <%= form_with model: @latest_album do |form| %>
+    <%= form.file_field :images, multiple: true %>
+    <%= form.submit "Upload" %>
+  <% end %>
+
+  <br>
+  <br>
+  <h3>All Albums</h3>
+  <ul>
+  <% Album.all.each do |album| %>
+
+    <li><%= link_to album.name, album_path(album) %></li>
+
+  <% end %>
+  </ul>
+
+<% else %>
+<p>
+  <br>
+  <i>No albums created yet</i>
+</p>
+<% end %>
+
