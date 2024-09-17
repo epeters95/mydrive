@@ -54,7 +54,7 @@ gem "fog-aws"
 
 gem "carrierwave", "~> 2.2.3"
 
-gem "react-rails", "= 2.6"
+gem "react-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
