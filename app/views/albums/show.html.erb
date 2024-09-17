@@ -6,10 +6,7 @@
 <div class="d-flex p-2 flex-wrap albums_grid">
 <% @album.photos.each do |photo| %>
 
-  <div class="p-2 albums_image">
-    <p class="img_name" title="<%= photo.name %>"><%= photo.name %></p>
-    <%= image_tag photo.image_url, alt: photo.description %>
-  </div>
+  <%= react_component("Photo", {name: photo.name, image_url: photo.image_url, description: photo.description}) %>
 
 <% end %>
 </div>
