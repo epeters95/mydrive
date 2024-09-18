@@ -1,5 +1,5 @@
-class Photo extends React.Component {
-  render() {
+window.Photo = createReactClass({
+  render: function() {
     return <div class="p-2 albums_image">
              <p class="img_name" title={this.props.name}>
                {this.props.name}
@@ -7,4 +7,4 @@ class Photo extends React.Component {
              <img src={this.props.image_url} alt={this.props.description}/>
            </div>
   }
-}
+})
