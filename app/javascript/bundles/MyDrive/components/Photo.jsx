@@ -10,6 +10,10 @@ const Photo = (props) => {
         {props.name}
       </p>
       <img src={props.image_url} alt={props.description}/>
+      <br/>
+      <p>
+        {props.description}
+      </p>
     </div>
   );
 };
