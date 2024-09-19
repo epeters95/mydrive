@@ -5,8 +5,8 @@ import * as style from './Photo.module.css';
 const Photo = (props) => {
 
   return (
-    <div className="p-2 albums_image">
-      <p className="img_name" title={props.name}>
+    <div className={style.albums_image}>
+      <p className={style.img_name} title={props.name}>
         {props.name}
       </p>
       <img src={props.image_url} alt={props.description}/>

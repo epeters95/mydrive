@@ -1,8 +1,8 @@
-.albums_grid > .albums_image {
+.albums_image {
   width: 200px;
 }
 
-.albums_grid > .albums_image img {
+.albums_image img {
   width:  100%;
 }
 
