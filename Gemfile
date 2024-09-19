@@ -54,7 +54,6 @@ gem "fog-aws"
 
 gem "carrierwave", "~> 2.2.3"
 
-gem "react-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -80,3 +79,7 @@ group :test do
 end
 
 gem "cssbundling-rails", "~> 1.1"
+
+gem "shakapacker", "= 8.0"
+
+gem "react_on_rails", "= 14.0.5"
