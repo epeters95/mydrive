@@ -6,7 +6,7 @@
 <div class="d-flex p-2 flex-wrap albums_grid">
 <% @album.photos.each do |photo| %>
 
-  <%= react_component("Photo", {name: photo.name, image_url: photo.image_url, description: photo.description}) %>
+  <%= react_component("Photo", props: {name: photo.name, image_url: photo.image_url, description: photo.description}, prerender: false) %>
 
 <% end %>
 </div>
