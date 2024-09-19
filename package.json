@@ -5,14 +5,21 @@
     "@babel/core": "7",
     "@babel/plugin-transform-runtime": "7",
     "@babel/preset-env": "7",
+    "@babel/preset-react": "^7.24.7",
     "@babel/runtime": "7",
     "@popperjs/core": "^2.11.6",
     "@types/babel__core": "7",
     "@types/webpack": "5",
     "babel-loader": "8",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "compression-webpack-plugin": "9",
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-on-rails": "14.0.5",
     "sass": "^1.57.1",
     "shakapacker": "8.0.0",
     "terser-webpack-plugin": "5",
@@ -35,6 +42,8 @@
     "defaults"
   ],
   "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+    "react-refresh": "^0.14.2",
     "webpack-dev-server": "4"
   }
 }
