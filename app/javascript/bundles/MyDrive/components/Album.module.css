@@ -1,0 +1,10 @@
+.album_container {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  background-color: rgba(13, 10, 20, 0.2);
+}
+
+.album_container > div {
+  margin: 10px;
+}

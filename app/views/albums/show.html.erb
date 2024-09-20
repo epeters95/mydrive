@@ -3,10 +3,8 @@
 <span><%= link_to "Edit", edit_album_path(@album) %></span>
 
 <br>
-<div class="d-flex p-2 flex-wrap albums_grid">
-<% @album.photos.each do |photo| %>
+<div style="width: 100%">
 
-  <%= react_component("Photo", props: {name: photo.name, image_url: photo.image_url, description: photo.description}, prerender: false) %>
+  <%= react_component("Album", props: {photos: @album.photos, name: @album.name, description: @album.description}) %>
 
-<% end %>
 </div>
