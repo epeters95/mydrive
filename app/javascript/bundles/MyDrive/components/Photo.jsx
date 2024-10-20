@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from './Photo.module.css';
 
-const Photo = (props) => {
+const Photo = ({description, name, image_url}) => {
 
-  const [desc, setDesc] = useState(props.description);
+  const [desc, setDesc] = useState(description);
 
   function descChange() {
     setDesc()
@@ -12,10 +12,10 @@ const Photo = (props) => {
 
   return (
     <div className={style.albums_image}>
-      <p className={style.img_name} title={props.name}>
-        {props.name}
+      <p className={style.img_name} title={name}>
+        {name}
       </p>
-      <img src={props.image_url} alt={props.description}/>
+      <img src={image_url} alt={description}/>
       <br/>
       <input value={desc}
              onChange={e => { setDesc(e.target.value) }}

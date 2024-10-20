@@ -4,9 +4,7 @@ import Photo from './Photo.jsx'
 import * as style from './Album.module.css'
 
 
-const Album = (props) => {
-
-  const { name, description, photos } = props
+const Album = ({ name, description, photos }) => {
   
   return (
     <div className={`d-flex p-2 flex-wrap ${style.album_container}`}>
