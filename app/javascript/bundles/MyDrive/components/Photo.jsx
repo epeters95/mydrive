@@ -2,12 +2,13 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from './Photo.module.css';
 
-const Photo = ({description, name, image_url}) => {
+const Photo = ({description, name, image_url, handleDescChange}) => {
 
   const [desc, setDesc] = useState(description);
 
-  function descChange() {
-    setDesc()
+  function descChange(newVal) {
+    setDesc(newVal)
+    handleDescChange(newVal)
   }
 
   return (
@@ -18,16 +19,17 @@ const Photo = ({description, name, image_url}) => {
       <img src={image_url} alt={description}/>
       <br/>
       <input value={desc}
-             onChange={e => { setDesc(e.target.value) }}
+             onChange={e => { descChange(e.target.value) }}
       />
     </div>
   );
 };
 
 Photo.propTypes = {
-  name:         PropTypes.string.isRequired,
-  image_url:    PropTypes.string.isRequired,
-  description:  PropTypes.string
+  name:             PropTypes.string.isRequired,
+  image_url:        PropTypes.string.isRequired,
+  description:      PropTypes.string,
+  handleDescChange: PropTypes.function
 };
 
 export default Photo;
