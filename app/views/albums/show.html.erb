@@ -5,6 +5,14 @@
 <br>
 <div style="width: 100%">
 
-  <%= react_component("Album", props: {photos: @album.photos, name: @album.name, description: @album.description}) %>
+  <%=
+    react_component("Album",
+      props: {
+        photos: @album.photos,
+        name: @album.name,
+        description: @album.description,
+        photosPath: album_photos_path
+      })
+  %>
 
 </div>
