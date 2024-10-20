@@ -4,11 +4,19 @@ import Photo from './Photo.jsx'
 import * as style from './Album.module.css'
 
 
-const Album = ({ name, description, photos }) => {
+const Album = ({ name, description, photos, photosPath }) => {
 
-  const onDescChange = (newDesc) => {
-    console.log('Description changed to ' + newDesc);
-    // TODO: send as PATCH to server somehow
+  const onDescChange = (newDesc, id=0) => {
+    console.log('Description for photo ' + id + ' changed to ' + newDesc);
+    
+    // rails route given does not include id, need PATCH to <photos_path>/:id
+    let fullPhotoPath = photosPath + '/' + id;
+
+    // send PATCH
+    let request = new XMLHttpRequest();
+    request.open('PATCH', fullPhotoPath, true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.send(data);
   }
   
   return (
@@ -29,7 +37,8 @@ const Album = ({ name, description, photos }) => {
 Album.propTypes = {
   name:         PropTypes.string.isRequired,
   description:  PropTypes.string,
-  photos:       PropTypes.array
+  photos:       PropTypes.array,
+  photosPath:   PropTypes.string
 };
 
 export default Album;
