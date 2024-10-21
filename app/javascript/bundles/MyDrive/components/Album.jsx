@@ -11,6 +11,12 @@ const Album = ({ name, description, photos, photosPath }) => {
     
     // rails route given does not include id, need PATCH to <photos_path>/:id
     let fullPhotoPath = photosPath + '/' + id;
+    let data = {
+      "photo": {
+        "id": id,
+        "description": newDesc
+      }
+    }
 
     // send PATCH
     let request = new XMLHttpRequest();
@@ -24,6 +30,7 @@ const Album = ({ name, description, photos, photosPath }) => {
       {photos.map((photo) => (
 
         <Photo name={photo.name}
+               key={photo.id}
                description={photo.description}
                image_url={photo.image.url}
                handleDescChange={onDescChange} />

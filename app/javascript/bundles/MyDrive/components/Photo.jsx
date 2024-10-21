@@ -4,7 +4,11 @@ import * as style from './Photo.module.css';
 
 const Photo = ({description, name, image_url, handleDescChange}) => {
 
-  const [desc, setDesc] = useState(description);
+  const [desc, setDesc] = useState("");
+
+  if (description) {
+    desc = description;
+  }
 
   function descChange(newVal) {
     setDesc(newVal)
@@ -29,7 +33,7 @@ Photo.propTypes = {
   name:             PropTypes.string.isRequired,
   image_url:        PropTypes.string.isRequired,
   description:      PropTypes.string,
-  handleDescChange: PropTypes.function
+  handleDescChange: PropTypes.func
 };
 
 export default Photo;
