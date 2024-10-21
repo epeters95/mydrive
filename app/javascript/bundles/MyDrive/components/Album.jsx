@@ -30,6 +30,7 @@ const Album = ({ name, description, photos, photosPath }) => {
       {photos.map((photo) => (
 
         <Photo name={photo.name}
+               id={photo.id}
                key={photo.id}
                description={photo.description}
                image_url={photo.image.url}

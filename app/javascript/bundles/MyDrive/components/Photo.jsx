@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from './Photo.module.css';
 
-const Photo = ({description, name, image_url, handleDescChange}) => {
+const Photo = ({id, description, name, image_url, handleDescChange}) => {
 
   const [desc, setDesc] = useState("");
 
@@ -12,7 +12,7 @@ const Photo = ({description, name, image_url, handleDescChange}) => {
 
   function descChange(newVal) {
     setDesc(newVal)
-    handleDescChange(newVal)
+    handleDescChange(newVal, id)
   }
 
   return (
