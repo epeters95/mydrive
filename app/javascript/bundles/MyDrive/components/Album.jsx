@@ -21,12 +21,12 @@ const Album = ({ name, description, photos, photosPath }) => {
 
     // send PATCH
     let request = new XMLHttpRequest();
-    let header = {'Content-Type': 'application/json; charset=UTF-8'};
-    let csrfTokenHeader = ReactOnRails.authenticityHeaders(header);
+    let header = {'Content-Type': 'application/json'};
+    let csrfToken = ReactOnRails.authenticityToken();
     let dataStr = JSON.stringify(data);
 
     request.open('PATCH', fullPhotoPath, true);
-    request.setRequestHeader(csrfTokenHeader);
+    request.setRequestHeader("X-CSRF-Token", csrfToken);
     request.send(dataStr);
   }
   

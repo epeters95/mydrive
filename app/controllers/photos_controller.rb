@@ -16,12 +16,22 @@ class PhotosController < ApplicationController
   # end
 
   def update
-    @photo = Photo.find(photo_params[:id])
-    if @photo
-      @photo.update(description: photo_params[:description])
-      render json: {photo_id: @photo.id} , status: :ok
+
+    json_params = JSON.parse(request.raw_post)
+    param_photo = json_params["photo"]
+
+    if param_photo
+      id = param_photo["id"]
+      desc = param_photo["description"]
+      @photo = Photo.find(id)
+      if @photo
+        @photo.update(description: desc)
+        render json: {photo_id: @photo.id} , status: :ok
+      else
+        render json: {error: "Photo not found"}, status: :not_found
+      end
     else
-      render json: {error: "Photo not found"}, status: :not_found
+      render json: {error: "Photo not provided in request body"}, status: :unprocessable_entity
     end
   end
 
