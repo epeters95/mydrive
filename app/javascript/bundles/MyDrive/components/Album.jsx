@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Photo from './Photo.jsx'
 import * as style from './Album.module.css'
+import ReactOnRails from 'react-on-rails';
 
 
 const Album = ({ name, description, photos, photosPath }) => {
@@ -20,9 +21,13 @@ const Album = ({ name, description, photos, photosPath }) => {
 
     // send PATCH
     let request = new XMLHttpRequest();
+    let header = {'Content-Type': 'application/json; charset=UTF-8'};
+    let csrfTokenHeader = ReactOnRails.authenticityHeaders(header);
+    let dataStr = JSON.stringify(data);
+
     request.open('PATCH', fullPhotoPath, true);
-    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    request.send(data);
+    request.setRequestHeader(csrfTokenHeader);
+    request.send(dataStr);
   }
   
   return (
