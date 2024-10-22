@@ -4,11 +4,7 @@ import * as style from './Photo.module.css';
 
 const Photo = ({id, description, name, image_url, handleDescChange}) => {
 
-  const [desc, setDesc] = useState("");
-
-  if (description) {
-    desc = description;
-  }
+  const [desc, setDesc] = useState(description);
 
   function descChange(newVal) {
     setDesc(newVal)
