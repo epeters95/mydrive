@@ -4,13 +4,6 @@ import * as style from './Photo.module.css';
 
 const Photo = ({id, description, name, image_url, handleDescChange}) => {
 
-  const [desc, setDesc] = useState(description);
-
-  function descChange(newVal) {
-    setDesc(newVal)
-    handleDescChange(newVal, id)
-  }
-
   return (
     <div className={style.albums_image}>
       <p className={style.img_name} title={name}>
@@ -18,8 +11,8 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
       </p>
       <img src={image_url} alt={description}/>
       <br/>
-      <input value={desc}
-             onChange={e => { descChange(e.target.value) }}
+      <input value={description}
+             onChange={e => { handleDescChange(e.target.value, id) }}
       />
     </div>
   );
