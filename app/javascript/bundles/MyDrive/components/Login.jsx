@@ -48,7 +48,7 @@ const submitLogin = (email, password) => {
   .then((resp) => {
 
     if (resp.message === 'success') {
-      props.setEmail(email)
+      // props.setEmail(email)
       navigate('/')
     } else {
       window.alert('Invalid login information')
