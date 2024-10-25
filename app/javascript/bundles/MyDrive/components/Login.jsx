@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from './Credentials.module.css';
 import ReactOnRails from 'react-on-rails';
-import { useNavigate } from 'react-router-dom';
+
 
 const Login = (props) => {
 
