@@ -5,7 +5,9 @@ import routes from '../routes/routes.jsx';
 const RouterApp = (props) => {
 
   return (
-    <BrowserRouter>{routes}</BrowserRouter>
+    <BrowserRouter>
+      {routes}
+    </BrowserRouter>
   );
 }
 

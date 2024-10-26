@@ -27,7 +27,7 @@ const Login = (props) => {
 
       if (resp.status === 200) {
         // props.setEmail(email)
-        navigate('/') 
+        // navigate('/') 
         console.log(resp)
         window.alert("Login success!")
       } else if (resp.status === 422) {
