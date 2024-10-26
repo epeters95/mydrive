@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from './Credentials.module.css';
 import ReactOnRails from 'react-on-rails';
-
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  // let navigate = useNavigate(); // TODO: wrap component in BrowserRouter
+  let navigate = useNavigate();
 
   const submitLogin = () => {
     fetch('http://localhost:3000/users/sign_in', {
@@ -27,7 +27,7 @@ const Login = (props) => {
 
       if (resp.status === 200) {
         // props.setEmail(email)
-        // navigate('/') 
+        navigate('/') 
         console.log(resp)
         window.alert("Login success!")
       } else if (resp.status === 422) {

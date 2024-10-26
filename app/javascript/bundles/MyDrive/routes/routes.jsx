@@ -6,7 +6,7 @@ export default (
   <div>
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="sign_in" element={<Login />} />
+      <Route path="/users/sign_in" element={<Login />} />
     </Routes>
   </div>
 );
