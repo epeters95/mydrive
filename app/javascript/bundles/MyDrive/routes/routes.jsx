@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import LandingPage from '../components/LandingPage.jsx';
 import Login from '../components/Login.jsx';
-import Layout from '../Layout.jsx'
+import Layout from '../components/Layout.jsx'
 
-const Routes = () => {
+const RoutesComponent = () => {
   return (
     <Layout>
       <Routes>
@@ -15,4 +15,4 @@ const Routes = () => {
   );
 }
 
-export default Routes;
+export default RoutesComponent;
