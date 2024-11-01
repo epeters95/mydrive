@@ -9,8 +9,7 @@ export default (
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/users/sign_in" element={<Login />} />
-      <Route path="/albums" element={<Navigate to="/" />}
-        />
+      <Route path="/albums" element={<Navigate to="/albums" />} />
     </Routes>
   </Layout>
 );
