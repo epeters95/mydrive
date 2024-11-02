@@ -4,6 +4,13 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.all
+    @album_objects = @albums.map do |album|
+      {
+        title: album.name, 
+        path: album_path(album),
+        id: album.id
+      }
+    end
   end
 
   def show

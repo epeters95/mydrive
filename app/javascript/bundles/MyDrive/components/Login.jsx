@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from './Credentials.module.css';
 import ReactOnRails from 'react-on-rails';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
 
@@ -28,7 +28,7 @@ const Login = (props) => {
       if (resp.status === 200) {
 
         window.alert("Login success!")
-        redirect("/albums");
+        navigate("/albums");
 
       } else if (resp.status === 422) {
         window.alert('Unauthorized request')
