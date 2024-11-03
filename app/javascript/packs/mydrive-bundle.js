@@ -7,6 +7,7 @@ import LandingPage from '../bundles/MyDrive/components/LandingPage';
 import RouterApp from '../bundles/MyDrive/components/RouterApp';
 import Layout from '../bundles/MyDrive/components/Layout';
 import AlbumsList from '../bundles/MyDrive/components/AlbumsList';
+import EditAlbum from '../bundles/MyDrive/components/EditAlbum';
 
 ReactOnRails.register({
   Album,
@@ -15,5 +16,6 @@ ReactOnRails.register({
   LandingPage,
   RouterApp,
   Layout,
-  AlbumsList
+  AlbumsList,
+  EditAlbum
 });
