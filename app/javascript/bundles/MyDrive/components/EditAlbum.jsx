@@ -1,8 +1,33 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
+import ReactOnRails from 'react-on-rails';
 
 
 const EditAlbum = ({ album }) => {
+
+  const [albumName, setAlbumName] = useState('')
+  const [albumDesc, setAlbumDesc] = useState('')
+
+  const updateAlbum = () => {
+    let data = {
+      "album": {
+        "id": album.id,
+        "name": albumName,
+        "description": albumDesc,
+      }
+    }
+
+    // send PATCH
+    let request = new XMLHttpRequest();
+    let header = {'Content-Type': 'application/json'};
+    let csrfToken = ReactOnRails.authenticityToken();
+    let dataStr = JSON.stringify(data);
+
+    request.open('PATCH', album.edit_path, true);
+    request.setRequestHeader("X-CSRF-Token", csrfToken);
+    request.send(dataStr);
+  }
+  
   
   return (
     <div>
@@ -16,24 +41,29 @@ const EditAlbum = ({ album }) => {
       <input type='text'
              id='album_name'
              name='album[name]'
-             value={album.name} />
+             value={albumName} />
 
       <label for='album_description'>Description</label>
       <textarea id='album_description'
                 name='album[album_description]'>
-                {album.description}
+                {albumDesc}
       </textarea>
       <br>
       <p>Add a new image:</p>
       <input multiple="multiple" type="file" name="album[images][]" id="album_images">
-      <input type="submit" name="commit" value="Update" data-disable-with="Update">
+      <input type="submit"
+             name="commit"
+             value="Update"
+             data-disable-with="Update"
+             onClick={updateAlbum}
+             />
     </div>
   );
 
 };
 
 EditAlbum.propTypes = {
-  albums:       PropTypes.array
+  album:       PropTypes.object
 };
 
 export default EditAlbum;

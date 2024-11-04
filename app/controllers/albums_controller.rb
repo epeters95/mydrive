@@ -56,6 +56,7 @@ class AlbumsController < ApplicationController
     {
       name: album.name, 
       path: album_path(album),
+      edit_path: edit_album_path(album),
       description: album.description,
       id: album.id
     }
