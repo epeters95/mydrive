@@ -11,7 +11,7 @@ const AlbumsList = ({ albums }) => {
         <li id={album.id}
             key={album.id}>
           <a href={album.path}>
-            {album.title}
+            {album.name}
           </a>
         </li>
       ))}

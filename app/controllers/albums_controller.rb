@@ -5,11 +5,7 @@ class AlbumsController < ApplicationController
   def index
     @albums = Album.all
     @album_objects = @albums.map do |album|
-      {
-        title: album.name, 
-        path: album_path(album),
-        id: album.id
-      }
+      to_album_object album
     end
   end
 
@@ -41,6 +37,7 @@ class AlbumsController < ApplicationController
 
   def edit
     @album = Album.find(params[:id])
+    @album_object = to_album_object @album
   end
 
   def update
@@ -55,6 +52,16 @@ class AlbumsController < ApplicationController
   end
 
   private
+  def to_album_object(album)
+    {
+      name: album.name, 
+      path: album_path(album),
+      description: album.description,
+      id: album.id
+    }
+  end
+
+
   def album_params
     params.require(:album).permit(:name, :description, images:[]).reject {|key| key == "images"}
   end

@@ -11,7 +11,6 @@ const EditAlbum = ({ album }) => {
       <span><a href={album.path}>View</a></span>
 
       <br>
-      <div class="error"><%= flash[:errors] %></div>
       <br>
       <label for='album_name'>Name</label>
       <input type='text'
