@@ -9,6 +9,8 @@ const Login = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const navigate = useNavigate()
+
   const submitLogin = () => {
     fetch('http://localhost:3000/users/sign_in', {
       method: 'POST',

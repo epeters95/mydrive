@@ -32,11 +32,11 @@ const EditAlbum = ({ album }) => {
   return (
     <div>
       <h2>Edit Album - {album.name}</h2>
-      <br>
+      <br/>
       <span><a href={album.path}>View</a></span>
 
-      <br>
-      <br>
+      <br/>
+      <br/>
       <label for='album_name'>Name</label>
       <input type='text'
              id='album_name'
@@ -48,9 +48,9 @@ const EditAlbum = ({ album }) => {
                 name='album[album_description]'>
                 {albumDesc}
       </textarea>
-      <br>
+      <br/>
       <p>Add a new image:</p>
-      <input multiple="multiple" type="file" name="album[images][]" id="album_images">
+      <input multiple="multiple" type="file" name="album[images][]" id="album_images" />
       <input type="submit"
              name="commit"
              value="Update"
