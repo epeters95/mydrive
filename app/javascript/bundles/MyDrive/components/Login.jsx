@@ -43,23 +43,24 @@ const Login = (props) => {
   
   return (
     <div>
-      <input type='text' value={email}
-            placeholder="email address"
-            onChange={(e) => setEmail(e.target.value)}
-            className={'credential-field'} />
+      <form onSubmit={submitLogin}>
+        <input type='text' value={email}
+              placeholder="email address"
+              onChange={(e) => setEmail(e.target.value)}
+              className={'credential-field'} />
 
-      <br/>
-      <input type='password' value={password}
-            name="password"
-            placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
-            className={'credential-field'} />
+        <br/>
+        <input type='password' value={password}
+              name="password"
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+              className={'credential-field'} />
 
-      <br/>
-      <input type="button" value={'Log In'}
-            onClick={submitLogin}
-            className={'input-button'} />
-
+        <br/>
+        <input type="button" value={'Log In'}
+              onClick={submitLogin}
+              className={'input-button'} />
+      </form>
     </div>
   );
 

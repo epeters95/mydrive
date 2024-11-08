@@ -44,10 +44,18 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     if @album.update(album_params)
       upload_images
-      redirect_to edit_album_path(@album), notice: 'Album was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to edit_album_path(@album), notice: 'Album was successfully updated.' }
+        format.json { render json: @album }
+      end
     else
-      flash[:errors] = @album.errors.full_messages
-      redirect_to :edit
+      respond_to do |format|
+        format.html do
+          flash[:errors] = @album.errors.full_messages
+          redirect_to edit_album_path(@album)
+        end
+        format.json { render json: @album.errors.full_messages, status: :unprocessable_entity }
+      end
     end
   end
 
