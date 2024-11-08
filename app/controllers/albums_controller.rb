@@ -7,6 +7,10 @@ class AlbumsController < ApplicationController
     @album_objects = @albums.map do |album|
       to_album_object album
     end
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @album_objects }
+    end
   end
 
   def show

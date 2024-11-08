@@ -37,13 +37,13 @@ const EditAlbum = ({ album }) => {
 
       <br/>
       <br/>
-      <label for='album_name'>Name</label>
+      <label id='album_name'>Name</label>
       <input type='text'
              id='album_name'
              name='album[name]'
              value={albumName} />
 
-      <label for='album_description'>Description</label>
+      <label id='album_description'>Description</label>
       <textarea id='album_description'
                 name='album[album_description]'>
                 {albumDesc}

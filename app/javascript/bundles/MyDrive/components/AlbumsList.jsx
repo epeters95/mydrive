@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 
-const AlbumsList = ({ albums }) => {
+const AlbumsList = (props) => {
+
+  let albums = props.albums;
   
   return (
     <div>

@@ -1,6 +1,11 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LandingPage from '../components/LandingPage.jsx';
+import ReactOnRails from 'react-on-rails';
+import * as style from './Credentials.module.css';
+import Login from '../components/Login.jsx';
+import AlbumsList from '../components/AlbumsList.jsx';
+import EditAlbum from '../components/EditAlbum.jsx';
 
 const RouterApp = (props) => {
 
@@ -8,7 +13,8 @@ const RouterApp = (props) => {
     return fetch('http://localhost:3000/albums', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': ReactOnRails.authenticityToken()
       }
     });
   }
@@ -17,7 +23,8 @@ const RouterApp = (props) => {
     return fetch('http://localhost:3000/albums/' + params.albumId + '/edit', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': ReactOnRails.authenticityToken()
       }
     });
   }
@@ -26,13 +33,6 @@ const RouterApp = (props) => {
     {
       path: "/",
       element: <LandingPage />,
-      children: [
-        {
-          path: "team",
-          element: <Team />,
-          loader: teamLoader,
-        },
-      ],
     },
     {
       path: "/users/sign_in",
@@ -44,7 +44,7 @@ const RouterApp = (props) => {
       loader: albumsLoader,
       children: [
         {
-          path: "/:albumId/edit",
+          path: ":albumId/edit",
           element: <EditAlbum />,
           loader: editAlbumLoader,
         },
