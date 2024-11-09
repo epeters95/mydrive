@@ -1,33 +1,12 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LandingPage from '../components/LandingPage.jsx';
-import ReactOnRails from 'react-on-rails';
-import * as style from './Credentials.module.css';
 import Login from '../components/Login.jsx';
 import AlbumsList from '../components/AlbumsList.jsx';
 import EditAlbum from '../components/EditAlbum.jsx';
+import albumsLoader, editAlbumLoader from '../loaders.js';
 
 const RouterApp = (props) => {
-
-  const albumsLoader = () => {
-    return fetch('http://localhost:3000/albums', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': ReactOnRails.authenticityToken()
-      }
-    });
-  }
-
-  const editAlbumLoader = ({ params }) => {
-    return fetch('http://localhost:3000/albums/' + params.albumId + '/edit', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': ReactOnRails.authenticityToken()
-      }
-    });
-  }
 
   const router = createBrowserRouter([
     {
