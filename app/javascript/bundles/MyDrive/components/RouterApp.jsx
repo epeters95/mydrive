@@ -4,7 +4,7 @@ import LandingPage from '../components/LandingPage.jsx';
 import Login from '../components/Login.jsx';
 import AlbumsList from '../components/AlbumsList.jsx';
 import EditAlbum from '../components/EditAlbum.jsx';
-import albumsLoader, editAlbumLoader from '../loaders.js';
+import { albumsLoader, editAlbumLoader } from '../loaders.js';
 
 const RouterApp = (props) => {
 

@@ -8,8 +8,8 @@ class AlbumsController < ApplicationController
       to_album_object album
     end
     respond_to do |format|
+      format.json { render json: { albums: @album_objects } }
       format.html { render :index }
-      format.json { render json: @album_objects }
     end
   end
 
@@ -49,16 +49,16 @@ class AlbumsController < ApplicationController
     if @album.update(album_params)
       upload_images
       respond_to do |format|
+        format.json { render json: { album: @album } }
         format.html { redirect_to edit_album_path(@album), notice: 'Album was successfully updated.' }
-        format.json { render json: @album }
       end
     else
       respond_to do |format|
+        format.json { render json: { errors: @album.errors.full_messages }, status: :unprocessable_entity }
         format.html do
           flash[:errors] = @album.errors.full_messages
           redirect_to edit_album_path(@album)
         end
-        format.json { render json: @album.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end

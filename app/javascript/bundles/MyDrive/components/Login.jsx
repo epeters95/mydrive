@@ -43,7 +43,7 @@ const Login = (props) => {
   
   return (
     <div>
-      <form onSubmit={submitLogin}>
+      <form>
         <input type='text' value={email}
               placeholder="email address"
               onChange={(e) => setEmail(e.target.value)}
