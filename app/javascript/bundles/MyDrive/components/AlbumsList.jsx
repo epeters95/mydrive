@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useLoaderData } from "react-router-dom";
 
 
 const AlbumsList = (props) => {
 
-  let albums = props.albums;
+  // let albums = props.albums;
+  let { albums } = useLoaderData();
   
   return (
     <div>

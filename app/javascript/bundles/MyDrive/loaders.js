@@ -1,6 +1,7 @@
 import ReactOnRails from 'react-on-rails';
 
 export const albumsLoader = async () => {
+
   const resp = await fetch('http://localhost:3000/albums', {
     method: 'GET',
     headers: {
@@ -23,3 +24,5 @@ export const editAlbumLoader = async ({ params }) => {
   const respJson = await resp.json();
   return respJson;
 }
+
+export default { albumsLoader: albumsLoader, editAlbumLoader: editAlbumLoader}
