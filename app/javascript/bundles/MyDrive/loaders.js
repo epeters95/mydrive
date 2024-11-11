@@ -24,5 +24,3 @@ export const editAlbumLoader = async ({ params }) => {
   const respJson = await resp.json();
   return respJson;
 }
-
-export default { albumsLoader: albumsLoader, editAlbumLoader: editAlbumLoader}

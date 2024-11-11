@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import ReactOnRails from 'react-on-rails';
+import { useLoaderData } from "react-router-dom";
 
 
-const EditAlbum = ({ album }) => {
+const EditAlbum = (props) => {
+
+  const { album } = useLoaderData();
 
   const [albumName, setAlbumName] = useState('')
   const [albumDesc, setAlbumDesc] = useState('')
@@ -41,11 +44,13 @@ const EditAlbum = ({ album }) => {
       <input type='text'
              id='album_name'
              name='album[name]'
+             onChange={setAlbumName}
              value={albumName} />
 
       <label id='album_description'>Description</label>
       <textarea id='album_description'
-                name='album[album_description]'>
+                name='album[album_description]'
+                onChange={setAlbumDesc}>
                 {albumDesc}
       </textarea>
       <br/>
