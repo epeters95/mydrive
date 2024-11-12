@@ -10,6 +10,7 @@ const AlbumsList = (props) => {
   
   return (
     <div>
+      <h2>All Albums</h2>
       <ul>
       {albums.map((album) => (
         <li id={album.id}

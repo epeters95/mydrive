@@ -4,18 +4,29 @@ import { NavLink as Link } from 'react-router-dom';
 
 const Layout = ({ children }) => {
 
+  // const isActive = isUserSignedIn()
+
+  // const isUserSignedIn = () => {
+  //   // check browser cookie for user
+  // }
+
   return (
     <section className="max-w-none">
       <header>
         <ul>
           <li>
-            <Link end to="/" className={({ isActive }) => (isActive ? ' activated' : '')}>
+            <Link end to="/">
               Home
             </Link>
           </li>
           <li>
-            <Link to="/users/sign_in" className={({ isActive }) => (isActive ? ' activated' : '')}>
+            <Link to="/users/sign_in" className={({ isActive }) => (!isActive ? ' activated' : '')}>
               Sign In
+            </Link>
+          </li>
+          <li>
+            <Link to="/users/sign_up" className={({ isActive }) => (!isActive ? ' activated' : '')}>
+              Sign Up
             </Link>
           </li>
         </ul>

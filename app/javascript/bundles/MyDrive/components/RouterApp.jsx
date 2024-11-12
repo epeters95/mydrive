@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LandingPage from '../components/LandingPage.jsx';
+import Layout from '../components/Layout.jsx';
 import Login from '../components/Login.jsx';
 import AlbumsList from '../components/AlbumsList.jsx';
 import EditAlbum from '../components/EditAlbum.jsx';
@@ -32,7 +33,9 @@ const RouterApp = (props) => {
   ]);
 
   return (
-    <RouterProvider router={router} />
+    <Layout>
+      <RouterProvider router={router} />
+    </Layout>
   );
 }
 
