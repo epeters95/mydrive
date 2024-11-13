@@ -12,30 +12,30 @@ const RouterApp = (props) => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LandingPage />,
-    },
-    {
-      path: "/users/sign_in",
-      element: <Login />
-    },
-    {
-      path: "/albums",
-      element: <AlbumsList />,
-      loader: albumsLoader,
+      element: <Layout><LandingPage/></Layout>,
       children: [
         {
-          path: ":albumId/edit",
-          element: <EditAlbum />,
-          loader: editAlbumLoader,
+          path: "users/sign_in",
+          element: <Login />
         },
-      ],
+        {
+          path: "albums",
+          element: <AlbumsList />,
+          loader: albumsLoader,
+          children: [
+            {
+              path: ":albumId/edit",
+              element: <EditAlbum />,
+              loader: editAlbumLoader,
+            },
+          ],
+        }
+      ]
     }
   ]);
 
   return (
-    <Layout>
-      <RouterProvider router={router} />
-    </Layout>
+    <RouterProvider router={router} />
   );
 }
 
