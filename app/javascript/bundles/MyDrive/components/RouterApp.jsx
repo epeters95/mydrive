@@ -11,9 +11,12 @@ const RouterApp = (props) => {
 
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Layout><LandingPage/></Layout>,
+      element: <Layout />,
       children: [
+        {
+          path: "/",
+          element: <LandingPage/>
+        },
         {
           path: "users/sign_in",
           element: <Login />

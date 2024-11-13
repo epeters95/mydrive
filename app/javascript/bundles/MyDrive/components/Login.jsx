@@ -43,6 +43,8 @@ const Login = (props) => {
   
   return (
     <div>
+      <h2>Sign In</h2>
+      <br/>
       <form>
         <input type='text' value={email}
               placeholder="email address"

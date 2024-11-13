@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink as Link } from 'react-router-dom';
+import { NavLink as Link, Outlet } from 'react-router-dom';
 
 const Layout = ({ children }) => {
 
@@ -60,7 +60,9 @@ const Layout = ({ children }) => {
           { navigationLinks }
         </ul>
       </header>
-      {children}
+      <div className="container">
+        <Outlet />
+      </div>
     </section>
   );
 
@@ -68,7 +70,7 @@ const Layout = ({ children }) => {
 
 
 Layout.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.object]).isRequired
+  children: PropTypes.oneOfType([PropTypes.object])
 }
 
 export default Layout;
