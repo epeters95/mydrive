@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LandingPage from '../components/LandingPage.jsx';
 import Layout from '../components/Layout.jsx';
 import Login from '../components/Login.jsx';
+import Signup from '../components/Signup.jsx';
 import AlbumsList from '../components/AlbumsList.jsx';
 import EditAlbum from '../components/EditAlbum.jsx';
 import { albumsLoader, editAlbumLoader, loadNavLinks } from '../loaders.jsx';
@@ -21,6 +22,10 @@ const RouterApp = (props) => {
         {
           path: "users/sign_in",
           element: <Login />
+        },
+        {
+          path: "users/sign_up",
+          element: <Signup />
         },
         {
           path: "albums",

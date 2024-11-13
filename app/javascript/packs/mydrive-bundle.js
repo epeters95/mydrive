@@ -3,6 +3,7 @@ import ReactOnRails from 'react-on-rails';
 import Album from '../bundles/MyDrive/components/Album';
 import Photo from '../bundles/MyDrive/components/Photo';
 import Login from '../bundles/MyDrive/components/Login';
+import Signup from '../bundles/MyDrive/components/Signup';
 import LandingPage from '../bundles/MyDrive/components/LandingPage';
 import RouterApp from '../bundles/MyDrive/components/RouterApp';
 import Layout from '../bundles/MyDrive/components/Layout';
@@ -13,6 +14,7 @@ ReactOnRails.register({
   Album,
   Photo,
   Login,
+  Signup,
   LandingPage,
   RouterApp,
   Layout,
