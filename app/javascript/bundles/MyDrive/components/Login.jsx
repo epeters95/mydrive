@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from './Credentials.module.css';
 import ReactOnRails from 'react-on-rails';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useRevalidator } from 'react-router-dom';
 
 const Login = (props) => {
 
@@ -10,6 +10,7 @@ const Login = (props) => {
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
+  const revalidator = useRevalidator();
 
   const submitLogin = () => {
     fetch('http://localhost:3000/users/sign_in', {
@@ -30,6 +31,7 @@ const Login = (props) => {
       if (resp.status === 200) {
 
         window.alert("Login success!")
+        revalidator.revalidate();
         navigate("/albums");
 
       } else if (resp.status === 422) {
