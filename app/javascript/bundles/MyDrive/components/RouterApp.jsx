@@ -5,13 +5,14 @@ import Layout from '../components/Layout.jsx';
 import Login from '../components/Login.jsx';
 import AlbumsList from '../components/AlbumsList.jsx';
 import EditAlbum from '../components/EditAlbum.jsx';
-import { albumsLoader, editAlbumLoader } from '../loaders.js';
+import { albumsLoader, editAlbumLoader, loadNavLinks } from '../loaders.jsx';
 
 const RouterApp = (props) => {
 
   const router = createBrowserRouter([
     {
       element: <Layout />,
+      loader: loadNavLinks,
       children: [
         {
           path: "/",

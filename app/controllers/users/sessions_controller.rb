@@ -12,6 +12,11 @@ class Users::SessionsController < Devise::SessionsController
   def create
     resource = warden.authenticate(scope: resource_name)
     if resource
+      cookies[:signed_in] = {
+        value: true,
+        expires: 1.day.from_now,
+        domain: 'localhost'
+      }
       render json: {success: true}, status: :ok
     else
       render json: {error: "Invalid credentials"}, status: :unauthorized
