@@ -1,13 +1,11 @@
 <h2><%= @album.name %></h2>
 <br>
-<span><%= link_to "Edit", edit_album_path(@album) %></span>
-
-<br>
 <div style="width: 100%">
 
   <%=
     react_component("Album",
       props: {
+        id: @album.id,
         photos: @album.photos,
         name: @album.name,
         description: @album.description,

@@ -17,7 +17,7 @@ const Signup = (props) => {
     if (password != passwordConf) {
       window.alert('Passwords do not match')
     } else {
-      fetch('http://localhost:3000/users/sign_up', {
+      fetch('http://localhost:3000/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
