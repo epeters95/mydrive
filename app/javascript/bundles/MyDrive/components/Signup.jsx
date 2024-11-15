@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as style from './Credentials.module.css';
 import ReactOnRails from 'react-on-rails';
 import { useNavigate, useRevalidator } from 'react-router-dom';
+import { baseUrl } from '../config.js';
 
 const Signup = (props) => {
 
@@ -17,7 +18,7 @@ const Signup = (props) => {
     if (password != passwordConf) {
       window.alert('Passwords do not match')
     } else {
-      fetch('http://localhost:3000/users', {
+      fetch(baseUrl + '/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

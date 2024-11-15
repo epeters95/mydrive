@@ -3,11 +3,12 @@ import React from 'react';
 import Photo from './Photo.jsx'
 import * as style from './Album.module.css'
 import ReactOnRails from 'react-on-rails';
+import { baseUrl } from '../config.js';
 
 
 const Album = ({ id, name, description, photos, photosPath }) => {
 
-  const editAlbumPath = 'http://localhost:3000/albums/' + id + '/edit';
+  const editAlbumPath = baseUrl + '/albums/' + id + '/edit';
 
   const onDescChange = (newDesc, photoId=0) => {
     console.log('Description for photo ' + photoId + ' changed to ' + newDesc);

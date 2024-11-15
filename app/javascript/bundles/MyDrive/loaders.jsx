@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactOnRails from 'react-on-rails';
 import { NavLink as Link } from 'react-router-dom';
+import { baseUrl } from './config.js';
 
 export const loadNavLinks = () => {
 
@@ -50,7 +51,7 @@ export const loadNavLinks = () => {
 
 export const albumsLoader = async () => {
 
-  const resp = await fetch('http://localhost:3000/albums', {
+  const resp = await fetch(baseUrl + '/albums', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -62,7 +63,7 @@ export const albumsLoader = async () => {
 }
 
 export const editAlbumLoader = async ({ params }) => {
-  const resp = await fetch('http://localhost:3000/albums/' + params.albumId + '/edit', {
+  const resp = await fetch(baseUrl + '/albums/' + params.albumId + '/edit', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

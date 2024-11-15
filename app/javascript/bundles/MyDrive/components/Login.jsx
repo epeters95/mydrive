@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as style from './Credentials.module.css';
 import ReactOnRails from 'react-on-rails';
 import { useNavigate, useRevalidator } from 'react-router-dom';
+import { baseUrl } from '../config.js';
 
 const Login = (props) => {
 
@@ -13,7 +14,7 @@ const Login = (props) => {
   const revalidator = useRevalidator();
 
   const submitLogin = () => {
-    fetch('http://localhost:3000/users/sign_in', {
+    fetch(baseUrl + '/users/sign_in', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
