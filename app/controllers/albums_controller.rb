@@ -18,7 +18,7 @@ class AlbumsController < ApplicationController
     @album_object = to_album_object @album
     respond_to do |format|
       format.json { render json: { album: @album_object } }
-      format.html { render :index }
+      format.html { render :show }
     end
   end
 

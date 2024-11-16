@@ -3,9 +3,8 @@ import React from 'react';
 import { useLoaderData } from "react-router-dom";
 
 
-const AlbumsList = (props) => {
+const AlbumsList = () => {
 
-  // let albums = props.albums;
   let { albums } = useLoaderData();
   
   return (
@@ -24,10 +23,6 @@ const AlbumsList = (props) => {
     </div>
   );
 
-};
-
-AlbumsList.propTypes = {
-  albums:       PropTypes.array
 };
 
 export default AlbumsList;

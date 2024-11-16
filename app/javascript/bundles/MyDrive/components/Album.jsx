@@ -4,9 +4,13 @@ import Photo from './Photo.jsx'
 import * as style from './Album.module.css'
 import ReactOnRails from 'react-on-rails';
 import { baseUrl } from '../config.js';
+import { useLoaderData } from "react-router-dom";
 
 
-const Album = ({ id, name, description, photos, photosPath }) => {
+const Album = () => {
+
+  const { id, name, description, photos, photosPath } = useLoaderData();
+
 
   const editAlbumPath = baseUrl + '/albums/' + id + '/edit';
 
@@ -56,11 +60,7 @@ const Album = ({ id, name, description, photos, photosPath }) => {
 };
 
 Album.propTypes = {
-  id:           PropTypes.number,
-  name:         PropTypes.string.isRequired,
-  description:  PropTypes.string,
-  photos:       PropTypes.array,
-  photosPath:   PropTypes.string
+  albumId:           PropTypes.number
 };
 
 export default Album;

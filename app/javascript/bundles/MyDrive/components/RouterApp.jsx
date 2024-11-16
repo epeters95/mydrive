@@ -35,7 +35,8 @@ const RouterApp = (props) => {
         },
         {
           path: "albums/:albumId",
-          element: <Album />
+          element: <Album />,
+          loader: editAlbumLoader
         },
         {
           path: "albums/:albumId/edit",
