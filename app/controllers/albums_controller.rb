@@ -15,6 +15,11 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    @album_object = to_album_object @album
+    respond_to do |format|
+      format.json { render json: { album: @album_object } }
+      format.html { render :index }
+    end
   end
 
   def new

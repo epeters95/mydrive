@@ -63,7 +63,7 @@ export const albumsLoader = async () => {
 }
 
 export const editAlbumLoader = async ({ params }) => {
-  const resp = await fetch(baseUrl + '/albums/' + params.albumId + '/edit', {
+  const resp = await fetch(baseUrl + '/albums/' + params.albumId, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

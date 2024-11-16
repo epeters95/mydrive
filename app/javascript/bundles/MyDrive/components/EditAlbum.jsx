@@ -4,12 +4,12 @@ import ReactOnRails from 'react-on-rails';
 import { useLoaderData } from "react-router-dom";
 
 
-const EditAlbum = (props) => {
+const EditAlbum = () => {
 
   const { album } = useLoaderData();
 
-  const [albumName, setAlbumName] = useState('')
-  const [albumDesc, setAlbumDesc] = useState('')
+  const [albumName, setAlbumName] = useState(album.name)
+  const [albumDesc, setAlbumDesc] = useState(album.description)
 
   const updateAlbum = () => {
     let data = {
@@ -26,7 +26,7 @@ const EditAlbum = (props) => {
     let csrfToken = ReactOnRails.authenticityToken();
     let dataStr = JSON.stringify(data);
 
-    request.open('PATCH', album.edit_path, true);
+    request.open('PATCH', album.path, true);
     request.setRequestHeader("X-CSRF-Token", csrfToken);
     request.send(dataStr);
   }
