@@ -75,7 +75,17 @@ class AlbumsController < ApplicationController
       path: album_path(album),
       edit_path: edit_album_path(album),
       description: album.description,
-      id: album.id
+      id: album.id,
+      photos: album.photos.map{|ph| to_photo_object(ph) }
+    }
+  end
+
+  def to_photo_object(photo)
+    {
+      name:        photo.name,
+      id:          photo.id,
+      description: photo.description,
+      image_url:   photo.image_url
     }
   end
 

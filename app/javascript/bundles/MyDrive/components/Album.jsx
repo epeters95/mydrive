@@ -4,7 +4,7 @@ import Photo from './Photo.jsx'
 import * as style from './Album.module.css'
 import ReactOnRails from 'react-on-rails';
 import { baseUrl } from '../config.js';
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, NavLink as Link } from "react-router-dom";
 
 
 const Album = () => {
@@ -39,7 +39,7 @@ const Album = () => {
   
   return (
     <div>
-      <span><a href={editAlbumPath}>Edit</a></span>
+      <span><Link to={editAlbumPath}>Edit</Link></span>
       <br/>
       <div className={`d-flex p-2 flex-wrap ${style.album_container}`}>
         {photos.map((photo) => (

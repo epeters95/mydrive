@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import ReactOnRails from 'react-on-rails';
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, NavLink as Link } from "react-router-dom";
 
 
 const EditAlbum = () => {
@@ -36,7 +36,7 @@ const EditAlbum = () => {
     <div>
       <h2>Edit Album - {album.name}</h2>
       <br/>
-      <span><a href={album.path}>View</a></span>
+      <span><Link to={album.path}>View</Link></span>
 
       <br/>
       <br/>
