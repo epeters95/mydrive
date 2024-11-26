@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactOnRails from 'react-on-rails';
 import { NavLink as Link } from 'react-router-dom';
 import { baseUrl } from './config.js';
+import { fetchAndCallback } from './utils.js'
 
 export const loadNavLinks = () => {
 
@@ -50,26 +50,9 @@ export const loadNavLinks = () => {
 }
 
 export const albumsLoader = async () => {
-
-  const resp = await fetch(baseUrl + '/albums', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
-  });
-  const respJson = await resp.json();
-  return respJson;
+  return await fetchAndCallback(baseUrl + '/albums', 'GET');
 }
 
 export const editAlbumLoader = async ({ params }) => {
-  const resp = await fetch(baseUrl + '/albums/' + params.albumId, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
-  });
-  const respJson = await resp.json();
-  return respJson;
+  return await fetchAndCallback(baseUrl + '/albums/' + params.albumId, 'GET');
 }

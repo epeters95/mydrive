@@ -14,21 +14,13 @@ const Login = (props) => {
   const revalidator = useRevalidator();
 
   const submitLogin = () => {
-    fetch(baseUrl + '/users/sign_in', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': ReactOnRails.authenticityToken()
-      },
-      body: JSON.stringify({
-        "user": {
-          "email":    email,
-          "password": password
-        }
-      }),
-    })
-    .then((resp) => {
-
+    let body = JSON.stringify({
+      "user": {
+        "email":    email,
+        "password": password
+      }
+    });
+    fetchAndCallback(baseUrl + '/users/sign_in', 'POST', body, (resp) => {
       if (resp.status === 200) {
 
         window.alert("Login success!")
@@ -41,7 +33,7 @@ const Login = (props) => {
         window.alert('Invalid login information')
       }
 
-    })
+    });
   }
   
   return (

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from './Credentials.module.css';
-import ReactOnRails from 'react-on-rails';
 import { useNavigate, useRevalidator } from 'react-router-dom';
 import { baseUrl } from '../config.js';
+import { fetchAndCallback } from '../utils.js'
 
 const Signup = (props) => {
 
@@ -18,20 +18,13 @@ const Signup = (props) => {
     if (password != passwordConf) {
       window.alert('Passwords do not match')
     } else {
-      fetch(baseUrl + '/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': ReactOnRails.authenticityToken()
-        },
-        body: JSON.stringify({
-          "user": {
-            "email":    email,
-            "password": password
-          }
-        }),
+      let body = JSON.stringify({
+        "user": {
+          "email":    email,
+          "password": password
+        }
       })
-      .then((resp) => {
+      fetchAndCallback(baseUrl + '/users', 'POST', body, (resp) => {
 
         if (resp.status === 200) {
 
