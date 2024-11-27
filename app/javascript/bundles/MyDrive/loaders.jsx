@@ -7,6 +7,7 @@ export const loadNavLinks = () => {
 
   const isUserSignedIn = () => {
     // check browser cookie for user
+    // TODO: replace with more secure state management
     if(document.cookie.includes("signed_in=true")) {
       return true;
     }

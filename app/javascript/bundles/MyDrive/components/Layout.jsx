@@ -5,7 +5,6 @@ import { Outlet, useLoaderData, NavLink as Link } from 'react-router-dom';
 const Layout = ({ children }) => {
 
   let navigationLinks = useLoaderData();
-  console.log(navigationLinks)
 
   return (
     <section className="max-w-none">

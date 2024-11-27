@@ -67,8 +67,4 @@ const EditAlbum = () => {
 
 };
 
-EditAlbum.propTypes = {
-  album:       PropTypes.object
-};
-
 export default EditAlbum;

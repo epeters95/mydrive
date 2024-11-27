@@ -5,7 +5,7 @@ import ReactOnRails from 'react-on-rails';
 import { useNavigate, useRevalidator } from 'react-router-dom';
 import { baseUrl } from '../config.js';
 
-const Login = (props) => {
+const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -61,11 +61,6 @@ const Login = (props) => {
     </div>
   );
 
-};
-
-Login.propTypes = {
-  email:         PropTypes.string,
-  password:      PropTypes.string
 };
 
 

@@ -15,7 +15,6 @@ const Album = () => {
   const editAlbumPath = baseUrl + '/albums/' + id + '/edit';
 
   const onDescChange = (newDesc, photoId=0) => {
-    console.log('Description for photo ' + photoId + ' changed to ' + newDesc);
     
     // rails route given does not include id, need PATCH to <photos_path>/:id
     let fullPhotoPath = photosPath + '/' + photoId;
@@ -57,10 +56,6 @@ const Album = () => {
     </div>
   );
 
-};
-
-Album.propTypes = {
-  albumId:           PropTypes.number
 };
 
 export default Album;

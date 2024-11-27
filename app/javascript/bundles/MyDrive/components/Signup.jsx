@@ -5,7 +5,7 @@ import { useNavigate, useRevalidator } from 'react-router-dom';
 import { baseUrl } from '../config.js';
 import { fetchAndCallback } from '../utils.js'
 
-const Signup = (props) => {
+const Signup = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -74,12 +74,6 @@ const Signup = (props) => {
     </div>
   );
 
-};
-
-Signup.propTypes = {
-  email:                  PropTypes.string,
-  password:               PropTypes.string,
-  password_confirmation:  PropTypes.string
 };
 
 
