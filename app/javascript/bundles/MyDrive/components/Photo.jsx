@@ -19,7 +19,7 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
 };
 
 Photo.propTypes = {
-  id:               PropTypes.number
+  id:               PropTypes.number,
   name:             PropTypes.string.isRequired,
   image_url:        PropTypes.string.isRequired,
   description:      PropTypes.string,

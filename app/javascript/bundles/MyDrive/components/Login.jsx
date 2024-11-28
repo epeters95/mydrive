@@ -4,6 +4,7 @@ import * as style from './Credentials.module.css';
 import ReactOnRails from 'react-on-rails';
 import { useNavigate, useRevalidator } from 'react-router-dom';
 import { baseUrl } from '../config.js';
+import { fetchAndCallback } from '../utils.js'
 
 const Login = () => {
 
