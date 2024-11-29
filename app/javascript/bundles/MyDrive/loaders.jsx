@@ -51,9 +51,11 @@ export const loadNavLinks = () => {
 }
 
 export const albumsLoader = async () => {
-  return await fetchAndCallback(baseUrl + '/albums', 'GET');
+  const resp = await fetchAndCallback(baseUrl + '/albums', 'GET');
+  return resp;
 }
 
 export const editAlbumLoader = async ({ params }) => {
-  return await fetchAndCallback(baseUrl + '/albums/' + params.albumId, 'GET');
+  const resp = await fetchAndCallback(baseUrl + '/albums/' + params.albumId, 'GET');
+  return resp;
 }

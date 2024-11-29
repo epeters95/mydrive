@@ -21,20 +21,18 @@ const Login = () => {
         "password": password
       }
     });
-    fetchAndCallback(baseUrl + '/users/sign_in', 'POST', body, (resp) => {
-      if (resp.status === 200) {
+    const resp = fetchAndCallback(baseUrl + '/users/sign_in', 'POST', body);
+    if (resp.status === 200) {
 
-        window.alert("Login success!")
-        revalidator.revalidate();
-        navigate("/albums");
+      window.alert("Login success!")
+      revalidator.revalidate();
+      navigate("/albums");
 
-      } else if (resp.status === 422) {
-        window.alert('Unauthorized request')
-      } else {
-        window.alert('Invalid login information')
-      }
-
-    });
+    } else if (resp.status === 422) {
+      window.alert('Unauthorized request')
+    } else {
+      window.alert('Invalid login information')
+    }
   }
   
   return (
