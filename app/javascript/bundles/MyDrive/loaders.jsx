@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactOnRails from 'react-on-rails';
 import { NavLink as Link } from 'react-router-dom';
 import { baseUrl } from './config.js';
 import { fetchAndCallback } from './utils.js'
@@ -13,6 +14,8 @@ export const loadNavLinks = () => {
     }
   }
 
+  let csrfToken = ReactOnRails.authenticityToken();
+
   let navigationLinks;
 
   if (isUserSignedIn()) {
@@ -24,9 +27,10 @@ export const loadNavLinks = () => {
           </Link>
         </li>
         <li>
-          <Link to="/users/sign_out">
-            Sign Out
-          </Link>
+          <form method="DELETE" action="/users/sign_out">
+            <input type="hidden" name="authenticity_token" value={csrfToken} />
+            <input type="submit" value="Sign Out" />
+          </form>
         </li>
       </>
     );
