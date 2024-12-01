@@ -25,20 +25,24 @@ const Signup = () => {
         }
       })
       fetchAndCallback(baseUrl + '/users', 'POST', body, (resp) => {
-
         if (resp.status === 200) {
 
           window.alert("Sign up success!")
           revalidator.revalidate();
-          navigate("/albums");
 
         } else if (resp.status === 422) {
           window.alert('Unauthorized request')
         } else {
           window.alert('Failed to create user')
         }
+      });
 
-      })
+      setTimeout(() => {
+
+        // navigate("/albums")
+
+      }, 2000);
+
     }
   }
   

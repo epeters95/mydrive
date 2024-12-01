@@ -18,6 +18,10 @@ export const loadNavLinks = () => {
 
   let navigationLinks;
 
+  const onSignOutClicked = () => {
+    fetchAndCallback("/users/sign_out", "DELETE")
+  }
+
   if (isUserSignedIn()) {
     navigationLinks = (
       <>
@@ -27,10 +31,9 @@ export const loadNavLinks = () => {
           </Link>
         </li>
         <li>
-          <form method="DELETE" action="/users/sign_out">
-            <input type="hidden" name="authenticity_token" value={csrfToken} />
-            <input type="submit" value="Sign Out" />
-          </form>
+          <button className="submit" onClick={onSignOutClicked}>
+            Sign Out
+          </button>
         </li>
       </>
     );
@@ -55,11 +58,25 @@ export const loadNavLinks = () => {
 }
 
 export const albumsLoader = async () => {
-  const resp = await fetchAndCallback(baseUrl + '/albums', 'GET');
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': ReactOnRails.authenticityToken()
+    }
+  }
+  const resp = await fetch(baseUrl + '/albums', fetchOptions);
   return resp;
 }
 
 export const editAlbumLoader = async ({ params }) => {
-  const resp = await fetchAndCallback(baseUrl + '/albums/' + params.albumId, 'GET');
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': ReactOnRails.authenticityToken()
+    }
+  }
+  const resp = await fetch(baseUrl + '/albums/' + params.albumId, fetchOptions);
   return resp;
 }

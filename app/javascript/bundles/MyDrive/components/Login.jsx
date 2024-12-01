@@ -21,18 +21,34 @@ const Login = () => {
         "password": password
       }
     });
-    const resp = fetchAndCallback(baseUrl + '/users/sign_in', 'POST', body);
-    if (resp.status === 200) {
-
-      window.alert("Login success!")
-      revalidator.revalidate();
-      navigate("/albums");
-
-    } else if (resp.status === 422) {
-      window.alert('Unauthorized request')
-    } else {
-      window.alert('Invalid login information')
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': ReactOnRails.authenticityToken()
+      },
+      body: body
     }
+    fetch(baseUrl + '/users/sign_in', fetchOptions).then((resp) => {
+
+      if (resp.status === 200) {
+
+        window.alert("Login success!")
+        revalidator.revalidate();
+        navigate("/albums");
+
+      } else if (resp.status === 422) {
+        window.alert('Unauthorized request')
+      } else {
+        window.alert('Invalid login information')
+      }
+    });
+
+    // setTimeout(() => {
+
+    //   // navigate("/albums")
+
+    // }, 5000);
   }
   
   return (
