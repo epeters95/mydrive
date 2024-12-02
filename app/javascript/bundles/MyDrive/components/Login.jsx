@@ -34,8 +34,9 @@ const Login = () => {
       if (resp.status === 200) {
 
         window.alert("Login success!")
-        revalidator.revalidate();
-        navigate("/albums");
+        // revalidator.revalidate();
+        console.log("calling from Login#submitLogin()")
+        // navigate("/albums");
 
       } else if (resp.status === 422) {
         window.alert('Unauthorized request')

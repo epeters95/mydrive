@@ -16,7 +16,7 @@ const AlbumsList = () => {
       {albums.map((album) => (
         <li id={album.id}
             key={album.id}>
-          <Link to={album.path} onClick={revalidator.revalidate()}>
+          <Link to={album.path} onClick={revalidator.revalidate}>
             {album.name}
           </Link>
         </li>

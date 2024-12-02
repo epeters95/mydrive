@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     resources :photos
 
   end
+
+  get 'get-albums', to: 'albums#get_albums'
 end
