@@ -64,9 +64,8 @@ export const albumsLoader = async () => {
       'Content-Type': 'application/json'
     }
   }
-  console.log("callin from loader")
-  const resp = fetch(baseUrl + '/get-albums', fetchOptions);
-  return resp.json();
+  const resp = await fetch(baseUrl + '/get-albums', fetchOptions);
+  return resp;
 }
 
 export const editAlbumLoader = async ({ params }) => {

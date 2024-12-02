@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import ReactOnRails from 'react-on-rails';
-import { useLoaderData, NavLink as Link } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 
 const EditAlbum = () => {

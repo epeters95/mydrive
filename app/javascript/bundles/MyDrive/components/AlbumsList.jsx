@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useLoaderData, useRevalidator, NavLink as Link} from "react-router-dom";
-
+import { useLoaderData, useRevalidator, Link } from "react-router-dom";
 
 const AlbumsList = () => {
 

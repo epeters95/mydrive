@@ -4,7 +4,7 @@ import Photo from './Photo.jsx'
 import * as style from './Album.module.css'
 import ReactOnRails from 'react-on-rails';
 import { baseUrl } from '../config.js';
-import { useLoaderData, NavLink as Link } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 
 const Album = () => {
