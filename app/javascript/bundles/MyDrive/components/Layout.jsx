@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Outlet, useLoaderData, NavLink as Link } from 'react-router-dom';
+import ErrorBoundary from './ErrorBoundary';
 
 const Layout = ({ children }) => {
 

@@ -61,9 +61,10 @@ export const albumsLoader = async () => {
   const fetchOptions = {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': ReactOnRails.authenticityToken()
     }
-  }
+,  }
   const resp = await fetch(baseUrl + '/get-albums', fetchOptions);
   return resp;
 }
