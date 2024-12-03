@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Outlet, useLoaderData, NavLink as Link } from 'react-router-dom';
-import ErrorBoundary from './ErrorBoundary';
+import ErrorBoundary from './ErrorBoundary.jsx';
 
 const Layout = ({ children }) => {
 
@@ -20,7 +20,9 @@ const Layout = ({ children }) => {
         </ul>
       </header>
       <div className="container">
-        <Outlet />
+        <ErrorBoundary>
+          <Outlet />
+        </ErrorBoundary>
       </div>
     </section>
   );
