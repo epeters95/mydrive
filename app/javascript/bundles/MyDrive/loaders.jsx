@@ -14,12 +14,24 @@ export const loadNavLinks = () => {
     }
   }
 
-  let csrfToken = ReactOnRails.authenticityToken();
-
   let navigationLinks;
 
   const onSignOutClicked = () => {
-    fetchAndCallback("/users/sign_out", "DELETE")
+    const fetchOptions = {
+      method: "DELETE",
+      headers: ReactOnRails.authenticityHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      })
+    }
+    fetch("/users/sign_out", fetchOptions).then((resp) => {
+      if (resp.status === 200) {
+        console.log("Sign out success");
+      } else {
+        console.log("Error signing out");
+      }
+    });
+      
   }
 
   if (isUserSignedIn()) {
@@ -62,6 +74,7 @@ export const albumsLoader = async () => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
       'X-CSRF-Token': ReactOnRails.authenticityToken()
     }
 ,  }
@@ -74,6 +87,7 @@ export const editAlbumLoader = async ({ params }) => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
       'X-CSRF-Token': ReactOnRails.authenticityToken()
     }
   }
