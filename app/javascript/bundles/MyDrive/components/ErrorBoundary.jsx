@@ -13,7 +13,13 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <div>There was an error in the client application.</div>;
+      return (
+        <div>
+          <span>There was an error in the client application:</span>
+          <br/>
+          <span>{this.state.error}</span>
+        </div>
+        );
     }
     return this.props.children;
   }
