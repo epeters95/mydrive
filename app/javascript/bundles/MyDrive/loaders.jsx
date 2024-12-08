@@ -17,14 +17,7 @@ export const loadNavLinks = () => {
   let navigationLinks;
 
   const onSignOutClicked = () => {
-    const fetchOptions = {
-      method: "DELETE",
-      headers: ReactOnRails.authenticityHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      })
-    }
-    fetch("/users/sign_out", fetchOptions).then((resp) => {
+    fetchAndCallback(baseUrl + "/users/sign_out", "DELETE", fetchOptions, (resp) => {
       if (resp.status === 200) {
         console.log("Sign out success");
       } else {

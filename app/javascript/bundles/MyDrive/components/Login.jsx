@@ -29,7 +29,7 @@ const Login = () => {
       },
       body: body
     }
-    fetch(baseUrl + '/users/sign_in', fetchOptions).then((resp) => {
+    fetchAndCallback(base_url + "/users/sign_in", "POST", fetchOptions, (resp) => {
 
       if (resp.status === 200) {
 
