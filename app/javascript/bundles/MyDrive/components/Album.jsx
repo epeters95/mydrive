@@ -26,14 +26,7 @@ const Album = () => {
     }
 
     // send PATCH
-    let request = new XMLHttpRequest();
-    let header = {'Content-Type': 'application/json'};
-    let csrfToken = ReactOnRails.authenticityToken();
-    let dataStr = JSON.stringify(data);
-
-    request.open('PATCH', fullPhotoPath, true);
-    request.setRequestHeader("X-CSRF-Token", csrfToken);
-    request.send(dataStr);
+    fetchAndCallback(fullPhotoPath, 'PATCH', data);
   }
   
   return (

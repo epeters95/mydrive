@@ -21,15 +21,7 @@ const Login = () => {
         "password": password
       }
     });
-    const fetchOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': ReactOnRails.authenticityToken()
-      },
-      body: body
-    }
-    fetchAndCallback(base_url + "/users/sign_in", "POST", fetchOptions, (resp) => {
+    fetchAndCallback(base_url + "/users/sign_in", "POST", body, (resp) => {
 
       if (resp.status === 200) {
 
