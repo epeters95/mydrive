@@ -10,6 +10,9 @@ import Layout from '../bundles/MyDrive/components/Layout';
 import AlbumsList from '../bundles/MyDrive/components/AlbumsList';
 import EditAlbum from '../bundles/MyDrive/components/EditAlbum';
 
+import './bootstrap.bundle.min.js';
+import './bootstrap.min.css';
+
 ReactOnRails.register({
   Album,
   Photo,

@@ -21,7 +21,7 @@ const Login = () => {
         "password": password
       }
     });
-    fetchAndCallback(base_url + "/users/sign_in", "POST", body, (resp) => {
+    fetchAndCallback(baseUrl + "/users/sign_in", "POST", body, (resp) => {
 
       if (resp.status === 200) {
 
