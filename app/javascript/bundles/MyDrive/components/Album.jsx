@@ -10,7 +10,7 @@ import { fetchAndCallback } from '../utils.js'
 
 const Album = () => {
 
-  const { album: { id, name, description, photos, photosPath } } = useLoaderData();
+  const { album: { id, name, description, photos, show_path } } = useLoaderData();
 
 
   const editAlbumPath = baseUrl + '/albums/' + id + '/edit';
@@ -18,7 +18,7 @@ const Album = () => {
   const onDescChange = (newDesc, photoId=0) => {
     
     // rails route given does not include id, need PATCH to <photos_path>/:id
-    let fullPhotoPath = photosPath + '/' + photoId;
+    let fullPhotoPath = show_path + '/photos/' + photoId;
     let data = {
       "photo": {
         "id": photoId,
@@ -27,7 +27,7 @@ const Album = () => {
     }
 
     // send PATCH
-    fetchAndCallback(fullPhotoPath, 'PATCH', data);
+    fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data));
   }
   
   return (

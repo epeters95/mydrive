@@ -25,7 +25,9 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @album_object = to_album_object @album
     respond_to do |format|
-      format.json { render json: { album: @album_object } }
+      format.json do
+        render json: { album: @album_object }
+      end
       format.html { render :show }
     end
   end
@@ -82,6 +84,7 @@ class AlbumsController < ApplicationController
       name: album.name, 
       path: album_path(album),
       edit_path: edit_album_path(album),
+      show_path: album_path(album),
       description: album.description,
       id: album.id,
       photos: album.photos.map{|ph| to_photo_object(ph) }
