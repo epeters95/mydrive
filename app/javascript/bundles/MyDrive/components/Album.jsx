@@ -5,11 +5,12 @@ import * as style from './Album.module.css'
 import ReactOnRails from 'react-on-rails';
 import { baseUrl } from '../config.js';
 import { useLoaderData, Link } from "react-router-dom";
+import { fetchAndCallback } from '../utils.js'
 
 
 const Album = () => {
 
-  const { id, name, description, photos, photosPath } = useLoaderData();
+  const { album: { id, name, description, photos, photosPath } } = useLoaderData();
 
 
   const editAlbumPath = baseUrl + '/albums/' + id + '/edit';
@@ -41,7 +42,7 @@ const Album = () => {
                  id={photo.id}
                  key={photo.id}
                  description={photo.description || ""}
-                 image_url={photo.image.url}
+                 image_url={photo.image_url}
                  handleDescChange={onDescChange} />
         ))}
 

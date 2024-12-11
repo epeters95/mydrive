@@ -39,7 +39,7 @@ const Signup = () => {
 
       setTimeout(() => {
 
-        // navigate("/albums")
+        navigate("/albums")
 
       }, 2000);
 

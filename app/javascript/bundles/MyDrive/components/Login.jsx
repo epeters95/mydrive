@@ -27,8 +27,6 @@ const Login = () => {
 
         window.alert("Login success!")
         revalidator.revalidate();
-        console.log("calling from Login#submitLogin()")
-        navigate("/albums");
 
       } else if (resp.status === 422) {
         window.alert('Unauthorized request')
@@ -37,11 +35,11 @@ const Login = () => {
       }
     });
 
-    // setTimeout(() => {
+    setTimeout(() => {
 
-    //   // navigate("/albums")
+      navigate("/albums")
 
-    // }, 5000);
+    }, 2000);
   }
   
   return (
