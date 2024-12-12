@@ -1,13 +1,15 @@
 import ReactOnRails from 'react-on-rails';
 
-export const fetchAndCallback = async (url, method, body=null, callback=null) => {
+export const fetchAndCallback = async (url, method, body=null, callback=null, json=true) => {
   const fetchOptions = {
     method: method,
     headers: {
-      'Content-Type': 'application/json',
       'Accept': 'application/json',
       'X-CSRF-Token': ReactOnRails.authenticityToken()
     }
+  }
+  if (json) {
+    fetchOptions.headers['Content-Type'] = 'application/json'
   }
   if (method === "POST" || method === "PATCH") {
     fetchOptions.body = body

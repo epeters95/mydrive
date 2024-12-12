@@ -21,7 +21,7 @@ const EditAlbum = () => {
     }
 
     // send PATCH
-    fetchAndCallback(album.path, 'PATCH', data);
+    fetchAndCallback(album.path, 'PATCH', JSON.stringify(data));
   }
   
   

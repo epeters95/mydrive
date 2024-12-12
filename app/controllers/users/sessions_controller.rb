@@ -24,9 +24,14 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    cookies[:signed_in] = {
+        value: false,
+        expires: 1.day.from_now,
+        domain: 'localhost'
+      }
+    super
+  end
 
   protected
 

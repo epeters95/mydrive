@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactOnRails from 'react-on-rails';
-import { NavLink as Link } from 'react-router-dom';
+import { useNavigate, NavLink as Link } from 'react-router-dom';
 import { baseUrl } from './config.js';
 import { fetchAndCallback } from './utils.js'
 
 export const loadNavLinks = () => {
+
+  const navigate = useNavigate();
 
   const isUserSignedIn = () => {
     // check browser cookie for user
@@ -19,11 +21,12 @@ export const loadNavLinks = () => {
   const onSignOutClicked = () => {
     fetchAndCallback(baseUrl + "/users/sign_out", "DELETE", null, (resp) => {
       if (resp.status === 200) {
-        console.log("Sign out success");
+        window.alert("Sign out success");
       } else {
-        console.log("Error signing out");
+        window.alert("Error signing out");
       }
-    });
+      navigate("/")
+    }, false);
       
   }
 
