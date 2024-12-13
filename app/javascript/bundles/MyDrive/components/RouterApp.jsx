@@ -7,6 +7,7 @@ import Signup from '../components/Signup.jsx';
 import Album from '../components/Album.jsx';
 import AlbumsList from '../components/AlbumsList.jsx';
 import EditAlbum from '../components/EditAlbum.jsx';
+import NewAlbum from '../components/NewAlbum.jsx';
 import { albumsLoader, editAlbumLoader, loadNavLinks } from '../loaders.jsx';
 
 const RouterApp = (props) => {
@@ -42,6 +43,10 @@ const RouterApp = (props) => {
           path: "albums/:albumId/edit",
           element: <EditAlbum />,
           loader: editAlbumLoader,
+        },
+        {
+          path: "albums/new-album",
+          element: <NewAlbum />
         }
       ]
     }

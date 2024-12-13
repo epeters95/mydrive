@@ -9,6 +9,7 @@ import RouterApp from '../bundles/MyDrive/components/RouterApp';
 import Layout from '../bundles/MyDrive/components/Layout';
 import AlbumsList from '../bundles/MyDrive/components/AlbumsList';
 import EditAlbum from '../bundles/MyDrive/components/EditAlbum';
+import NewAlbum from '../bundles/MyDrive/components/NewAlbum';
 
 import './bootstrap.bundle.min.js';
 import './bootstrap.min.css';
@@ -22,5 +23,6 @@ ReactOnRails.register({
   RouterApp,
   Layout,
   AlbumsList,
-  EditAlbum
+  EditAlbum,
+  NewAlbum
 });
