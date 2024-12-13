@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import Album from './Album.jsx'
-import ReactOnRails from 'react-on-rails';
+import React, { useState } from 'react';
 import { baseUrl } from '../config.js';
 import { fetchAndCallback } from '../utils.js'
 

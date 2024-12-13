@@ -6,8 +6,6 @@ import { fetchAndCallback } from './utils.js'
 
 export const loadNavLinks = () => {
 
-  const navigate = useNavigate();
-
   const isUserSignedIn = () => {
     // check browser cookie for user
     // TODO: replace with more secure state management
@@ -25,7 +23,6 @@ export const loadNavLinks = () => {
       } else {
         window.alert("Error signing out");
       }
-      navigate("/")
     }, false);
       
   }
@@ -36,6 +33,11 @@ export const loadNavLinks = () => {
         <li>
           <Link to="/albums">
             Albums
+          </Link>
+        </li>
+        <li>
+          <Link to="/albums/new-album">
+            New Album
           </Link>
         </li>
         <li>
