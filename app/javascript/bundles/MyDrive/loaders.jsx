@@ -16,16 +16,16 @@ export const loadNavLinks = () => {
 
   let navigationLinks;
 
-  const onSignOutClicked = () => {
-    fetchAndCallback(baseUrl + "/users/sign_out", "DELETE", null, (resp) => {
-      if (resp.status === 200) {
-        window.alert("Sign out success");
-      } else {
-        window.alert("Error signing out");
-      }
-    }, false);
+  // const onSignOutClicked = () => {
+  //   fetchAndCallback(baseUrl + "/users/sign_out", "DELETE", null, (resp) => {
+  //     if (resp.status === 200) {
+  //       window.alert("Sign out success");
+  //     } else {
+  //       window.alert("Error signing out");
+  //     }
+  //   }, false);
       
-  }
+  // }
 
   if (isUserSignedIn()) {
     navigationLinks = (
@@ -39,11 +39,6 @@ export const loadNavLinks = () => {
           <Link to="/albums/new">
             New Album
           </Link>
-        </li>
-        <li>
-          <button className="submit" onClick={onSignOutClicked}>
-            Sign Out
-          </button>
         </li>
       </>
     );
