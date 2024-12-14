@@ -8,20 +8,27 @@ const NewAlbum = () => {
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
+  const [files, setFiles] = useState('')
 
-  const submitAlbum = (newDesc, photoId=0) => {
+  const submitAlbum = () => {
     
     let createAlbumPath = baseUrl + '/albums/'
 
     let data = {
-      "photos": {
-        "id": photoId,
-        "description": newDesc
-      }
+      "name": name,
+      "description": description,
+      "images": files
     }
 
-    // send PATCH
-    fetchAndCallback(createAlbumPath, 'POST', JSON.stringify(data));
+    fetchAndCallback(createAlbumPath, 'POST', JSON.stringify(data), (resp) => {
+      if (resp.status === 200) {
+
+        window.alert("Upload success!")
+
+      } else {
+        window.alert('Album create failed')
+      }
+    });
   }
   
   return (
@@ -38,6 +45,10 @@ const NewAlbum = () => {
               name="description"
               placeholder="description"
               onChange={(e) => setDescription(e.target.value)} />
+
+        <br/>
+        <input type='file' name="images"
+              onChange={(e) => setFiles(e.target.value)} />
 
         <br/>
         <input type="button" value={'Create Album'}

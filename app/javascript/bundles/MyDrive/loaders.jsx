@@ -36,7 +36,7 @@ export const loadNavLinks = () => {
           </Link>
         </li>
         <li>
-          <Link to="/albums/new-album">
+          <Link to="/albums/new">
             New Album
           </Link>
         </li>

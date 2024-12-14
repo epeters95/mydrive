@@ -44,7 +44,10 @@ class AlbumsController < ApplicationController
       errors = upload_images
       if !errors.empty?
         flash[:errors] = errors
-        render :new
+        respond_to do |format|
+          format.json { render json: { status: :ok } }
+          format.html { render :new }
+        end
       else
         redirect_to albums_path, notice: 'Album was successfully created.'
       end
