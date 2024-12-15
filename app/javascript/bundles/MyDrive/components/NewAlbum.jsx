@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { baseUrl } from '../config.js';
 import { fetchAndCallback } from '../utils.js'
+import ReactOnRails from 'react-on-rails';
 
 
 const NewAlbum = () => {
@@ -15,9 +16,11 @@ const NewAlbum = () => {
     let createAlbumPath = baseUrl + '/albums/'
 
     let data = {
-      "name": name,
-      "description": description,
-      "images": files
+      "album": {
+        "name": name,
+        "description": description,
+        "images": files
+      }
     }
 
     fetchAndCallback(createAlbumPath, 'POST', JSON.stringify(data), (resp) => {

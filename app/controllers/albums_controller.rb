@@ -45,11 +45,16 @@ class AlbumsController < ApplicationController
       if !errors.empty?
         flash[:errors] = errors
         respond_to do |format|
-          format.json { render json: { status: :ok } }
+          format.json { render json: { message: "Success" }, status: :ok }
           format.html { render :new }
         end
       else
-        redirect_to albums_path, notice: 'Album was successfully created.'
+        respond_to do |format|
+          format.json { render json: { errors: errors }, status: :unprocessable_entity }
+          format.html do
+            redirect_to albums_path, notice: 'Album was successfully created.'
+          end
+        end
       end
     else
       flash[:errors] = @album.errors.full_messages
@@ -109,6 +114,7 @@ class AlbumsController < ApplicationController
   end
 
   def upload_images
+    debugger
     images = params[:album][:images].drop 1
     errors = []
     unless images.nil?
