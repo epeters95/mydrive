@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import * as style from './Photo.module.css';
+import * as style from '../styles/Photo.module.css';
 
 const Photo = ({id, description, name, image_url, handleDescChange}) => {
 

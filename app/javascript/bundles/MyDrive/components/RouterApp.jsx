@@ -1,14 +1,14 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import LandingPage from '../components/LandingPage.jsx';
-import Layout from '../components/Layout.jsx';
-import Login from '../components/Login.jsx';
-import Signup from '../components/Signup.jsx';
-import Album from '../components/Album.jsx';
-import AlbumsList from '../components/AlbumsList.jsx';
-import EditAlbum from '../components/EditAlbum.jsx';
-import NewAlbum from '../components/NewAlbum.jsx';
-import { albumsLoader, editAlbumLoader, loadNavLinks } from '../loaders.jsx';
+import LandingPage from './LandingPage.jsx';
+import Layout from './Layout.jsx';
+import Login from './user/Login.jsx';
+import Signup from './user/Signup.jsx';
+import Album from './album/Album.jsx';
+import AlbumsList from './album/AlbumsList.jsx';
+import EditAlbum from './album/EditAlbum.jsx';
+import NewAlbum from './album/NewAlbum.jsx';
+import { albumsLoader, editAlbumLoader, loadNavLinks } from './tools/loaders.jsx';
 
 const RouterApp = (props) => {
 

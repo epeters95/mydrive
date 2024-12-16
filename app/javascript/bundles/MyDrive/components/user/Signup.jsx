@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import * as style from './Credentials.module.css';
+import * as style from '../styles/Credentials.module.css';
 import { useNavigate, useRevalidator } from 'react-router-dom';
-import { baseUrl } from '../config.js';
-import { fetchAndCallback } from '../utils.js'
+import { baseUrl } from '../tools/config.js';
+import { fetchAndCallback } from '../tools/utils.js'
 
 const Signup = () => {
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { baseUrl } from '../config.js';
-import { fetchAndCallback } from '../utils.js'
+import { baseUrl } from '../tools/config.js';
+import { fetchAndCallback } from '../tools/utils.js'
 import ReactOnRails from 'react-on-rails';
 
 

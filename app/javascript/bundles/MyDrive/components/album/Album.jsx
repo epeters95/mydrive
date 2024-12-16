@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Photo from './Photo.jsx'
-import * as style from './Album.module.css'
+import Photo from '../photo/Photo.jsx'
+import * as style from '../styles/Album.module.css'
 import ReactOnRails from 'react-on-rails';
-import { baseUrl } from '../config.js';
+import { baseUrl } from '../tools/config.js';
 import { useLoaderData, Link } from "react-router-dom";
-import { fetchAndCallback } from '../utils.js'
+import { fetchAndCallback } from '../tools/utils.js'
 
 
 const Album = () => {
