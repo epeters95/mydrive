@@ -114,7 +114,6 @@ class AlbumsController < ApplicationController
   end
 
   def upload_images
-    debugger
     images = params[:album][:images].drop 1
     errors = []
     unless images.nil?

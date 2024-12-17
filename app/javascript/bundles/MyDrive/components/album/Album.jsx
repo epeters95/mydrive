@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Photo from '../photo/Photo.jsx'
 import * as style from '../styles/Album.module.css'
-import ReactOnRails from 'react-on-rails';
 import { baseUrl } from '../tools/config.js';
 import { useLoaderData, Link } from "react-router-dom";
 import { fetchAndCallback } from '../tools/utils.js'
