@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { baseUrl } from '../tools/config.js';
 import { fetchAndCallback } from '../tools/utils.js'
 
@@ -9,6 +10,8 @@ const NewAlbum = () => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [files, setFiles] = useState('')
+
+  const navigate = useNavigate()
 
   const submitAlbum = () => {
     
@@ -31,6 +34,12 @@ const NewAlbum = () => {
         window.alert('Album create failed')
       }
     });
+
+    setTimeout(() => {
+
+      navigate("/albums")
+
+    }, 2000);
   }
   
   return (

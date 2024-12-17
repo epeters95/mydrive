@@ -16,17 +16,6 @@ export const loadNavLinks = () => {
 
   let navigationLinks;
 
-  // const onSignOutClicked = () => {
-  //   fetchAndCallback(baseUrl + "/users/sign_out", "DELETE", null, (resp) => {
-  //     if (resp.status === 200) {
-  //       window.alert("Sign out success");
-  //     } else {
-  //       window.alert("Error signing out");
-  //     }
-  //   }, false);
-      
-  // }
-
   if (isUserSignedIn()) {
     navigationLinks = (
       <>
@@ -72,7 +61,6 @@ export const albumsLoader = async () => {
     }
 ,  }
   const resp = await fetch(baseUrl + '/get-albums', fetchOptions);
-  // const resp = await fetchAndCallback(baseUrl + '/get-albums', 'GET');
   return resp;
 }
 
@@ -86,6 +74,5 @@ export const editAlbumLoader = async ({ params }) => {
     }
   }
   const resp = await fetch(baseUrl + '/albums/' + params.albumId, fetchOptions);
-  // const resp = await fetchAndCallback(baseUrl + '/albums/' + params.albumId, 'GET');
   return resp;
 }
