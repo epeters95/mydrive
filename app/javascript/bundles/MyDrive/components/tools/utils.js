@@ -11,7 +11,7 @@ export const fetchAndCallback = async (url, method, body=null, callback=null, js
     fetchOptions.headers['Content-Type'] = 'application/json'
   }
   fetchOptions.headers = ReactOnRails.authenticityHeaders(fetchOptions.headers)
-  if (method === "POST" || method === "PATCH") {
+  if (method === "POST" || method === "PATCH" || method = "PUT") {
     fetchOptions.body = body
   }
   const resp = await fetch(url, fetchOptions);

@@ -14,41 +14,45 @@ export const loadNavLinks = () => {
     }
   }
 
+  const listItemLinkIterate = (pathItems) => {
+
+    let showItems = [];
+
+    pathItems.forEach((pathItem) => {
+
+      let title = pathItem[0];
+      let path = pathItem[1];
+
+      showItems.push(
+        <li>
+          <Link to={path}>
+            {title}
+          </Link>
+        </li>
+      )
+    })
+    return (
+      <>
+        {showItems}
+      </>
+    )
+  }
+
   let navigationLinks;
 
   if (isUserSignedIn()) {
-    navigationLinks = (
-      <>
-        <li>
-          <Link to="/albums">
-            Albums
-          </Link>
-        </li>
-        <li>
-          <Link to="/albums/new">
-            New Album
-          </Link>
-        </li>
-      </>
-    );
+    navigationLinks = [
+      ["Albums", "/albums"],
+      ["New Album", "/albums/new"],
+    ]
   }
   else {
-    navigationLinks = (
-      <>
-        <li>
-          <Link to="/users/sign_in">
-            Sign In
-          </Link>
-        </li>
-        <li>
-          <Link to="/users/sign_up">
-            Sign Up
-          </Link>
-        </li>
-      </>
-    );
+    navigationLinks = [
+      ["Sign In", "/users/sign_in"],
+      ["Sign Up", "/users/sign_up"]
+    ]
   }
-  return navigationLinks;
+  return listItemLinkIterate(navigationLinks);
 }
 
 export const albumsLoader = async () => {
