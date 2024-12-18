@@ -9,6 +9,7 @@ const EditAlbum = () => {
 
   const [albumName, setAlbumName] = useState(album.name)
   const [albumDesc, setAlbumDesc] = useState(album.description)
+  const [files, setFiles] = useState('')
 
   const updateAlbum = () => {
     let data = {
@@ -16,6 +17,7 @@ const EditAlbum = () => {
         "id": album.id,
         "name": albumName,
         "description": albumDesc,
+        "images": files
       }
     }
 
@@ -47,7 +49,9 @@ const EditAlbum = () => {
       </textarea>
       <br/>
       <p>Add a new image:</p>
-      <input multiple="multiple" type="file" name="album[images][]" id="album_images" />
+      <input type='file' multiple="multiple" name="images"
+              onChange={(e) => setFiles(e.target.value)} />
+
       <input type="submit"
              name="commit"
              value="Update"

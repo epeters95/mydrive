@@ -57,8 +57,13 @@ class AlbumsController < ApplicationController
         end
       end
     else
-      flash[:errors] = @album.errors.full_messages
-      render :new
+      respond_to do |format|
+        format.json { render json: { errors: @album.errors.full_messages }, status: :unprocessable_entity }
+        format.html do
+          flash[:errors] = @album.errors.full_messages
+          render :new
+        end
+      end
     end
   end
 
