@@ -1,0 +1,13 @@
+body {
+  background-color: #EEEEEE;
+}
+
+span {
+  color: grey;
+  font-size: 14pt;
+}
+
+p {
+  font-style: italic;
+  font-size: 12pt;
+}

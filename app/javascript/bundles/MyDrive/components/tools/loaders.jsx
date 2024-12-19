@@ -24,7 +24,7 @@ export const loadNavLinks = () => {
       let path = pathItem[1];
 
       showItems.push(
-        <li>
+        <li class="nav-item">
           <Link to={path}>
             {title}
           </Link>
