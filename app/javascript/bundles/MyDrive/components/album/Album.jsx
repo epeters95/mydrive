@@ -42,7 +42,8 @@ const Album = () => {
                  key={photo.id}
                  description={photo.description || ""}
                  image_url={photo.image_url}
-                 handleDescChange={onDescChange} />
+                 handleDescChange={onDescChange} 
+                 className="photo-container"/>
         ))}
 
       </div>
