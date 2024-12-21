@@ -11,3 +11,10 @@ p {
   font-style: italic;
   font-size: 12pt;
 }
+
+.header-link {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}

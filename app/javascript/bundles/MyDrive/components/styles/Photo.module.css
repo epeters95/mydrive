@@ -14,6 +14,10 @@
   border: 1px solid lightgoldenrodyellow;
 }
 
+.albums_image input {
+  width: 100%;
+}
+
 .albums_image .img_name {
   white-space: nowrap;
   overflow: hidden;

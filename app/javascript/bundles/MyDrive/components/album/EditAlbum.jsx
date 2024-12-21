@@ -34,13 +34,14 @@ const EditAlbum = () => {
 
       <br/>
       <br/>
-      <label id='album_name'>Name</label>
+      <label id='album_name'>Name&nbsp;</label>
       <input type='text'
              id='album_name'
              name='album[name]'
              onChange={setAlbumName}
              value={albumName} />
 
+      <br/>
       <label id='album_description'>Description</label>
       <textarea id='album_description'
                 name='album[album_description]'
@@ -52,6 +53,7 @@ const EditAlbum = () => {
       <input type='file' multiple="multiple" name="images"
               onChange={(e) => setFiles(e.target.value)} />
 
+      <br/>
       <input type="submit"
              name="commit"
              value="Update"

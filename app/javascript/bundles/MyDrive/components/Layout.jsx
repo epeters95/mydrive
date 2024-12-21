@@ -11,9 +11,9 @@ const Layout = ({ children }) => {
   return (
     <section className="max-w-none">
       <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <ul class="navbar-nav">
-            <li class="nav-item">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <ul className="navbar-nav">
+            <li className="nav-item">
               <Link to="/">
                 Home
               </Link>
