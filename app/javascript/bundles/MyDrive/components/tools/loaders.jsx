@@ -14,6 +14,18 @@ export const loadNavLinks = () => {
     }
   }
 
+  const csrfToken = ReactOnRails.authenticityToken()
+
+  const signOutButton = (
+    <li class="nav-item">
+      <form class="button_to" method="post" action="/users/sign_out">
+        <input type="hidden" name="_method" value="delete" autocomplete="off"/>
+        <input type="hidden" name="authenticity_token" value={csrfToken} autocomplete="off"/>
+        <button type="submit">Log Out</button>
+      </form>
+    </li>
+  );
+
   const listItemLinkIterate = (pathItems) => {
 
     let showItems = [];
@@ -31,28 +43,30 @@ export const loadNavLinks = () => {
         </li>
       )
     })
-    return (
-      <>
-        {showItems}
-      </>
-    )
+    return showItems;
   }
 
-  let navigationLinks;
+  let navElements = [];
 
   if (isUserSignedIn()) {
-    navigationLinks = [
+    navElements += listItemLinkIterate([
       ["Albums", "/albums"],
       ["New Album", "/albums/new"],
-    ]
+    ])
+    navElements += signOutButton;
   }
   else {
-    navigationLinks = [
+    navElements += listItemLinkIterate([
       ["Sign In", "/users/sign_in"],
       ["Sign Up", "/users/sign_up"]
-    ]
+    ])
   }
-  return listItemLinkIterate(navigationLinks);
+  return (
+      <>
+        {navElements}
+      </>
+    )
+  return ;
 }
 
 export const albumsLoader = async () => {
