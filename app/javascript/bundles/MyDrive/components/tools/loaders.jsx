@@ -14,14 +14,22 @@ export const loadNavLinks = () => {
     }
   }
 
+  let formRef;
+
+  const submitForm = () => {
+    formRef.dispatchEvent(
+      new Event("submit", { bubbles: true, cancelable: true })
+    )
+  };
+
   const csrfToken = ReactOnRails.authenticityToken()
 
   const signOutButton = (
-    <li class="nav-item">
-      <form class="button_to" method="post" action="/users/sign_out">
-        <input type="hidden" name="_method" value="delete" autocomplete="off"/>
-        <input type="hidden" name="authenticity_token" value={csrfToken} autocomplete="off"/>
-        <button type="submit">Log Out</button>
+    <li className="nav-item" key="signout">
+      <form ref={(ref) => formRef = ref} className="button_to" method="post" action="/users/sign_out">
+        <input type="hidden" name="_method" value="delete"/>
+        <input type="hidden" name="authenticity_token" value={csrfToken} />
+        <a href="#" onClick={submitForm}>Log Out</a>
       </form>
     </li>
   );
@@ -36,7 +44,7 @@ export const loadNavLinks = () => {
       let path = pathItem[1];
 
       showItems.push(
-        <li class="nav-item">
+        <li className="nav-item" key={title} >
           <Link to={path}>
             {title}
           </Link>
@@ -49,24 +57,24 @@ export const loadNavLinks = () => {
   let navElements = [];
 
   if (isUserSignedIn()) {
-    navElements += listItemLinkIterate([
+    navElements = navElements.concat(listItemLinkIterate([
       ["Albums", "/albums"],
       ["New Album", "/albums/new"],
-    ])
-    navElements += signOutButton;
+    ]))
+    navElements = navElements.concat([signOutButton]);
   }
   else {
-    navElements += listItemLinkIterate([
+    navElements = navElements.concat(listItemLinkIterate([
       ["Sign In", "/users/sign_in"],
       ["Sign Up", "/users/sign_up"]
-    ])
+    ]))
   }
+
   return (
-      <>
-        {navElements}
-      </>
-    )
-  return ;
+    <>
+      {navElements}
+    </>
+  )
 }
 
 export const albumsLoader = async () => {
