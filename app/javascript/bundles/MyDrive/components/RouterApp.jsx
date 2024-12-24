@@ -8,7 +8,8 @@ import Album from './album/Album.jsx';
 import AlbumsList from './album/AlbumsList.jsx';
 import EditAlbum from './album/EditAlbum.jsx';
 import NewAlbum from './album/NewAlbum.jsx';
-import { albumsLoader, editAlbumLoader, loadNavLinks } from './tools/loaders.jsx';
+import AllUsers from './user/AllUsers.jsx';
+import { albumsLoader, editAlbumLoader, allUsersLoader, loadNavLinks } from './tools/loaders.jsx';
 
 const RouterApp = (props) => {
 
@@ -47,6 +48,11 @@ const RouterApp = (props) => {
         {
           path: "albums/new",
           element: <NewAlbum />
+        },
+        {
+          path: "users",
+          element: <AllUsers />,
+          loader: allUsersLoader
         }
       ]
     }

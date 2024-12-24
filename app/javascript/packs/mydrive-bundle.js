@@ -10,6 +10,7 @@ import Signup from '../bundles/MyDrive/components/user/Signup';
 import LandingPage from '../bundles/MyDrive/components/LandingPage';
 import RouterApp from '../bundles/MyDrive/components/RouterApp';
 import Layout from '../bundles/MyDrive/components/Layout';
+import AllUsers from '../bundles/MyDrive/components/user/AllUsers';
 
 import './bootstrap.bundle.min.js';
 import './bootstrap.min.css';
@@ -24,5 +25,6 @@ ReactOnRails.register({
   Layout,
   AlbumsList,
   EditAlbum,
-  NewAlbum
+  NewAlbum,
+  AllUsers
 });

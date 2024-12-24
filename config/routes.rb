@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   end
 
   get 'get-albums', to: 'albums#get_albums'
+
+  get 'users', to 'devise/registrations#index'
+
 end

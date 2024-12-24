@@ -38,6 +38,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def index
+    @users = User.all
+    render json: { users: @users.map{|user| { email: user.email, id: user.id } } }
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
