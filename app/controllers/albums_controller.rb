@@ -13,14 +13,6 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def get_albums
-    @albums = Album.all
-    @album_objects = @albums.map do |album|
-      to_album_object album
-    end
-    render json: { albums: @album_objects }
-  end
-
   def show
     @album = Album.find(params[:id])
     @album_object = to_album_object @album

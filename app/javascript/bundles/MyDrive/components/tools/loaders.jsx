@@ -87,7 +87,7 @@ export const albumsLoader = async () => {
       'X-CSRF-Token': ReactOnRails.authenticityToken()
     }
 ,  }
-  const resp = await fetch(baseUrl + '/get-albums', fetchOptions);
+  const resp = await fetch(baseUrl + '/albums', fetchOptions);
   return resp;
 }
 
