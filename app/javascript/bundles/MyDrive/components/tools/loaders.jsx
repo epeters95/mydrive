@@ -29,7 +29,11 @@ export const loadNavLinks = () => {
       <form ref={(ref) => formRef = ref} className="button_to" method="post" action="/users/sign_out">
         <input type="hidden" name="_method" value="delete"/>
         <input type="hidden" name="authenticity_token" value={csrfToken} />
-        <a href="#" onClick={submitForm}>Log Out</a>
+        <a href="#"
+           className="nav-link"
+           onClick={submitForm}>
+           Log Out
+        </a>
       </form>
     </li>
   );
@@ -45,7 +49,7 @@ export const loadNavLinks = () => {
 
       showItems.push(
         <li className="nav-item" key={title} >
-          <Link to={path}>
+          <Link to={path} className="nav-link">
             {title}
           </Link>
         </li>
