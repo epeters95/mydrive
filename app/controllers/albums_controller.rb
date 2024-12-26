@@ -7,21 +7,13 @@ class AlbumsController < ApplicationController
     @album_objects = @albums.map do |album|
       to_album_object album
     end
-    respond_to do |format|
-      format.json { render json: { albums: @album_objects } }
-      format.html { render :index }
-    end
+    render json: { albums: @album_objects }
   end
 
   def show
     @album = Album.find(params[:id])
     @album_object = to_album_object @album
-    respond_to do |format|
-      format.json do
-        render json: { album: @album_object }
-      end
-      format.html { render :show }
-    end
+    render json: { album: @album_object }
   end
 
   def new
@@ -36,26 +28,12 @@ class AlbumsController < ApplicationController
       errors = upload_images
       if !errors.empty?
         flash[:errors] = errors
-        respond_to do |format|
-          format.json { render json: { message: "Success" }, status: :ok }
-          format.html { render :new }
-        end
+        render json: { message: "Success" }, status: :ok
       else
-        respond_to do |format|
-          format.json { render json: { errors: errors }, status: :unprocessable_entity }
-          format.html do
-            redirect_to albums_path, notice: 'Album was successfully created.'
-          end
-        end
+        render json: { errors: errors }, status: :unprocessable_entity
       end
     else
-      respond_to do |format|
-        format.json { render json: { errors: @album.errors.full_messages }, status: :unprocessable_entity }
-        format.html do
-          flash[:errors] = @album.errors.full_messages
-          render :new
-        end
-      end
+      render json: { errors: @album.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -68,18 +46,9 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     if @album.update(album_params)
       upload_images
-      respond_to do |format|
-        format.json { render json: { album: @album } }
-        format.html { redirect_to edit_album_path(@album), notice: 'Album was successfully updated.' }
-      end
+      render json: { album: @album }
     else
-      respond_to do |format|
-        format.json { render json: { errors: @album.errors.full_messages }, status: :unprocessable_entity }
-        format.html do
-          flash[:errors] = @album.errors.full_messages
-          redirect_to edit_album_path(@album)
-        end
-      end
+      render json: { errors: @album.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
