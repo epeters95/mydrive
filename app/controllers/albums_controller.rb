@@ -76,7 +76,8 @@ class AlbumsController < ApplicationController
 
 
   def album_params
-    params.require(:album).permit(:name, :description, images:[]).reject {|key| key == "images"}
+    # params.require(:album).permit(:name, :description, images:[]).reject {|key| key == "images"}
+    params.require(:album)
   end
 
   def upload_images

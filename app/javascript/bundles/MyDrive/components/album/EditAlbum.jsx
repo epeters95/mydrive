@@ -13,17 +13,23 @@ const EditAlbum = () => {
   const [files, setFiles] = useState('')
 
   const updateAlbum = () => {
+
     let data = {
       "album": {
-        "id": album.id,
         "name": albumName,
         "description": albumDesc,
         "images": files
       }
     }
 
+    var formData = new FormData()
+
+    for (let attr in data['album']) {
+      formData.append(`album[${attr}]`, data['albums'][attr]);
+    }
+
     // send PATCH
-    fetchAndCallback(album.path, 'PATCH', JSON.stringify(data));
+    fetchAndCallback(album.path, 'PATCH', formData, null, false);
   }
   
   
