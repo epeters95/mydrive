@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'home#index'
 
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
   resources :albums do
 
@@ -13,6 +16,8 @@ Rails.application.routes.draw do
 
   end
 
-  get 'users', to 'devise/registrations#index'
+  devise_scope :user do
+    get 'users', to: 'users/registrations#index'
+  end
 
 end

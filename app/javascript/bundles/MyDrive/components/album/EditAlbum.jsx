@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useLoaderData, Link } from "react-router-dom";
+import { fetchAndCallback } from '../tools/utils.js'
 
 
 const EditAlbum = () => {
@@ -45,9 +46,8 @@ const EditAlbum = () => {
       <label id='album_description'>Description</label>
       <textarea id='album_description'
                 name='album[album_description]'
-                onChange={setAlbumDesc}>
-                {albumDesc}
-      </textarea>
+                onChange={setAlbumDesc}
+                value={albumDesc}/>
       <br/>
       <p>Add a new image:</p>
       <input type='file' multiple="multiple" name="images"
