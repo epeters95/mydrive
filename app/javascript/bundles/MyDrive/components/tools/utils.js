@@ -9,6 +9,8 @@ export const fetchAndCallback = async (url, method, body=null, callback=null, js
   }
   if (json) {
     fetchOptions.headers['Content-Type'] = 'application/json'
+  } else {
+    fetchOptions.headers['Content-Type'] = 'multipart/form-data'
   }
   fetchOptions.headers = ReactOnRails.authenticityHeaders(fetchOptions.headers)
   if (method === "POST" || method === "PATCH" || method === "PUT") {
