@@ -58,8 +58,8 @@ const NewAlbum = () => {
               onChange={(e) => setDescription(e.target.value)} />
 
         <br/>
-        <input type='file' name="images"
-              onChange={(e) => setFiles(e.target.value)} />
+        <input type='file' name="images" multiple="multiple"
+              onChange={(e) => setFiles(e.target.files)} />
 
         <br/>
         <input type="button" value={'Create Album'}

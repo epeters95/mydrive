@@ -44,7 +44,7 @@ class AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params[:id])
-    if @album.update(album_params)
+    if @album.update(name: album_params[:name], description: album_params[:description])
       upload_images
       render json: { album: @album }
     else
@@ -76,12 +76,15 @@ class AlbumsController < ApplicationController
 
 
   def album_params
-    # params.require(:album).permit(:name, :description, images:[]).reject {|key| key == "images"}
-    params.require(:album)
+    params.require(:album).permit(:name, :description, :images).reject {|key| key == "images"}
   end
 
   def upload_images
-    images = params[:album][:images].drop 1
+    if !params[:album][:images].is_a? Array
+      images = [params[:album][:images]]
+    else
+      images = params[:album][:images].drop 1
+    end
     errors = []
     unless images.nil?
       images.each do |img|

@@ -25,7 +25,7 @@ const EditAlbum = () => {
     var formData = new FormData()
 
     for (let attr in data['album']) {
-      formData.append(`album[${attr}]`, data['albums'][attr]);
+      formData.append(`album[${attr}]`, data['album'][attr]);
     }
 
     // send PATCH
@@ -57,7 +57,7 @@ const EditAlbum = () => {
       <br/>
       <p>Add a new image:</p>
       <input type='file' multiple="multiple" name="images"
-              onChange={(e) => setFiles(e.target.value)} />
+              onChange={(e) => setFiles(e.target.files)} />
 
       <br/>
       <input type="submit"
