@@ -27,7 +27,6 @@ const Signup = () => {
       fetchAndCallback(baseUrl + '/users', 'POST', body, (resp) => {
         if (resp.status === 200) {
 
-          window.alert("Sign up success!")
           revalidator.revalidate();
 
         } else if (resp.status === 422) {
@@ -45,36 +44,44 @@ const Signup = () => {
 
     }
   }
+
+  const formKeyPress = (e) => {
+    if((e && e.keyCode == 13) || e == 0) {
+      submitLogin()
+    }
+  }
   
   return (
     <div>
       <h2>Sign Up</h2>
       <br/>
-      <form>
-        <input type='text' value={email}
-              placeholder="email address"
-              onChange={(e) => setEmail(e.target.value)}
-              className={'credential-field'} />
+      <div>
+        <form onKeyPress={(e) => formKeyPress(e)}>
+          <input type='text' value={email}
+                placeholder="email address"
+                onChange={(e) => setEmail(e.target.value)}
+                className={'credential-field'} />
 
-        <br/>
-        <input type='password' value={password}
-              name="password"
-              placeholder="password"
-              onChange={(e) => setPassword(e.target.value)}
-              className={'credential-field'} />
+          <br/>
+          <input type='password' value={password}
+                name="password"
+                placeholder="password"
+                onChange={(e) => setPassword(e.target.value)}
+                className={'credential-field'} />
 
-        <br/>
-        <input type='password' value={passwordConf}
-              name="password_confirmation"
-              placeholder="password confirmation"
-              onChange={(e) => setPasswordConf(e.target.value)}
-              className={'credential-field'} />
+          <br/>
+          <input type='password' value={passwordConf}
+                name="password_confirmation"
+                placeholder="password confirmation"
+                onChange={(e) => setPasswordConf(e.target.value)}
+                className={'credential-field'} />
 
-        <br/>
-        <input type="button" value={'Log In'}
-              onClick={submitLogin}
-              className={'input-button'} />
-      </form>
+          <br/>
+          <input type="button" value={'Log In'}
+                onClick={submitLogin}
+                className={'input-button'} />
+        </form>
+      </div>
     </div>
   );
 

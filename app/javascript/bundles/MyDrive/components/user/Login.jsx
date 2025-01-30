@@ -24,7 +24,6 @@ const Login = () => {
 
       if (resp.status === 200) {
 
-        window.alert("Login success!")
         revalidator.revalidate();
 
       } else if (resp.status === 422) {
@@ -40,29 +39,37 @@ const Login = () => {
 
     }, 2000);
   }
+
+  const formKeyPress = (e) => {
+    if((e && e.keyCode == 13) || e == 0) {
+      submitLogin()
+    }
+  }
   
   return (
     <div>
       <h2>Sign In</h2>
       <br/>
-      <form>
-        <input type='text' value={email}
-              placeholder="email address"
-              onChange={(e) => setEmail(e.target.value)}
-              className={'credential-field'} />
+      <div onKeyPress={(e) => formKeyPress(e)}>
+        <form>
+          <input type='text' value={email}
+                placeholder="email address"
+                onChange={(e) => setEmail(e.target.value)}
+                className={'credential-field'} />
 
-        <br/>
-        <input type='password' value={password}
-              name="password"
-              placeholder="password"
-              onChange={(e) => setPassword(e.target.value)}
-              className={'credential-field'} />
+          <br/>
+          <input type='password' value={password}
+                name="password"
+                placeholder="password"
+                onChange={(e) => setPassword(e.target.value)}
+                className={'credential-field'} />
 
-        <br/>
-        <input type="button" value={'Log In'}
-              onClick={submitLogin}
-              className={'input-button'} />
-      </form>
+          <br/>
+          <input type="button" value={'Log In'}
+                onClick={submitLogin}
+                className={'input-button'} />
+        </form>
+      </div>
     </div>
   );
 
