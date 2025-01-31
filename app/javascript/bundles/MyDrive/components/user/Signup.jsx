@@ -46,7 +46,7 @@ const Signup = () => {
   }
 
   const formKeyPress = (e) => {
-    if((e && e.keyCode == 13) || e == 0) {
+    if(e && (e.key == "Enter" || e.keyCode == 13)) {
       submitLogin()
     }
   }
@@ -55,8 +55,8 @@ const Signup = () => {
     <div>
       <h2>Sign Up</h2>
       <br/>
-      <div>
-        <form onKeyPress={(e) => formKeyPress(e)}>
+      <div onKeyPress={(e) => formKeyPress(e)}>
+        <form>
           <input type='text' value={email}
                 placeholder="email address"
                 onChange={(e) => setEmail(e.target.value)}

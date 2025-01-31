@@ -41,7 +41,7 @@ const Login = () => {
   }
 
   const formKeyPress = (e) => {
-    if((e && e.keyCode == 13) || e == 0) {
+    if(e && (e.key == "Enter" || e.keyCode == 13)) {
       submitLogin()
     }
   }
