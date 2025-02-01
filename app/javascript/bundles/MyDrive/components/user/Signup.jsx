@@ -77,7 +77,7 @@ const Signup = () => {
                 className={'credential-field'} />
 
           <br/>
-          <input type="button" value={'Log In'}
+          <input type="button" value={'Sign Up'}
                 onClick={submitLogin}
                 className={'input-button'} />
         </form>
