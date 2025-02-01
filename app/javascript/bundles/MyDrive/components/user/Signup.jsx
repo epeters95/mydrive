@@ -14,9 +14,15 @@ const Signup = () => {
   const navigate = useNavigate()
   const revalidator = useRevalidator();
 
+  const emailRegx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+
   const submitLogin = () => {
     if (password != passwordConf) {
       window.alert('Passwords do not match')
+
+    } else if (!email.match(emailRegx)) {
+      window.alert('Please enter a valid email')
+      
     } else {
       let body = JSON.stringify({
         "user": {
