@@ -4,6 +4,7 @@ import * as style from '../styles/Credentials.module.css';
 import { useNavigate, useRevalidator } from 'react-router-dom';
 import { baseUrl } from '../tools/config.js';
 import { fetchAndCallback } from '../tools/utils.js'
+import toast, { Toaster } from 'react-hot-toast';
 
 const Signup = () => {
 
@@ -18,10 +19,10 @@ const Signup = () => {
 
   const submitLogin = () => {
     if (password != passwordConf) {
-      window.alert('Passwords do not match')
+      toast('Passwords do not match');
 
     } else if (!email.match(emailRegx)) {
-      window.alert('Please enter a valid email')
+      toast('Please enter a valid email');
       
     } else {
       let body = JSON.stringify({
@@ -33,12 +34,13 @@ const Signup = () => {
       fetchAndCallback(baseUrl + '/users', 'POST', body, (resp) => {
         if (resp.status === 200) {
 
+          toast.success('User account created')
           revalidator.revalidate();
 
         } else if (resp.status === 422) {
-          window.alert('Unauthorized request')
+          toast.error('Unauthorized request')
         } else {
-          window.alert('Failed to create user')
+          toast.error('Failed to create user')
         }
       });
 
@@ -88,6 +90,7 @@ const Signup = () => {
                 className={'input-button'} />
         </form>
       </div>
+      <Toaster/>
     </div>
   );
 
