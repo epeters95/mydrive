@@ -17,6 +17,8 @@ const Signup = () => {
 
   const emailRegx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
+  let success = false;
+
   const submitLogin = () => {
     if (password != passwordConf) {
       toast('Passwords do not match');
@@ -36,6 +38,7 @@ const Signup = () => {
 
           toast.success('User account created')
           revalidator.revalidate();
+          success = true;
 
         } else if (resp.status === 422) {
           toast.error('Unauthorized request')
@@ -46,7 +49,9 @@ const Signup = () => {
 
       setTimeout(() => {
 
-        navigate("/albums")
+        if (success) {
+          navigate("/albums")
+        }
 
       }, 2000);
 

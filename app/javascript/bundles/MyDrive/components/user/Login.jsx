@@ -21,12 +21,15 @@ const Login = () => {
         "password": password
       }
     });
+
+    let success = false;
     fetchAndCallback(baseUrl + "/users/sign_in", "POST", body, (resp) => {
 
       if (resp.status === 200) {
 
         toast.success('Login success')
         revalidator.revalidate();
+        sucess = true;
 
       } else if (resp.status === 422) {
         toast.error('Unauthorized request')
@@ -37,7 +40,10 @@ const Login = () => {
 
     setTimeout(() => {
 
-      navigate("/albums")
+      debugger
+      if (success) {
+        navigate("/albums")
+      }
 
     }, 2000);
   }
