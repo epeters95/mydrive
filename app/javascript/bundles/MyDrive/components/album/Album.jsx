@@ -5,7 +5,7 @@ import * as style from '../styles/Album.module.css'
 import { baseUrl } from '../tools/config.js';
 import { useLoaderData, Link } from "react-router-dom";
 import { fetchAndCallback } from '../tools/utils.js'
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const Album = () => {
 
@@ -26,7 +26,9 @@ const Album = () => {
     }
 
     // send PATCH
-    fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data));
+    fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
+      toast.success("Album updated")
+    });
   }
   
   return (
@@ -47,6 +49,7 @@ const Album = () => {
         ))}
 
       </div>
+      <Toaster />
     </div>
   );
 

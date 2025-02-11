@@ -11,6 +11,8 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
     handleDescChange(val, id);
   } 
 
+  const keypressUpdate = debounce((event) => { descChange(e.target.value, id) }, 100);
+
   return (
     <div className={style.albums_image}>
       <p className={style.img_name} title={name}>
@@ -19,7 +21,7 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
       <img src={image_url} alt={desc}/>
       <br/>
       <input value={desc}
-             onChange={e => { descChange(e.target.value, id) }}
+             onChange={keypressUpdate}
       />
     </div>
   );
