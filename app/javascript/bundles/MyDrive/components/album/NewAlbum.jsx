@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { baseUrl } from '../tools/config.js';
 import { fetchAndCallback } from '../tools/utils.js'
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const NewAlbum = () => {
 
@@ -25,19 +25,24 @@ const NewAlbum = () => {
       }
     }
 
+    let success = false;
+
     fetchAndCallback(createAlbumPath, 'POST', JSON.stringify(data), (resp) => {
       if (resp.status === 200) {
 
-        window.alert("Upload success!")
+        success = true;
+        toast.success("Upload success!")
 
       } else {
-        window.alert('Album create failed')
+        toast.error('Album create failed')
       }
     });
 
     setTimeout(() => {
 
-      navigate("/albums")
+      if (success) {
+        navigate("/albums")
+      }
 
     }, 2000);
   }
@@ -66,6 +71,7 @@ const NewAlbum = () => {
               onClick={submitAlbum}
               className={'input-button'} />
       </form>
+      <Toaster/>
     </div>
   );
 
