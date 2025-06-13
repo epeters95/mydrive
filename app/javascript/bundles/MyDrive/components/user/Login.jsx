@@ -29,7 +29,7 @@ const Login = () => {
 
         toast.success('Login success')
         revalidator.revalidate();
-        sucess = true;
+        success = true;
 
       } else if (resp.status === 422) {
         toast.error('Unauthorized request')
@@ -40,7 +40,6 @@ const Login = () => {
 
     setTimeout(() => {
 
-      debugger
       if (success) {
         navigate("/albums")
       }
