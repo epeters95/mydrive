@@ -2,6 +2,14 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from '../styles/Photo.module.css';
 
+function debounce(func, timeout = 300){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+
 const Photo = ({id, description, name, image_url, handleDescChange}) => {
 
   const [desc, setDesc] = useState(description);
