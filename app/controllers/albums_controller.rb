@@ -3,11 +3,15 @@ class AlbumsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @albums = Album.all
-    @album_objects = @albums.map do |album|
-      to_album_object album
+    if request.format.symbol == :json
+      @albums = Album.all
+      @album_objects = @albums.map do |album|
+        to_album_object album
+      end
+      render json: { albums: @album_objects }
+    else
+      render :index
     end
-    render json: { albums: @album_objects }
   end
 
   def show
