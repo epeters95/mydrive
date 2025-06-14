@@ -11,9 +11,13 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @album = Album.find(params[:id])
-    @album_object = to_album_object @album
-    render json: { album: @album_object }
+    if request.format.symbol == :json
+      @album = Album.find(params[:id])
+      @album_object = to_album_object @album
+      render json: { album: @album_object }
+    else
+      render :show
+    end
   end
 
   def new

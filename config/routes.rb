@@ -10,13 +10,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  defaults format: :json do
 
-    resources :albums do
-      resources :photos
-    end
-    
+  resources :albums do
+    resources :photos
   end
+    
 
   devise_scope :user do
     get 'users', to: 'users/registrations#index'
