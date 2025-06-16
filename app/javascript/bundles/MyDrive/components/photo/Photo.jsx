@@ -18,8 +18,9 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
     setDesc(val);
     handleDescChange(val, id);
   } 
-
-  const keypressUpdate = debounce((event) => { descChange(event.target.value, id) }, 100);
+  
+  const keypressUpdate = (event) => { descChange(event.target.value, id) };
+  // const keypressUpdate = debounce((event) => { descChange(event.target.value, id) }, 100);
 
   return (
     <div className={style.albums_image}>

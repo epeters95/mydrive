@@ -4,7 +4,7 @@ export const fetchAndCallback = async (url, method, body=null, callback=null, js
   const fetchOptions = {
     method: method,
     headers: {
-      'Accept': '*/*'
+      'Accept': 'application/json'
     }
   }
   if (json) {
