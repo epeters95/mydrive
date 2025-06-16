@@ -69,7 +69,7 @@ class AlbumsController < ApplicationController
       show_path: album_path(album),
       description: album.description,
       id: album.id,
-      photos: album.photos.map{|ph| to_photo_object(ph) }
+      photos: album.photos.order(updated_at: "desc").map{|ph| to_photo_object(ph) }
     }
   end
 
