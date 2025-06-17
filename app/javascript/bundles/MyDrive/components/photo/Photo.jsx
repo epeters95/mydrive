@@ -33,7 +33,7 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
         rows="5" cols="33"
         onChange={keypressUpdate}>
         {desc}
-      <textarea/>
+      </textarea>
     </div>
   );
 };
