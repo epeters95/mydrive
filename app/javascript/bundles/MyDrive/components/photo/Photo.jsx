@@ -29,9 +29,11 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
       </p>
       <img src={image_url} alt={desc}/>
       <br/>
-      <input value={desc}
-             onChange={keypressUpdate}
-      />
+      <textarea
+        rows="5" cols="33"
+        onChange={keypressUpdate}>
+        {desc}
+      <textarea/>
     </div>
   );
 };
