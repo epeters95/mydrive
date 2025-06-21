@@ -20,6 +20,9 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
   } 
   
   const keypressUpdate = (event) => { descChange(event.target.value, id) };
+  const commentSubmit = (event) => { 
+    //handleCommentSubmit(event.target.value, id)
+  };
 
   return (
     <div className={style.albums_image}>
@@ -33,6 +36,13 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
         onChange={keypressUpdate}>
         {desc}
       </textarea>
+
+      <br/>
+      <p>Add a Comment:</p>
+      <input type="text"
+        value=""
+        />
+      <button onClick={commentSubmit}>Submit</button>
     </div>
   );
 };
