@@ -92,7 +92,7 @@ const Signup = () => {
           <br/>
           <input type="button" value={'Sign Up'}
                 onClick={submitLogin}
-                className={'input-button'} />
+                className={'credential-submit'} />
         </form>
       </div>
       <Toaster/>

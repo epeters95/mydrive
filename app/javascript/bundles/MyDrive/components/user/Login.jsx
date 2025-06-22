@@ -74,7 +74,7 @@ const Login = () => {
           <br/>
           <input type="button" value={'Log In'}
                 onClick={submitLogin}
-                className={'input-button'} />
+                className={'credential-submit'} />
         </form>
       </div>
       <Toaster/>
