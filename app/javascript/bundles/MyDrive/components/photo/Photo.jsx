@@ -10,7 +10,13 @@ function debounce(func, timeout = 300){
   };
 }
 
-const Photo = ({id, description, name, image_url, handleDescChange}) => {
+const Photo = ({ id,
+                 description,
+                 name,
+                 image_url,
+                 comments,
+                 handleDescChange,
+                 handleCommentSubmit }) => {
 
   const [desc, setDesc] = useState(description);
 
@@ -33,11 +39,11 @@ const Photo = ({id, description, name, image_url, handleDescChange}) => {
       <br/>
       <textarea
         rows="5" cols="33"
-        onChange={keypressUpdate}>
-        {desc}
-      </textarea>
+        onChange={keypressUpdate}
+        value={desc} />
 
       <br/>
+      <p><b>Comments:&nbsp;{}</b></p>
       <p>Add a Comment:</p>
       <input type="text"
         value=""

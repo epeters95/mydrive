@@ -78,7 +78,16 @@ class AlbumsController < ApplicationController
       name:        photo.name,
       id:          photo.id,
       description: photo.description,
-      image_url:   photo.image_url
+      image_url:   photo.image_url,
+      comments:    photo.comments.order(created_at: "desc").map{|cm| to_comment_object(cm) }
+    }
+  end
+
+  def to_comment_object(comment)
+    {
+      author: comment.user.name,
+      text: comment.text,
+      date: comment.created_at
     }
   end
 

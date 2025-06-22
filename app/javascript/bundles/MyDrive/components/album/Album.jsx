@@ -30,6 +30,10 @@ const Album = () => {
       toast.success("Album updated")
     });
   }
+
+  const onCommentSubmit = (commentText, photoId=0) => {
+    // TODO:
+  }
   
   return (
     <div>
@@ -45,6 +49,7 @@ const Album = () => {
                  description={photo.description || ""}
                  image_url={photo.image_url}
                  handleDescChange={onDescChange} 
+                 handleCommentSubmit={onCommentSubmit}
                  className="photo-container"/>
         ))}
 
