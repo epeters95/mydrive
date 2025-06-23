@@ -25,9 +25,13 @@ const Photo = ({ id,
     handleDescChange(val, id);
   } 
   
-  const keypressUpdate = (event) => { descChange(event.target.value, id) };
+  const keypressUpdate = (event) => {
+    descChange(event.target.value, id)
+  };
+
   const commentSubmit = (event) => { 
-    //handleCommentSubmit(event.target.value, id)
+    handleCommentSubmit(event.target.value, id)
+    // TODO: trigger reload of photo
   };
 
   return (

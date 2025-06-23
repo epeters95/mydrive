@@ -32,7 +32,18 @@ const Album = () => {
   }
 
   const onCommentSubmit = (commentText, photoId=0) => {
-    // TODO:
+
+    let fullPhotoPath = show_path + '/photos/' + photoId;
+    let data = {
+      "photo": {
+        "comment": commentText
+      }
+    }
+
+    // send PATCH
+    fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
+      toast.success("Comment posted")
+    });
   }
   
   return (
