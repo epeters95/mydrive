@@ -26,9 +26,7 @@ const Album = () => {
     }
 
     // send PATCH
-    fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
-      toast.success("Album updated")
-    });
+    fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data));
   }
 
   const onCommentSubmit = (commentText, photoId=0) => {

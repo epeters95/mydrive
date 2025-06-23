@@ -47,7 +47,12 @@ const Photo = ({ id,
         value={desc} />
 
       <br/>
-      <p><b>Comments:&nbsp;{}</b></p>
+      <p><b>Comments:&nbsp;{comments.length}</b></p>
+      <ul className="comments-list">
+        {comments.map((comment) => (
+          <li>{comment.author} at {comment.date}: {comment.text}</li>
+        )}
+      </ul>
       <p>Add a Comment:</p>
       <input type="text"
         value=""
