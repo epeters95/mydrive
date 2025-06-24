@@ -40,7 +40,11 @@ const Album = () => {
 
     // send PATCH
     fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
-      toast.success("Comment posted")
+      if (resp.status === 200) {
+        toast.success("Comment posted")
+      } else {
+        toast.error("Error posting comment")
+      }
     });
   }
   
