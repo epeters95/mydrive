@@ -57,6 +57,7 @@ const Album = () => {
                  key={photo.id}
                  description={photo.description || ""}
                  image_url={photo.image_url}
+                 comments={photo.comments}
                  handleDescChange={onDescChange} 
                  handleCommentSubmit={onCommentSubmit}
                  className="photo-container"/>

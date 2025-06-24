@@ -30,8 +30,9 @@ const Photo = ({ id,
   };
 
   const commentSubmit = (event) => { 
-    handleCommentSubmit(event.target.value, id)
-    // TODO: trigger reload of photo
+
+    let commentField = event.target.parentElement.querySelector("input.comment-field")
+    handleCommentSubmit(commentField.value, id)
   };
 
   return (
@@ -50,13 +51,11 @@ const Photo = ({ id,
       <p><b>Comments:&nbsp;{comments.length}</b></p>
       <ul className="comments-list">
         {comments.map((comment) => (
-          <li>{comment.author} at {comment.date}: {comment.text}</li>
-        )}
+          <li key={comment.id}>{comment.author} at {comment.date}: {comment.text}</li>
+        ))}
       </ul>
       <p>Add a Comment:</p>
-      <input type="text"
-        value=""
-        />
+      <input type="text" className="comment-field" />
       <button onClick={commentSubmit}>Submit</button>
     </div>
   );

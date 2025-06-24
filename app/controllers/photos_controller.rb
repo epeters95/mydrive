@@ -28,7 +28,7 @@ class PhotosController < ApplicationController
         update_hash[att] = param_photo[att] unless param_photo[att].nil?
       end
       comment_param = param_photo["comment"]
-      @photo = Photo.find(id)
+      @photo = Photo.find(params["id"])
       if @photo
         @photo.update(update_hash) unless update_hash.empty?
         if comment_param
