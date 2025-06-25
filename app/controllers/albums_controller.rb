@@ -63,7 +63,7 @@ class AlbumsController < ApplicationController
   private
   def to_album_object(album)
     {
-      name: album.name, 
+      name: album.name,
       path: album_path(album),
       edit_path: edit_album_path(album),
       show_path: album_path(album),
@@ -87,7 +87,7 @@ class AlbumsController < ApplicationController
     {
       author: comment.user.name,
       text: comment.text,
-      date: comment.created_at
+      date: comment.created_at.strftime("%FT%T")
     }
   end
 
