@@ -26,13 +26,13 @@ const Photo = ({ id,
   const descChange = (val, id) => {
     setDesc(val);
     handleDescChange(val, id);
-  } 
-  
+  }
+
   const keypressUpdate = (event) => {
     descChange(event.target.value, id)
   };
 
-  const commentSubmit = (event) => { 
+  const commentSubmit = (event) => {
 
     let commentField = event.target.parentElement.querySelector("input.comment-field")
     handleCommentSubmit(commentField.value, id)
@@ -55,7 +55,11 @@ const Photo = ({ id,
       <p><b>Comments:&nbsp;{comments.length}</b></p>
       <ul className="comments-list">
         {comments.map((comment) => (
-          <li key={comment.id}>{comment.author} at {comment.date}: {comment.text}</li>
+          <li key={comment.id}
+              title={comment.date}>
+            <i>{comment.author} commented:</i>
+            {comment.text}
+          </li>
         ))}
       </ul>
       <p>Add a Comment:</p>
