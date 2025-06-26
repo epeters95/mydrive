@@ -12,7 +12,10 @@
 .album_container input, .album_container textarea {
   font-size: 9pt;
   font-family: Serif;
+  color: #CCCCCC;
   padding: 5px;
+  border: 1px solid lightblue;
+  border-radius: 5px;
 }
 
 .photo_container {
