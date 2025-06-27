@@ -4,7 +4,8 @@ export const fetchAndCallback = async (url, method, body=null, callback=null, js
   const fetchOptions = {
     method: method,
     headers: {
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'X-CSRF-Token': ReactOnRails.authenticityToken()
     }
   }
   if (json) {
@@ -12,7 +13,7 @@ export const fetchAndCallback = async (url, method, body=null, callback=null, js
   } else {
     fetchOptions.headers['Content-Type'] = 'multipart/form-data'
   }
-  fetchOptions.headers = ReactOnRails.authenticityHeaders(fetchOptions.headers)
+  // fetchOptions.headers = ReactOnRails.authenticityHeaders(fetchOptions.headers)
   if (method === "POST" || method === "PATCH" || method === "PUT") {
     fetchOptions.body = body
   }
