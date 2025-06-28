@@ -56,12 +56,12 @@ const Photo = ({ id,
       <ul className="comments-list">
         {comments.map((comment) => (
           <li key={comment.date}
-              title={comment.date}>
-            <i>{comment.author} commented:</i>
-            {comment.text}
+              title={"Posted at " + comment.date}>
+            <span><i>{comment.author}:</i>&nbsp;{comment.text}</span>
           </li>
         ))}
       </ul>
+      <br/>
       <p>Add a Comment:</p>
       <input type="text" className="comment-field" />
       <button onClick={commentSubmit}>Submit</button>
