@@ -17,7 +17,7 @@ const Album = () => {
   let descNotif = null;
 
   const onDescChange = (newDesc, photoId=0) => {
-    
+
     // rails route given does not include id, need PATCH to <photos_path>/:id
     let fullPhotoPath = show_path + '/photos/' + photoId;
     let data = {
@@ -63,10 +63,13 @@ const Album = () => {
       }
     });
   }
-  
+
   return (
     <div>
       <span><Link to={editAlbumPath}>Edit</Link></span>
+      <br/>
+      <h3>{name}</h3>
+      <span>{description}</span>
       <br/>
       <div className={`d-flex p-2 flex-wrap ${style.album_container}`}>
         {photos.map((photo) => (
@@ -78,7 +81,7 @@ const Album = () => {
                  description={photo.description || ""}
                  image_url={photo.image_url}
                  comments={photo.comments}
-                 handleDescChange={onDescChange} 
+                 handleDescChange={onDescChange}
                  handleCommentSubmit={onCommentSubmit}
                  className="photo-container"/>
         ))}
