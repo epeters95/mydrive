@@ -16,21 +16,17 @@ const Photo = ({ id,
                  name,
                  image_url,
                  comments,
-                 handleDescChange,
+                 handleDescSubmit,
                  handleCommentSubmit }) => {
 
   const revalidator = useRevalidator();
 
   const [desc, setDesc] = useState(description);
 
-  const descChange = (val, id) => {
+  const descSubmit = (val, id) => {
     setDesc(val);
-    handleDescChange(val, id);
+    handleDescSubmit(val, id);
   }
-
-  const keypressUpdate = (event) => {
-    descChange(event.target.value, id)
-  };
 
   const commentSubmit = (event) => {
 
@@ -48,8 +44,9 @@ const Photo = ({ id,
       <br/>
       <textarea
         rows="5" cols="33"
-        onChange={keypressUpdate}
         value={desc} />
+      <br/>
+      <button onClick={descSubmit}>Save</button>
 
       <br/>
       <p><b>Comments:&nbsp;{comments.length}</b></p>
@@ -64,7 +61,7 @@ const Photo = ({ id,
       <br/>
       <p>Add a Comment:</p>
       <input type="text" className="comment-field" />
-      <button onClick={commentSubmit}>Submit</button>
+      <button onClick={commentSubmit}>Post Comment</button>
     </div>
   );
 };

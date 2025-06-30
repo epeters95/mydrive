@@ -14,9 +14,7 @@ const Album = () => {
 
   const editAlbumPath = baseUrl + '/albums/' + id + '/edit';
 
-  let descNotif = null;
-
-  const onDescChange = (newDesc, photoId=0) => {
+  const onDescSubmit = (newDesc, photoId=0) => {
     
     // rails route given does not include id, need PATCH to <photos_path>/:id
     let fullPhotoPath = show_path + '/photos/' + photoId;
@@ -30,17 +28,11 @@ const Album = () => {
     // send PATCH
     fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
 
-      // TODO: replace with button submit
-
-      if (descNotif === null) {
-        if (resp.status === 200) {
-          descNotif = "success"
-          toast.success("Description updated")
-        }
-        else {
-          descNotif = "fail"
-          toast.error("Error updating description")
-        }
+      if (resp.status === 200) {
+        toast.success("Description updated")
+      }
+      else {
+        toast.error("Error updating description")
       }
     });
   }
@@ -78,7 +70,7 @@ const Album = () => {
                  description={photo.description || ""}
                  image_url={photo.image_url}
                  comments={photo.comments}
-                 handleDescChange={onDescChange} 
+                 handleDescSubmit={onDescSubmit} 
                  handleCommentSubmit={onCommentSubmit}
                  className="photo-container"/>
         ))}
