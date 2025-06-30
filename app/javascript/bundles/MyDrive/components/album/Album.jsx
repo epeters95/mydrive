@@ -55,10 +55,13 @@ const Album = () => {
       }
     });
   }
-  
+
   return (
     <div>
       <span><Link to={editAlbumPath}>Edit</Link></span>
+      <br/>
+      <h3>{name}</h3>
+      <span>{description}</span>
       <br/>
       <div className={`d-flex p-2 flex-wrap ${style.album_container}`}>
         {photos.map((photo) => (
@@ -70,7 +73,7 @@ const Album = () => {
                  description={photo.description || ""}
                  image_url={photo.image_url}
                  comments={photo.comments}
-                 handleDescSubmit={onDescSubmit} 
+                 handleDescSubmit={onDescSubmit}
                  handleCommentSubmit={onCommentSubmit}
                  className="photo-container"/>
         ))}
