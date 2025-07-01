@@ -4,15 +4,17 @@ import { useNavigate, NavLink as Link } from 'react-router-dom';
 import { baseUrl } from './config.js';
 import { fetchAndCallback } from './utils.js'
 
+
+export const isUserSignedIn = () => {
+  // check browser cookie for user
+  // TODO: replace with more secure state management
+  if(document.cookie.includes("signed_in=true")) {
+    return true;
+  }
+}
+
 export const loadNavLinks = () => {
 
-  const isUserSignedIn = () => {
-    // check browser cookie for user
-    // TODO: replace with more secure state management
-    if(document.cookie.includes("signed_in=true")) {
-      return true;
-    }
-  }
 
   let formRef;
 

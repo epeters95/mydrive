@@ -31,8 +31,10 @@ const Photo = ({ id,
   const commentSubmit = (event) => {
 
     let commentField = event.target.parentElement.querySelector("input.comment-field")
-    handleCommentSubmit(commentField.value, id)
-    revalidator.revalidate();
+    if (commentField.value !== "" && commentField.value !== null) {
+      handleCommentSubmit(commentField.value, id)
+      revalidator.revalidate();
+    }
   };
 
   return (
@@ -44,7 +46,7 @@ const Photo = ({ id,
       <br/>
       <textarea
         rows="5" cols="33"
-        value={desc} />
+        defaultValue={desc} />
       <br/>
       <button onClick={descSubmit}>Save</button>
 
