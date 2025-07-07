@@ -17,7 +17,8 @@ const Photo = ({ id,
                  image_url,
                  comments,
                  handleDescSubmit,
-                 handleCommentSubmit }) => {
+                 handleCommentSubmit,
+                 handleCommentDelete }) => {
 
   const revalidator = useRevalidator();
 
@@ -36,6 +37,12 @@ const Photo = ({ id,
       revalidator.revalidate();
     }
   };
+
+  const commentDelete = (commentId) => {
+    return () => {
+      handleCommentDelete(commentId)
+    }
+  }
 
   return (
     <div className={style.albums_image}>
@@ -57,6 +64,8 @@ const Photo = ({ id,
           <li key={comment.date}
               title={"Posted at " + comment.date}>
             <span><i>{comment.author}:</i>&nbsp;{comment.text}</span>
+
+            <button onClick={commentDelete(comment.id)}>X</button>
           </li>
         ))}
       </ul>

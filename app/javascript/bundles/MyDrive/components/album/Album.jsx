@@ -56,6 +56,23 @@ const Album = () => {
     });
   }
 
+  const onCommentDelete = (commentId=0) => {
+    let data = {
+      "comment": {
+        "id": commentId
+      }
+    }
+    // send DELETE
+    fetchAndCallback(fullPhotoPath, 'DELETE', JSON.stringify(data), (resp) => {
+      if (resp.status === 200) {
+        toast.success("Comment deleted")
+      } else {
+        toast.error("Error deleting comment")
+      }
+    });
+  }
+  }
+
   return (
     <div>
       <span><Link to={editAlbumPath}>Edit</Link></span>
@@ -75,6 +92,7 @@ const Album = () => {
                  comments={photo.comments}
                  handleDescSubmit={onDescSubmit}
                  handleCommentSubmit={onCommentSubmit}
+                 handleCommentDelete={onCommentDelete}
                  className="photo-container"/>
         ))}
 
