@@ -66,7 +66,8 @@ export const loadNavLinks = () => {
     navElements = navElements.concat(listItemLinkIterate([
       ["Albums", "/albums"],
       ["New Album", "/albums/new"],
-      ["Users", "/users"]
+      ["Users", "/users"],
+      ["Comments", "/comments"]
     ]))
     navElements = navElements.concat([signOutButton]);
   }
@@ -120,5 +121,18 @@ export const allUsersLoader = async () => {
     }
   }
   const resp = await fetch(baseUrl + '/users', fetchOptions);
+  return resp;
+}
+
+export const allCommentsLoader = async () => {
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'X-CSRF-Token': ReactOnRails.authenticityToken()
+    }
+  }
+  const resp = await fetch(baseUrl + '/comments', fetchOptions);
   return resp;
 }

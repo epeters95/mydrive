@@ -9,7 +9,11 @@ import AlbumsList from './album/AlbumsList.jsx';
 import EditAlbum from './album/EditAlbum.jsx';
 import NewAlbum from './album/NewAlbum.jsx';
 import AllUsers from './user/AllUsers.jsx';
-import { albumsLoader, editAlbumLoader, allUsersLoader, loadNavLinks } from './tools/loaders.jsx';
+import { albumsLoader,
+         editAlbumLoader,
+         allUsersLoader,
+         loadNavLinks,
+         allCommentsLoader } from './tools/loaders.jsx';
 
 const RouterApp = (props) => {
 
@@ -53,6 +57,11 @@ const RouterApp = (props) => {
           path: "users",
           element: <AllUsers />,
           loader: allUsersLoader
+        },
+        {
+          path: "comments",
+          element: <AllComments />,
+          loader: allCommentsLoader
         }
       ]
     }
