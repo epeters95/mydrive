@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import Comment from './Comment.jsx';
 import * as style from '../styles/Photo.module.css';
 import { useRevalidator } from "react-router-dom";
 
@@ -59,16 +60,15 @@ const Photo = ({ id,
 
       <br/>
       <p><b>Comments:&nbsp;{comments.length}</b></p>
-      <ul className="comments-list">
+      <div className="comments-list">
         {comments.map((comment) => (
-          <li key={comment.date}
-              title={"Posted at " + comment.date}>
-            <span><i>{comment.author}:</i>&nbsp;{comment.text}</span>
-
-            <button onClick={commentDelete(comment.id)}>X</button>
-          </li>
+          <Comment id={comment.id}
+                   text={comment.text}
+                   author={comment.author}
+                   date={comment.date}
+                   handleDelete={commentDelete} />
         ))}
-      </ul>
+      </div>
       <br/>
       <p>Add a Comment:</p>
       <input type="text" className="comment-field" />
