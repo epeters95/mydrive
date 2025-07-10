@@ -29,4 +29,4 @@ Comment.propTypes = {
   handleDelete:     PropTypes.func
 };
 
-export default Photo;
+export default Comment;

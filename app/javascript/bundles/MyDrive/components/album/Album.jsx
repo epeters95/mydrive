@@ -71,7 +71,6 @@ const Album = () => {
       }
     });
   }
-  }
 
   return (
     <div>

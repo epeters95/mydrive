@@ -5,6 +5,7 @@ import AlbumsList from '../bundles/MyDrive/components/album/AlbumsList';
 import EditAlbum from '../bundles/MyDrive/components/album/EditAlbum';
 import NewAlbum from '../bundles/MyDrive/components/album/NewAlbum';
 import Photo from '../bundles/MyDrive/components/photo/Photo';
+import Comment from '../bundles/MyDrive/components/photo/Comment';
 import Login from '../bundles/MyDrive/components/user/Login';
 import Signup from '../bundles/MyDrive/components/user/Signup';
 import LandingPage from '../bundles/MyDrive/components/LandingPage';
@@ -18,6 +19,7 @@ import './bootstrap.min.css';
 ReactOnRails.register({
   Album,
   Photo,
+  Comment,
   Login,
   Signup,
   LandingPage,
