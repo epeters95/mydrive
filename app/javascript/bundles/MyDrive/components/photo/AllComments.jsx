@@ -6,17 +6,20 @@ const CommentsList = () => {
 
   let { comments } = useLoaderData();
 
+  const commentDelete = () => {
+    // TODO:
+  }
+
   return (
     <div>
       <h2>Users</h2>
       <ul>
       {comments.map((comment) => (
-        <li id={comment.id}
-            key={comment.id}>
-          <span className="comment-span">
-            {comment.text}:&nbsp;{comment.author}
-          </span>
-        </li>
+        <Comment id={comment.id}
+                   text={comment.text}
+                   author={comment.author}
+                   date={comment.date}
+                   handleDelete={commentDelete} />
       ))}
       </ul>
     </div>
