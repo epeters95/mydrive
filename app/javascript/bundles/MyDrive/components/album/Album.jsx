@@ -66,6 +66,7 @@ const Album = () => {
     fetchAndCallback(fullPhotoPath, 'DELETE', JSON.stringify(data), (resp) => {
       if (resp.status === 200) {
         toast.success("Comment deleted")
+        revalidator.revalidate();
       } else {
         toast.error("Error deleting comment")
       }

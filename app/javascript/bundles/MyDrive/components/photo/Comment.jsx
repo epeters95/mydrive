@@ -7,7 +7,20 @@ const Comment = ({ id,
                    text,
                    author,
                    date,
-                   handleDelete }) => {
+                   handleDelete=null }) => {
+
+  let disabled = "";
+  if (handleDelete === null) {
+    disabled = "disabled";
+
+    // TODO: disable if comment does not belong to current user
+  }
+
+  const deleteOrDoNothing = () => {
+    if (handleDelete !== null) {
+      handleDelete(id)
+    }
+  }
 
   const revalidator = useRevalidator();
 
@@ -16,7 +29,7 @@ const Comment = ({ id,
         title={"Posted at " + date}>
       <span><i>{author}:</i>&nbsp;{text}</span>
 
-      <button onClick={handleDelete(id)}>X</button>
+      <button disabled={disabled} onClick={deleteOrDoNothing}>X</button>
     </div>
   );
 };
