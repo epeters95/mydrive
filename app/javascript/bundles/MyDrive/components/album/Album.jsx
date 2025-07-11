@@ -30,6 +30,7 @@ const Album = () => {
 
       if (resp.status === 200) {
         toast.success("Description updated")
+        revalidator.revalidate();
       }
       else {
         toast.error("Error updating description")
@@ -50,6 +51,7 @@ const Album = () => {
     fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
       if (resp.status === 200) {
         toast.success("Comment posted")
+        revalidator.revalidate();
       } else {
         toast.error("Error posting comment")
       }

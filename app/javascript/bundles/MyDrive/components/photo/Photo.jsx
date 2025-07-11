@@ -35,7 +35,6 @@ const Photo = ({ id,
     let commentField = event.target.parentElement.querySelector("input.comment-field")
     if (commentField.value !== "" && commentField.value !== null) {
       handleCommentSubmit(commentField.value, id)
-      revalidator.revalidate();
     }
   };
 
