@@ -3,7 +3,7 @@ import React from 'react';
 import Photo from '../photo/Photo.jsx'
 import * as style from '../styles/Album.module.css'
 import { baseUrl } from '../tools/config.js';
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, useRevalidator, Link } from "react-router-dom";
 import { fetchAndCallback } from '../tools/utils.js'
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -11,6 +11,7 @@ const Album = () => {
 
   const { album: { id, name, description, photos, show_path } } = useLoaderData();
 
+  const revalidator = useRevalidator();
 
   const editAlbumPath = baseUrl + '/albums/' + id + '/edit';
 

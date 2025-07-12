@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Comment from './Comment.jsx';
 import * as style from '../styles/Photo.module.css';
-import { useRevalidator } from "react-router-dom";
 
 function debounce(func, timeout = 300){
   let timer;
@@ -21,7 +20,6 @@ const Photo = ({ id,
                  handleCommentSubmit,
                  handleCommentDelete }) => {
 
-  const revalidator = useRevalidator();
 
   const [desc, setDesc] = useState(description);
 

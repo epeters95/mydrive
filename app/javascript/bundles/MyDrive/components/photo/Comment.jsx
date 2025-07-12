@@ -22,8 +22,6 @@ const Comment = ({ id,
     }
   }
 
-  const revalidator = useRevalidator();
-
   return (
     <div key={id}
         title={"Posted at " + date}>
