@@ -9,6 +9,7 @@ import AlbumsList from './album/AlbumsList.jsx';
 import EditAlbum from './album/EditAlbum.jsx';
 import NewAlbum from './album/NewAlbum.jsx';
 import AllUsers from './user/AllUsers.jsx';
+import AllComments from './photo/AllComments.jsx';
 import { albumsLoader,
          editAlbumLoader,
          allUsersLoader,

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Comment from './Comment.jsx';
 import { useLoaderData } from "react-router-dom";
 
 const CommentsList = () => {
@@ -22,4 +23,4 @@ const CommentsList = () => {
 
 };
 
-export default UsersList;
+export default CommentsList;
