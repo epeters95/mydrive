@@ -59,7 +59,8 @@ const Photo = ({ id,
       <p><b>Comments:&nbsp;{comments.length}</b></p>
       <div className="comments-list">
         {comments.map((comment) => (
-          <Comment id={comment.id}
+          <Comment key={comment.id}
+                   id={comment.id}
                    text={comment.text}
                    author={comment.author}
                    date={comment.date}

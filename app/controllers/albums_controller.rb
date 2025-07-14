@@ -85,9 +85,10 @@ class AlbumsController < ApplicationController
 
   def to_comment_object(comment)
     {
+      id:     comment.id,
       author: comment.user.name,
-      text: comment.text,
-      date: comment.created_at.strftime("%FT%T")
+      text:   comment.text,
+      date:   comment.created_at.strftime("%FT%T")
     }
   end
 
