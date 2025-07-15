@@ -62,36 +62,14 @@ class AlbumsController < ApplicationController
 
   private
   def to_album_object(album)
-    {
-      name: album.name,
-      path: album_path(album),
-      edit_path: edit_album_path(album),
-      show_path: album_path(album),
-      description: album.description,
-      id: album.id,
-      photos: album.photos.order(updated_at: "desc").map{|ph| to_photo_object(ph) }
-    }
+    album.to_object.merge(
+      {
+        path:      album_path(album),
+        edit_path: edit_album_path(album),
+        show_path: album_path(album),
+      }
+    )
   end
-
-  def to_photo_object(photo)
-    {
-      name:        photo.name,
-      id:          photo.id,
-      description: photo.description,
-      image_url:   photo.image_url,
-      comments:    photo.comments.order(created_at: "desc").map{|cm| to_comment_object(cm) }
-    }
-  end
-
-  def to_comment_object(comment)
-    {
-      id:     comment.id,
-      author: comment.user.name,
-      text:   comment.text,
-      date:   comment.created_at.strftime("%FT%T")
-    }
-  end
-
 
   def album_params
     params.require(:album).permit(:name, :description, :images).reject {|key| key == "images"}
