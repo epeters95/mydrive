@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from '../styles/Photo.module.css';
 import { useRevalidator } from "react-router-dom";
+import { isUserSignedIn } from './tools/loaders.jsx';
 
 const Comment = ({ id,
                    text,
@@ -9,11 +10,15 @@ const Comment = ({ id,
                    date,
                    handleDelete=null }) => {
 
-  let disabled = "";
-  if (handleDelete === null) {
-    disabled = "disabled";
+  let button = (
+    <></>
+  );
+  if (handleDelete !== null && isUserSignedIn()) {
 
-    // TODO: disable if comment does not belong to current user
+    button = (
+      <button onClick={deleteOrDoNothing}>X</button>
+    );
+    // TODO: check if current user id matches comment author id
   }
 
   const deleteOrDoNothing = () => {
@@ -26,8 +31,7 @@ const Comment = ({ id,
     <div key={id}
         title={"Posted at " + date}>
       <span><i>{author}:</i>&nbsp;{text}</span>
-
-      <button disabled={disabled} onClick={deleteOrDoNothing}>X</button>
+      {button}
     </div>
   );
 };
