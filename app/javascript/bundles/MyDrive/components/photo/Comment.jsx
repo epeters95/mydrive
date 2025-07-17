@@ -8,17 +8,17 @@ const Comment = ({ id,
                    text,
                    author,
                    date,
+                   isDeletable=false,
                    handleDelete=null }) => {
 
   let button = (
     <></>
   );
-  if (handleDelete !== null && isUserSignedIn()) {
+  if (isDeletable) {
 
     button = (
       <button onClick={deleteOrDoNothing}>X</button>
     );
-    // TODO: check if current user id matches comment author id
   }
 
   const deleteOrDoNothing = () => {

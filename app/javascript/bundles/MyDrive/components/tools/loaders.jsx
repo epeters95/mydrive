@@ -13,6 +13,21 @@ export const isUserSignedIn = () => {
   }
 }
 
+export const getCurrentUserId = () => {
+  let userId = getCookie("current_user_id")
+  if (userId !== null) {
+    return parseInt(userId)
+  } else {
+    return -1;
+  }
+}
+
+const getCookie = (key) => {
+  const search = '; ' + document.cookie ;
+  const keyvalues = search.split(`; ${key}=`);
+  if (keyvalues.length === 2) return keyvalues.pop().split(';').shift();
+}
+
 export const loadNavLinks = () => {
 
 

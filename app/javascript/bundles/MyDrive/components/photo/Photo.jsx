@@ -42,6 +42,13 @@ const Photo = ({ id,
     }
   }
 
+  const getIsDeletable = (comment) => {
+    if (comment.author_id === getCurrentUserId()) {
+      return true;
+    }
+    return false;
+  }
+
   return (
     <div className={style.albums_image}>
       <p className={style.img_name} title={name}>
@@ -64,6 +71,7 @@ const Photo = ({ id,
                    text={comment.text}
                    author={comment.author}
                    date={comment.date}
+                   isDeletable={getIsDeletable(comment)}
                    handleDelete={commentDelete} />
         ))}
       </div>

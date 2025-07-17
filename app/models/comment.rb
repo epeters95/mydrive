@@ -5,10 +5,11 @@ class Comment < ApplicationRecord
 
   def to_object
     {
-      id:     self.id,
-      author: self.user.name,
-      text:   self.text,
-      date:   self.created_at.strftime("%FT%T")
+      id:        self.id,
+      author:    self.user.name,
+      author_id: self.user.id,
+      text:      self.text,
+      date:      self.created_at.strftime("%FT%T")
     }
   end
 
