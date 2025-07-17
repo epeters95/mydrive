@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from '../styles/Photo.module.css';
 import { useRevalidator } from "react-router-dom";
-import { isUserSignedIn } from './tools/loaders.jsx';
 
 const Comment = ({ id,
                    text,
