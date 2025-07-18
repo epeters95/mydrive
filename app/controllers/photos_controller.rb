@@ -31,7 +31,14 @@ class PhotosController < ApplicationController
       comment_param = param_photo["comment"]
       @photo = Photo.find(params["id"])
       if @photo
-        @photo.update(update_hash) unless update_hash.empty?
+        if current_user.id == @photo.user.id
+
+          @photo.update(update_hash) unless update_hash.empty?
+        else
+          return render json: { error: "Only the author can modify this photo" }, status: :unauthorized
+
+        end
+        
         if comment_param
           if @photo.comments.create(user_id: current_user.id, text: comment_param)
             render json: { photo_id: @photo.id }, status: :ok

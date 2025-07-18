@@ -4,12 +4,15 @@ class CommentsController < ApplicationController
 
     comment = Comment.find(comment_params[:id])
     if comment
-      comment.destroy
+      if current_user.id == comment.user.id
+        comment.destroy
+        render json: { message: "successfully deleted" }, status: :ok
+      else
+        render json: { error: "Only the author can delete this comment" }, status: :unauthorized
+      end
     else
       render json: { error: "couldn't find comment" }, status: :not_found
     end
-    render json: { message: "successfully deleted" }, status: :ok
-
   end
 
   private
