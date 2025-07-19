@@ -9,6 +9,7 @@ class Photo < ApplicationRecord
     {
       name:        self.name,
       id:          self.id,
+      user_id:     self.user.id,
       description: self.description,
       image_url:   self.image_url,
       comments:    self.comments.order(created_at: "desc").map{|cm| cm.to_object }

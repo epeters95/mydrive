@@ -13,6 +13,7 @@ class Album < ApplicationRecord
       name:        self.name,
       description: self.description,
       id:          self.id,
+      user_id:     self.user.id,
       photos:      self.photos.order(updated_at: "desc").map{|ph| ph.to_object }
     }
   end

@@ -6,14 +6,21 @@ import { baseUrl } from '../tools/config.js';
 import { useLoaderData, useRevalidator, Link } from "react-router-dom";
 import { fetchAndCallback } from '../tools/utils.js'
 import toast, { Toaster } from 'react-hot-toast';
+import { getCurrentUserId } from '../tools/loaders.jsx';
 
 const Album = () => {
 
-  const { album: { id, name, description, photos, show_path } } = useLoaderData();
+  const { album: { id, user_id, name, description, photos, show_path } } = useLoaderData();
 
   const revalidator = useRevalidator();
 
+  let editAlbumLink = <></>;
+
   const editAlbumPath = baseUrl + '/albums/' + id + '/edit';
+
+  if (getCurrentUserId() === user_id) {
+    editAlbumLink = <Link to={editAlbumPath}>Edit</Link>;
+  }
 
   const onDescSubmit = (newDesc, photoId=0) => {
     
@@ -78,7 +85,7 @@ const Album = () => {
 
   return (
     <div>
-      <span><Link to={editAlbumPath}>Edit</Link></span>
+      <span>{editAlbumLink}</span>
       <br/>
       <h3>{name}</h3>
       <span>{description}</span>
@@ -89,6 +96,7 @@ const Album = () => {
 
           <Photo name={photo.name}
                  id={photo.id}
+                 user_id={photo.user_id}
                  key={photo.id}
                  description={photo.description || ""}
                  image_url={photo.image_url}

@@ -13,6 +13,7 @@ function debounce(func, timeout = 300){
 }
 
 const Photo = ({ id,
+                 user_id,
                  description,
                  name,
                  image_url,
@@ -24,9 +25,25 @@ const Photo = ({ id,
 
   const [desc, setDesc] = useState(description);
 
+  let descriptionSpan = (
+    <span className="desc-span">
+      {desc}
+    </span>
+  );
+
   const descSubmit = (val, id) => {
     setDesc(val);
     handleDescSubmit(val, id);
+  }
+
+  if (getCurrentUserId() === user_id) {
+    descriptionSpan = (
+      <textarea
+        rows="5" cols="33"
+        defaultValue={desc} />
+      <br/>
+      <button onClick={descSubmit}>Save</button>
+    );
   }
 
   const commentSubmit = (event) => {
@@ -57,11 +74,7 @@ const Photo = ({ id,
       </p>
       <img src={image_url} alt={desc}/>
       <br/>
-      <textarea
-        rows="5" cols="33"
-        defaultValue={desc} />
-      <br/>
-      <button onClick={descSubmit}>Save</button>
+      {descriptionSpan}
 
       <br/>
       <p><b>Comments:&nbsp;{comments.length}</b></p>
