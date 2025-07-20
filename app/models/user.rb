@@ -5,5 +5,9 @@ class User < ApplicationRecord
          :rememberable, :timeoutable, :registerable
 
   has_many :comments
+
+  def latest_comments
+    self.comments.order(created_at: "desc")
+  end
          
 end

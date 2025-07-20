@@ -9,10 +9,11 @@ const CommentsList = () => {
 
   return (
     <div>
-      <h2>Users</h2>
+      <h2>All Comments</h2>
       <ul>
       {comments.map((comment) => (
         <Comment id={comment.id}
+                   user_id={comment.user_id}
                    text={comment.text}
                    author={comment.author}
                    date={comment.date} />
