@@ -15,6 +15,11 @@ class CommentsController < ApplicationController
     end
   end
 
+  def index
+    comments = Comment.all.order(created_at: "desc").group(:user_id)
+    render json: { comments: comments.map{|cm| cm.to_object }}, status: :ok
+  end
+
   private
 
   def comment_params

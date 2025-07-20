@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
+
+  get '/comments', to: 'comments#index'
     
 
   devise_scope :user do
