@@ -80,6 +80,6 @@ end
 
 gem "cssbundling-rails", "~> 1.1"
 
-gem "shakapacker", "= 8.0"
+gem "shakapacker" #, "= 8.0"
 
 gem "react_on_rails", "= 14.0.5"
