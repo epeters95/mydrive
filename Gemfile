@@ -27,6 +27,9 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Re-add dependency on logger
+gem 'concurrent-ruby', '1.3.4'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -80,6 +83,6 @@ end
 
 gem "cssbundling-rails", "~> 1.1"
 
-gem "shakapacker" #, "= 8.0"
+gem "shakapacker", "= 8.3"
 
 gem "react_on_rails", "= 14.0.5"
