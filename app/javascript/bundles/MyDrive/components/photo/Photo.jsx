@@ -38,11 +38,13 @@ const Photo = ({ id,
 
   if (getCurrentUserId() === user_id) {
     descriptionSpan = (
-      <textarea
-        rows="5" cols="33"
-        defaultValue={desc} />
-      <br/>
-      <button onClick={descSubmit}>Save</button>
+      <>
+        <textarea
+          rows="5" cols="33"
+          defaultValue={desc} />
+        <br/>
+        <button onClick={descSubmit}>Save</button>
+      </>
     );
   }
 
