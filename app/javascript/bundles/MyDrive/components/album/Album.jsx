@@ -16,71 +16,77 @@ const Album = () => {
 
   let editAlbumLink = <></>;
 
+  let onDescSubmit = () => {};
+
+  let onCommentSubmit = () => {};
+
+  let onCommentDelete = () => {};
+
   const editAlbumPath = baseUrl + '/albums/' + id + '/edit';
 
   if (getCurrentUserId() === user_id) {
     editAlbumLink = <Link to={editAlbumPath}>Edit</Link>;
-  }
 
-  const onDescSubmit = (newDesc, photoId=0) => {
-    
-    // rails route given does not include id, need PATCH to <photos_path>/:id
-    let fullPhotoPath = show_path + '/photos/' + photoId;
-    let data = {
-      "photo": {
-        "id": photoId,
-        "description": newDesc
+    onDescSubmit = (newDesc, photoId=0) => {
+
+      // rails route given does not include id, need PATCH to <photos_path>/:id
+      let fullPhotoPath = show_path + '/photos/' + photoId;
+      let data = {
+        "photo": {
+          "id": photoId,
+          "description": newDesc
+        }
       }
+
+      // send PATCH
+      fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
+
+        if (resp.status === 200) {
+          toast.success("Description updated")
+          revalidator.revalidate();
+        }
+        else {
+          toast.error("Error updating description")
+        }
+      });
     }
 
-    // send PATCH
-    fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
+    onCommentSubmit = (commentText, photoId=0) => {
 
-      if (resp.status === 200) {
-        toast.success("Description updated")
-        revalidator.revalidate();
+      let fullPhotoPath = show_path + '/photos/' + photoId;
+      let data = {
+        "photo": {
+          "comment": commentText
+        }
       }
-      else {
-        toast.error("Error updating description")
-      }
-    });
-  }
 
-  const onCommentSubmit = (commentText, photoId=0) => {
-
-    let fullPhotoPath = show_path + '/photos/' + photoId;
-    let data = {
-      "photo": {
-        "comment": commentText
-      }
+      // send PATCH
+      fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
+        if (resp.status === 200) {
+          toast.success("Comment posted")
+          revalidator.revalidate();
+        } else {
+          toast.error("Error posting comment")
+        }
+      });
     }
 
-    // send PATCH
-    fetchAndCallback(fullPhotoPath, 'PATCH', JSON.stringify(data), (resp) => {
-      if (resp.status === 200) {
-        toast.success("Comment posted")
-        revalidator.revalidate();
-      } else {
-        toast.error("Error posting comment")
+    onCommentDelete = (commentId=0) => {
+      let data = {
+        "comment": {
+          "id": commentId
+        }
       }
-    });
-  }
-
-  const onCommentDelete = (commentId=0) => {
-    let data = {
-      "comment": {
-        "id": commentId
-      }
+      // send DELETE
+      fetchAndCallback(fullPhotoPath, 'DELETE', JSON.stringify(data), (resp) => {
+        if (resp.status === 200) {
+          toast.success("Comment deleted")
+          revalidator.revalidate();
+        } else {
+          toast.error("Error deleting comment")
+        }
+      });
     }
-    // send DELETE
-    fetchAndCallback(fullPhotoPath, 'DELETE', JSON.stringify(data), (resp) => {
-      if (resp.status === 200) {
-        toast.success("Comment deleted")
-        revalidator.revalidate();
-      } else {
-        toast.error("Error deleting comment")
-      }
-    });
   }
 
   return (
