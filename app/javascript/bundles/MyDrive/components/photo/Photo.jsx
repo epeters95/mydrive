@@ -100,11 +100,16 @@ const Photo = ({ id,
 };
 
 Photo.propTypes = {
-  id:               PropTypes.number,
-  name:             PropTypes.string.isRequired,
-  image_url:        PropTypes.string.isRequired,
-  description:      PropTypes.string,
-  handleDescChange: PropTypes.func
+  id:                  PropTypes.number,
+  name:                PropTypes.string.isRequired,
+  image_url:           PropTypes.string.isRequired,
+  description:         PropTypes.string,
+  handleDescChange:    PropTypes.func,
+  user_id:             PropTypes.number,
+  comments:            PropTypes.array,
+  handleDescSubmit:    PropTypes.func,
+  handleCommentSubmit: PropTypes.func,
+  handleCommentDelete: PropTypes.func
 };
 
 export default Photo;
