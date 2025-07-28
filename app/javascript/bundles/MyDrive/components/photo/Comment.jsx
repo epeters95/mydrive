@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import * as style from '../styles/Photo.module.css';
+import * as style from '../styles/Comment.module.css';
 import { useRevalidator } from "react-router-dom";
 
 const Comment = ({ id,
@@ -27,8 +27,9 @@ const Comment = ({ id,
   }
 
   return (
-    <div key={id}
-        title={"Posted at " + date}>
+    <div className="comment-container"
+         key={id}
+         title={"Posted at " + date}>
       <span><i>{author}:</i>&nbsp;{text}</span>
       {button}
     </div>
