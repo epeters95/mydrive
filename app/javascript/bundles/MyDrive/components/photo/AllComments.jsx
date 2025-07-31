@@ -13,6 +13,7 @@ const CommentsList = () => {
       <ul>
       {comments.map((comment) => (
         <Comment id={comment.id}
+                 key={comment.id}
                    user_id={comment.user_id}
                    text={comment.text}
                    author={comment.author}

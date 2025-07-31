@@ -61,8 +61,7 @@ export const loadNavLinks = () => {
 
     pathItems.forEach((pathItem) => {
 
-      let title = pathItem[0];
-      let path = pathItem[1];
+      let [ title, path ] = pathItem;
 
       showItems.push(
         <li className="nav-item" key={title} >

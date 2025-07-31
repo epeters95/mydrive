@@ -13,6 +13,7 @@ const PhotosList = () => {
       <ul>
       {albums.map((album) => (
         <Album id={album.id}
+               key={album.id}
                path={album.path}
                name={album.name}
                user_id={album.user_id},
