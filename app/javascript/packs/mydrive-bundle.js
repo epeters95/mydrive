@@ -12,7 +12,7 @@ import LandingPage from '../bundles/MyDrive/components/LandingPage';
 import RouterApp from '../bundles/MyDrive/components/RouterApp';
 import Layout from '../bundles/MyDrive/components/Layout';
 import AllUsers from '../bundles/MyDrive/components/user/AllUsers';
-import AllComments from '../bundles/MyDrive/components/photo/AllComments';
+import CommentsList from '../bundles/MyDrive/components/photo/CommentsList';
 
 import './bootstrap.bundle.min.js';
 import './bootstrap.min.css';
@@ -30,5 +30,5 @@ ReactOnRails.register({
   EditAlbum,
   NewAlbum,
   AllUsers,
-  AllComments
+  CommentsList
 });

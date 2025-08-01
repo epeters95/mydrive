@@ -9,7 +9,7 @@ import AlbumsList from './album/AlbumsList.jsx';
 import EditAlbum from './album/EditAlbum.jsx';
 import NewAlbum from './album/NewAlbum.jsx';
 import AllUsers from './user/AllUsers.jsx';
-import AllComments from './photo/AllComments.jsx';
+import CommentsList from './photo/CommentsList.jsx';
 import { albumsLoader,
          editAlbumLoader,
          allUsersLoader,
@@ -61,7 +61,7 @@ const RouterApp = (props) => {
         },
         {
           path: "comments",
-          element: <AllComments />,
+          element: <CommentsList />,
           loader: allCommentsLoader
         }
       ]
