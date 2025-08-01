@@ -8,9 +8,21 @@ import { fetchAndCallback } from '../tools/utils.js'
 import toast, { Toaster } from 'react-hot-toast';
 import { getCurrentUserId } from '../tools/loaders.jsx';
 
-const Album = () => {
+const Album = (id, user_id, name, description, photos) => {
 
-  const { album: { id, user_id, name, description, photos, show_path } } = useLoaderData();
+  // if no passed in arguments (show page)
+  
+  if ([id, user_id, name, description, photos, show_path].filter((el) => el === undefined).length > 0) {
+    
+    // Album show page doesn't have data passed in
+    const album = useLoaderData();
+    id = album.id
+    user_id = album.user_id
+    name = album.name
+    description = album.description
+    photos = album.photos
+    show_path = album.show_path
+  }
 
   const revalidator = useRevalidator();
 
