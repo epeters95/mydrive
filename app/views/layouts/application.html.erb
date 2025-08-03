@@ -12,12 +12,18 @@
   </head>
 
   <body>
-    <div class="main">
-
-      <div class="container">
-        <%= yield %>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="home-link" href="#">MyDrive</a>
+        <%= render "devise/shared/links" %>
       </div>
-    </div>
+      <div class="main">
+
+        <div class="container">
+          <%= yield %>
+        </div>
+      </div>
+    </nav>
 
   </body>
 </html>
