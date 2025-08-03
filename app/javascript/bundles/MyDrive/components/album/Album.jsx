@@ -6,12 +6,12 @@ import { baseUrl } from '../tools/config.js';
 import { useLoaderData, useRevalidator, Link } from "react-router-dom";
 import { fetchAndCallback } from '../tools/utils.js'
 import toast, { Toaster } from 'react-hot-toast';
-import { getCurrentUserId } from '../tools/loaders.jsx';
+import { getCurrentUserId } from '../auth/links.jsx';
 
 const Album = (id, user_id, name, description, photos) => {
 
   // if no passed in arguments (show page)
-  
+
   if ([id, user_id, name, description, photos, show_path].filter((el) => el === undefined).length > 0) {
     
     // Album show page doesn't have data passed in

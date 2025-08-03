@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Comment from './Comment.jsx';
 import * as style from '../styles/Photo.module.css';
-import { getCurrentUserId } from '../tools/loaders.jsx';
+import { getCurrentUserId } from '../auth/links.jsx';
 
 function debounce(func, timeout = 300){
   let timer;
