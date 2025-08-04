@@ -6,12 +6,12 @@ import EditAlbum from '../bundles/MyDrive/components/album/EditAlbum';
 import NewAlbum from '../bundles/MyDrive/components/album/NewAlbum';
 import Photo from '../bundles/MyDrive/components/photo/Photo';
 import Comment from '../bundles/MyDrive/components/photo/Comment';
-import Login from '../bundles/MyDrive/components/user/Login';
-import Signup from '../bundles/MyDrive/components/user/Signup';
+import Login from '../bundles/MyDrive/components/auth/Login';
+import Signup from '../bundles/MyDrive/components/auth/Signup';
 import LandingPage from '../bundles/MyDrive/components/LandingPage';
 import RouterApp from '../bundles/MyDrive/components/RouterApp';
 import Layout from '../bundles/MyDrive/components/Layout';
-import AllUsers from '../bundles/MyDrive/components/user/AllUsers';
+import AllUsers from '../bundles/MyDrive/components/auth/AllUsers';
 import CommentsList from '../bundles/MyDrive/components/photo/CommentsList';
 
 import './bootstrap.bundle.min.js';

@@ -4,7 +4,7 @@ import { useNavigate, NavLink as Link } from 'react-router-dom';
 import { baseUrl } from './config.js';
 import { fetchAndCallback } from './utils.js'
 
-import { signOutButton, isUserSignedIn, getCurrentUserId } from '../auth/links.js'
+import { signOutButton, isUserSignedIn, getCurrentUserId } from '../auth/links.jsx'
 
 const getCookie = (key) => {
   const search = '; ' + document.cookie ;
