@@ -25,10 +25,10 @@ ReactOnRails.register({
   Signup,
   LandingPage,
   RouterApp,
-  Layout,
-  AlbumsList,
-  EditAlbum,
-  NewAlbum,
-  AllUsers,
-  CommentsList
+  Layout
+  // AlbumsList,
+  // EditAlbum,
+  // NewAlbum,
+  // AllUsers,
+  // CommentsList
 });
