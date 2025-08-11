@@ -14,8 +14,8 @@ import Layout from '../bundles/MyDrive/components/Layout';
 import AllUsers from '../bundles/MyDrive/components/auth/AllUsers';
 import CommentsList from '../bundles/MyDrive/components/photo/CommentsList';
 
-import './bootstrap.bundle.min.js';
-import './bootstrap.min.css';
+// import './bootstrap.bundle.min.js';
+// import './bootstrap.min.css';
 
 ReactOnRails.register({
   Album,
