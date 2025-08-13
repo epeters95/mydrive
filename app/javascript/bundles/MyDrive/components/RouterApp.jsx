@@ -54,16 +54,16 @@ const RouterApp = (props) => {
           path: "albums/new",
           element: <NewAlbum />
         },
-        // {
-        //   path: "users",
-        //   element: <AllUsers />,
-        //   loader: allUsersLoader
-        // },
-        // {
-        //   path: "comments",
-        //   element: <CommentsList />,
-        //   loader: allCommentsLoader
-        // }
+        {
+          path: "users",
+          element: <AllUsers />,
+          loader: allUsersLoader
+        },
+        {
+          path: "comments",
+          element: <CommentsList />,
+          loader: allCommentsLoader
+        }
       ]
     }
   ]);
