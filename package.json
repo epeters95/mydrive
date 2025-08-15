@@ -12,6 +12,7 @@
     "bootstrap-icons": "^1.10.3",
     "compression-webpack-plugin": "9",
     "css-loader": "^7.1.2",
+    "js-yaml": "^3.0.0",
     "mini-css-extract-plugin": "^2.9.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
@@ -38,8 +39,6 @@
     "defaults"
   ],
   "devDependencies": {
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
-    "react-refresh": "^0.14.2",
     "webpack-dev-server": "4"
   }
 }
