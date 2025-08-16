@@ -1,3 +1,16 @@
+import React from 'react';
+import ReactOnRails from 'react-on-rails';
+
+const csrfToken = ReactOnRails.authenticityToken()
+
+let formRef;
+
+const submitForm = () => {
+  formRef.dispatchEvent(
+    new Event("submit", { bubbles: true, cancelable: true })
+  )
+};
+
 export const signOutButton = (
     <li className="nav-item" key="signout">
       <form ref={(ref) => formRef = ref} className="button_to" method="post" action="/users/sign_out">
