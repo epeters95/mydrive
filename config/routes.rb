@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :albums do
     resources :photos do
       resources :comments, except: [:destroy]
+      get '/latest_commented', to: 'photos#latest_commented'
     end
   end
 

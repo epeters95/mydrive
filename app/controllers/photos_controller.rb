@@ -56,6 +56,10 @@ class PhotosController < ApplicationController
     end
   end
 
+  def latest_commented
+    render json: { photo: Photo.latest_commented.to_object }, status: :ok
+  end
+
   private
 
   def photo_params
