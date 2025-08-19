@@ -12,6 +12,11 @@ const getCookie = (key) => {
   if (keyvalues.length === 2) return keyvalues.pop().split(';').shift();
 }
 
+const authJson = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'X-CSRF-Token': ReactOnRails.authenticityToken()
+}
 export const loadNavLinks = () => {
 
   let formRef;
@@ -70,11 +75,7 @@ export const loadNavLinks = () => {
 export const albumsLoader = async () => {
   const fetchOptions = {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
+    headers: authJson
 ,  }
   const resp = await fetch(baseUrl + '/albums', fetchOptions);
   return resp;
@@ -83,11 +84,7 @@ export const albumsLoader = async () => {
 export const editAlbumLoader = async ({ params }) => {
   const fetchOptions = {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
+    headers: authJson
   }
   const resp = await fetch(baseUrl + '/albums/' + params.albumId, fetchOptions);
   return resp;
@@ -96,11 +93,7 @@ export const editAlbumLoader = async ({ params }) => {
 export const allUsersLoader = async () => {
   const fetchOptions = {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
+    headers: authJson
   }
   const resp = await fetch(baseUrl + '/users', fetchOptions);
   return resp;
@@ -109,11 +102,7 @@ export const allUsersLoader = async () => {
 export const allCommentsLoader = async () => {
   const fetchOptions = {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
+    headers: authJson
   }
   const resp = await fetch(baseUrl + '/comments', fetchOptions);
   return resp;
@@ -123,11 +112,7 @@ export const allCommentsLoader = async () => {
 export const latestCommentedPhotoLoader = async () => {
   const fetchOptions = {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
+    headers: authJson
   }
   const resp = await fetch(baseUrl + '/photos/latest_commented', fetchOptions);
   return resp;
