@@ -118,3 +118,17 @@ export const allCommentsLoader = async () => {
   const resp = await fetch(baseUrl + '/comments', fetchOptions);
   return resp;
 }
+
+
+export const latestCommentedPhotoLoader = async () => {
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'X-CSRF-Token': ReactOnRails.authenticityToken()
+    }
+  }
+  const resp = await fetch(baseUrl + '/photos/latest_commented', fetchOptions);
+  return resp;
+}

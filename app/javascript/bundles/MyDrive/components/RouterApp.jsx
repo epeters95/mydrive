@@ -14,7 +14,8 @@ import { albumsLoader,
          editAlbumLoader,
          allUsersLoader,
          loadNavLinks,
-         allCommentsLoader } from './tools/loaders.jsx';
+         allCommentsLoader,
+         latestCommentedPhotoLoader } from './tools/loaders.jsx';
 
 const RouterApp = (props) => {
 
@@ -25,7 +26,8 @@ const RouterApp = (props) => {
       children: [
         {
           path: "/",
-          element: <LandingPage/>
+          element: <LandingPage/>,
+          loader: latestCommentedPhotoLoader
         },
         {
           path: "users/sign_in",
