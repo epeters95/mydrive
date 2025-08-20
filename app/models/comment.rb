@@ -2,6 +2,10 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :photo
 
+  def self.latest_user_comments
+    Comment.all.join(:user).order(updated_at: "desc")
+  end
+
 
   def to_object
     {

@@ -20,6 +20,10 @@ class CommentsController < ApplicationController
     render json: { comments: comments.map{|cm| cm.to_object }}, status: :ok
   end
 
+  def latest_comments
+    render json: { comments: Comment.latest_user_comments.map{|cm| cm.to_object }}, status: :ok
+  end
+
   private
 
   def comment_params
