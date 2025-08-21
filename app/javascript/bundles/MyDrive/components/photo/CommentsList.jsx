@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Comment from './Comment.jsx';
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 const CommentsList = () => {
 
@@ -10,6 +10,9 @@ const CommentsList = () => {
   return (
     <div>
       <h2>All Comments</h2>
+      <br/>
+      <b><Link to="/latest_comments">Latest</Link></b>
+      <br/>
       <ul>
       {comments.map((comment) => (
         <Comment id={comment.id}
