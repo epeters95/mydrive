@@ -1,6 +1,6 @@
 import React from 'react';
 import Photo from './photo/Photo.jsx'
-import * as style from '../styles/Photo.module.css';
+import * as style from './styles/Photo.module.css';
 
 import { useLoaderData } from "react-router-dom";
 

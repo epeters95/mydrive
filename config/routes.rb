@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get    '/comments', to: 'comments#index'
   delete '/comments', to: 'comments#destroy'
-  get    '/comments/latest_comments', to 'comments#latest_comments'
+  get    '/comments/latest_comments', to: 'comments#latest_comments'
     
 
   devise_scope :user do
