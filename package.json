@@ -2,32 +2,28 @@
   "name": "app",
   "private": "true",
   "dependencies": {
-    "@babel/core": "7",
-    "@babel/plugin-transform-runtime": "7",
-    "@babel/preset-env": "7",
-    "@babel/preset-react": "^7.24.7",
-    "@babel/runtime": "7",
     "@mui/icons-material": "^6.1.6",
     "@mui/material": "^6.1.6",
     "@popperjs/core": "^2.11.6",
+    "@swc/core": "^1.13.3",
     "@types/babel__core": "7",
     "@types/webpack": "5",
-    "babel-loader": "8",
-    "babel-plugin-macros": "^3.1.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "compression-webpack-plugin": "9",
     "css-loader": "^7.1.2",
+    "js-yaml": "^3.0.0",
     "mini-css-extract-plugin": "^2.9.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.5.1",
     "react-on-rails": "14.0.5",
     "react-router-dom": "^6.27.0",
     "sass": "^1.57.1",
-    "shakapacker": "8.0.0",
+    "shakapacker": "8.0.2",
     "style-loader": "^4.0.0",
+    "swc-loader": "^0.2.6",
     "terser-webpack-plugin": "5",
     "webpack": "5",
     "webpack-assets-manifest": "5",
@@ -39,17 +35,10 @@
   },
   "packageManager": "yarn@1.22.22",
   "version": "0.1.0",
-  "babel": {
-    "presets": [
-      "./node_modules/shakapacker/package/babel/preset.js"
-    ]
-  },
   "browserslist": [
     "defaults"
   ],
   "devDependencies": {
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
-    "react-refresh": "^0.14.2",
     "webpack-dev-server": "4"
   }
 }

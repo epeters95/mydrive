@@ -10,11 +10,12 @@
 }
 
 .albums_image img {
-  width:  99%;
+  max-height: 120px;
+  max-width: 99%;
   border: 1px solid lightgoldenrodyellow;
 }
 
-.albums_image input {
+.albums_image textarea {
   width: 100%;
 }
 

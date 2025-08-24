@@ -2,14 +2,20 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LandingPage from './LandingPage.jsx';
 import Layout from './Layout.jsx';
-import Login from './user/Login.jsx';
-import Signup from './user/Signup.jsx';
+import Login from './auth/Login.jsx';
+import Signup from './auth/Signup.jsx';
 import Album from './album/Album.jsx';
 import AlbumsList from './album/AlbumsList.jsx';
 import EditAlbum from './album/EditAlbum.jsx';
 import NewAlbum from './album/NewAlbum.jsx';
-import AllUsers from './user/AllUsers.jsx';
-import { albumsLoader, editAlbumLoader, allUsersLoader, loadNavLinks } from './tools/loaders.jsx';
+import AllUsers from './auth/AllUsers.jsx';
+import CommentsList from './photo/CommentsList.jsx';
+import { albumsLoader,
+         editAlbumLoader,
+         allUsersLoader,
+         loadNavLinks,
+         allCommentsLoader,
+         latestCommentedPhotoLoader } from './tools/loaders.jsx';
 
 const RouterApp = (props) => {
 
@@ -20,7 +26,8 @@ const RouterApp = (props) => {
       children: [
         {
           path: "/",
-          element: <LandingPage/>
+          element: <LandingPage/>,
+          loader: latestCommentedPhotoLoader
         },
         {
           path: "users/sign_in",
@@ -53,6 +60,11 @@ const RouterApp = (props) => {
           path: "users",
           element: <AllUsers />,
           loader: allUsersLoader
+        },
+        {
+          path: "comments",
+          element: <CommentsList />,
+          loader: allCommentsLoader
         }
       ]
     }

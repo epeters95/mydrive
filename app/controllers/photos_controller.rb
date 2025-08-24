@@ -1,5 +1,8 @@
 class PhotosController < ApplicationController
 
+  before_action :authenticate_user!
+  protect_from_forgery prepend: true
+
   # def index
   # end
 
@@ -21,18 +24,40 @@ class PhotosController < ApplicationController
     param_photo = json_params["photo"]
 
     if param_photo
-      id = param_photo["id"]
-      desc = param_photo["description"]
-      @photo = Photo.find(id)
+      update_hash = {}
+      ["id", "description"].each do |att|
+        update_hash[att] = param_photo[att] unless param_photo[att].nil?
+      end
+      comment_param = param_photo["comment"]
+      @photo = Photo.find(params["id"])
       if @photo
-        @photo.update(description: desc)
-        render json: {photo_id: @photo.id} , status: :ok
+        if current_user.id == @photo.user.id
+
+          @photo.update(update_hash) unless update_hash.empty?
+        else
+          return render json: { error: "Only the author can modify this photo" }, status: :unauthorized
+
+        end
+        
+        if comment_param
+          if @photo.comments.create(user_id: current_user.id, text: comment_param)
+            render json: { photo_id: @photo.id }, status: :ok
+          else
+            render json: { error: "Error publishing comment to photo" }, status: :unprocessable_entity
+          end
+        else
+          render json: { photo_id: @photo.id }, status: :ok
+        end
       else
-        render json: {error: "Photo not found"}, status: :not_found
+        render json: { error: "Photo not found" }, status: :not_found
       end
     else
-      render json: {error: "Photo not provided in request body"}, status: :unprocessable_entity
+      render json: { error: "Photo not provided in request body" }, status: :unprocessable_entity
     end
+  end
+
+  def latest_commented
+    render json: { photo: Photo.latest_commented.to_object }, status: :ok
   end
 
   private

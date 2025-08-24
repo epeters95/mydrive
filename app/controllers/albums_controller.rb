@@ -3,17 +3,25 @@ class AlbumsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @albums = Album.all
-    @album_objects = @albums.map do |album|
-      to_album_object album
+    if request.format.symbol == :json
+      @albums = Album.all
+      @album_objects = @albums.map do |album|
+        to_album_object album
+      end
+      render json: { albums: @album_objects }
+    else
+      render :index
     end
-    render json: { albums: @album_objects }
   end
 
   def show
-    @album = Album.find(params[:id])
-    @album_object = to_album_object @album
-    render json: { album: @album_object }
+    if request.format.symbol == :json
+      @album = Album.find(params[:id])
+      @album_object = to_album_object @album
+      render json: { album: @album_object }
+    else
+      render :show
+    end
   end
 
   def new
@@ -54,26 +62,14 @@ class AlbumsController < ApplicationController
 
   private
   def to_album_object(album)
-    {
-      name: album.name, 
-      path: album_path(album),
-      edit_path: edit_album_path(album),
-      show_path: album_path(album),
-      description: album.description,
-      id: album.id,
-      photos: album.photos.map{|ph| to_photo_object(ph) }
-    }
+    album.to_object.merge(
+      {
+        path:      album_path(album),
+        edit_path: edit_album_path(album),
+        show_path: album_path(album),
+      }
+    )
   end
-
-  def to_photo_object(photo)
-    {
-      name:        photo.name,
-      id:          photo.id,
-      description: photo.description,
-      image_url:   photo.image_url
-    }
-  end
-
 
   def album_params
     params.require(:album).permit(:name, :description, :images).reject {|key| key == "images"}

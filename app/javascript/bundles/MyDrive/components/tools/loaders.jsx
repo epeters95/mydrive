@@ -4,15 +4,20 @@ import { useNavigate, NavLink as Link } from 'react-router-dom';
 import { baseUrl } from './config.js';
 import { fetchAndCallback } from './utils.js'
 
-export const loadNavLinks = () => {
+import { signOutButton, isUserSignedIn, getCurrentUserId } from '../auth/links.jsx'
 
-  const isUserSignedIn = () => {
-    // check browser cookie for user
-    // TODO: replace with more secure state management
-    if(document.cookie.includes("signed_in=true")) {
-      return true;
-    }
-  }
+const getCookie = (key) => {
+  const search = '; ' + document.cookie ;
+  const keyvalues = search.split(`; ${key}=`);
+  if (keyvalues.length === 2) return keyvalues.pop().split(';').shift();
+}
+
+const authJson = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'X-CSRF-Token': ReactOnRails.authenticityToken()
+}
+export const loadNavLinks = () => {
 
   let formRef;
 
@@ -21,22 +26,7 @@ export const loadNavLinks = () => {
       new Event("submit", { bubbles: true, cancelable: true })
     )
   };
-
   const csrfToken = ReactOnRails.authenticityToken()
-
-  const signOutButton = (
-    <li className="nav-item" key="signout">
-      <form ref={(ref) => formRef = ref} className="button_to" method="post" action="/users/sign_out">
-        <input type="hidden" name="_method" value="delete"/>
-        <input type="hidden" name="authenticity_token" value={csrfToken} />
-        <a href="#"
-           className="nav-link"
-           onClick={submitForm}>
-           Log Out
-        </a>
-      </form>
-    </li>
-  );
 
   const listItemLinkIterate = (pathItems) => {
 
@@ -44,8 +34,7 @@ export const loadNavLinks = () => {
 
     pathItems.forEach((pathItem) => {
 
-      let title = pathItem[0];
-      let path = pathItem[1];
+      let [ title, path ] = pathItem;
 
       showItems.push(
         <li className="nav-item" key={title} >
@@ -64,7 +53,8 @@ export const loadNavLinks = () => {
     navElements = navElements.concat(listItemLinkIterate([
       ["Albums", "/albums"],
       ["New Album", "/albums/new"],
-      ["Users", "/users"]
+      ["Users", "/users"],
+      ["Comments", "/comments"]
     ]))
     navElements = navElements.concat([signOutButton]);
   }
@@ -85,11 +75,7 @@ export const loadNavLinks = () => {
 export const albumsLoader = async () => {
   const fetchOptions = {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
+    headers: authJson
 ,  }
   const resp = await fetch(baseUrl + '/albums', fetchOptions);
   return resp;
@@ -98,11 +84,7 @@ export const albumsLoader = async () => {
 export const editAlbumLoader = async ({ params }) => {
   const fetchOptions = {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
+    headers: authJson
   }
   const resp = await fetch(baseUrl + '/albums/' + params.albumId, fetchOptions);
   return resp;
@@ -111,12 +93,27 @@ export const editAlbumLoader = async ({ params }) => {
 export const allUsersLoader = async () => {
   const fetchOptions = {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'X-CSRF-Token': ReactOnRails.authenticityToken()
-    }
+    headers: authJson
   }
   const resp = await fetch(baseUrl + '/users', fetchOptions);
+  return resp;
+}
+
+export const allCommentsLoader = async () => {
+  const fetchOptions = {
+    method: 'GET',
+    headers: authJson
+  }
+  const resp = await fetch(baseUrl + '/comments', fetchOptions);
+  return resp;
+}
+
+
+export const latestCommentedPhotoLoader = async () => {
+  const fetchOptions = {
+    method: 'GET',
+    headers: authJson
+  }
+  const resp = await fetch(baseUrl + '/photos/latest_commented', fetchOptions);
   return resp;
 }

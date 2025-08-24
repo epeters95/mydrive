@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.3"
+ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
@@ -26,6 +26,9 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+
+# Re-add dependency on logger
+gem 'concurrent-ruby', '1.3.4'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -80,6 +83,6 @@ end
 
 gem "cssbundling-rails", "~> 1.1"
 
-gem "shakapacker", "= 8.0"
+gem "shakapacker", "= 8.0.2"
 
-gem "react_on_rails", "= 14.0.5"
+gem 'react_on_rails', '~> 14.2', '>= 14.2.1'

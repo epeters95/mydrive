@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useLoaderData, useRevalidator, Link } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 const AlbumsList = () => {
 
   let { albums } = useLoaderData();
-
-  const revalidator = useRevalidator();
   
   return (
     <div>
@@ -15,7 +13,7 @@ const AlbumsList = () => {
       {albums.map((album) => (
         <li id={album.id}
             key={album.id}>
-          <Link to={album.path} onClick={revalidator.revalidate}>
+          <Link to={album.path}>
             {album.name}
           </Link>
         </li>
