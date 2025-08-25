@@ -7,7 +7,9 @@ import { useLoaderData } from "react-router-dom";
 
 const LandingPage = () => {
 
-  let { photo } = useLoaderData();
+  let { photo, comments } = useLoaderData();
+
+  let comment = comments[0];
 
   return (
     <div>
@@ -23,6 +25,14 @@ const LandingPage = () => {
                  image_url={photo.image_url}
                  comments={photo.comments}
                  className="photo-container"/>
+
+      <p>Latest Comment:</p>
+      <Comment id={comment.id}
+                 key={comment.id}
+                   user_id={comment.user_id}
+                   text={comment.text}
+                   author={comment.author}
+                   date={comment.date} />
     </div>
   );s
 

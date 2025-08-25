@@ -115,5 +115,11 @@ export const latestCommentedPhotoLoader = async () => {
     headers: authJson
   }
   const resp = await fetch(baseUrl + '/photos/latest_commented', fetchOptions);
-  return resp;
+
+  let photoComment = resp;
+
+  const { comments } = await fetch(baseUrl + '/comments/latest_comments', fetchOptions);
+
+  photoComment.comments = comments;
+  return photoComment;
 }

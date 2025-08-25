@@ -65,6 +65,12 @@ const RouterApp = (props) => {
           path: "comments",
           element: <CommentsList />,
           loader: allCommentsLoader
+        },
+        {
+          path: "comments/latest_commets",
+          element: <CommentsList />,
+          loaded: allCommentsLoader
+          // TODO: pass argument for latest
         }
       ]
     }
