@@ -3,7 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :photo
 
   def self.latest_user_comments
-    Comment.all.join(:user).order(updated_at: "desc")
+    Comment.all.joins(:user).order(updated_at: "desc")
   end
 
 

@@ -9,7 +9,22 @@ const LandingPage = () => {
 
   let { photo, comments } = useLoaderData();
 
-  let comment = comments[0];
+  let commentDiv = <></>;
+
+  if (comments !== undefined && comments.length > 0) {
+
+    comment = comments[0];
+
+    commentDiv = (
+      <Comment id={comment.id}
+               key={comment.id}
+               user_id={comment.user_id}
+               text={comment.text}
+               author={comment.author}
+               date={comment.date} />
+    )
+
+  }
 
   return (
     <div>
@@ -27,14 +42,9 @@ const LandingPage = () => {
                  className="photo-container"/>
 
       <p>Latest Comment:</p>
-      <Comment id={comment.id}
-                 key={comment.id}
-                   user_id={comment.user_id}
-                   text={comment.text}
-                   author={comment.author}
-                   date={comment.date} />
+      {commentDiv}
     </div>
-  );s
+  );
 
 }
 
