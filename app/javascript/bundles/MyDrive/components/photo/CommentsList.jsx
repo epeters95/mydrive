@@ -1,17 +1,26 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Comment from './Comment.jsx';
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, useLocation, Link } from "react-router-dom";
 
 const CommentsList = () => {
 
   let { comments } = useLoaderData();
 
+  let location = useLocation();
+
+  let heading = <h2>All Comments</h2>;
+  let subHeading = <b><Link to="/comments/latest_comments">Latest</Link></b>;
+
+  if (location.pathname.includes("latest_comments")) {
+    heading = <h2>Latest Comments</h2>;
+    subHeading = <Link to="/comments">All Comments</Link>
+  }
   return (
     <div>
-      <h2>All Comments</h2>
+      {heading}
       <br/>
-      <b><Link to="/latest_comments">Latest</Link></b>
+      {subHeading}
       <br/>
       <ul>
       {comments.map((comment) => (
