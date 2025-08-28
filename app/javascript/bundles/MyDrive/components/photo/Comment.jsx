@@ -16,14 +16,8 @@ const Comment = ({ id,
   if (isDeletable) {
 
     button = (
-      <button onClick={deleteOrDoNothing}>X</button>
+      <button onClick={() => handleDelete(id)}>X</button>
     );
-  }
-
-  const deleteOrDoNothing = () => {
-    if (handleDelete !== null) {
-      handleDelete(id)
-    }
   }
 
   return (

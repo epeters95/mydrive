@@ -26,10 +26,10 @@ const CommentsList = () => {
       {comments.map((comment) => (
         <Comment id={comment.id}
                  key={comment.id}
-                   user_id={comment.user_id}
-                   text={comment.text}
-                   author={comment.author}
-                   date={comment.date} />
+                 user_id={comment.user_id}
+                 text={comment.text}
+                 author={comment.author}
+                 date={comment.date} />
       ))}
       </ul>
     </div>
