@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import * as style from '../styles/Credentials.module.css';
 import { useNavigate, useRevalidator } from 'react-router-dom';
 import { baseUrl } from '../tools/config.js';
-import { fetchAndCallback } from '../tools/utils.js'
+import { fetchAndCallback, checkEnterPress } from '../tools/utils.js'
 import toast, { Toaster } from 'react-hot-toast';
 
 const Signup = () => {
@@ -59,9 +59,7 @@ const Signup = () => {
   }
 
   const formKeyPress = (e) => {
-    if(e && (e.key == "Enter" || e.keyCode == 13)) {
-      submitLogin()
-    }
+    checkEnterPress(e, submitLogin);
   }
   
   return (

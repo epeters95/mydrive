@@ -31,3 +31,9 @@ export const fetchAndCallback = async (url, method, body=null, callback=null, js
   
   return respJson;
 }
+
+export const checkEnterPress = (event, callback) => {
+  if(event && (event.key == "Enter" || event.keyCode == 13)) {
+    callback()
+  }
+}
