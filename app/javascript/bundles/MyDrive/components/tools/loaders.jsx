@@ -17,6 +17,7 @@ const authJson = {
   'Accept': 'application/json',
   'X-CSRF-Token': ReactOnRails.authenticityToken()
 }
+
 export const loadNavLinks = () => {
 
   let formRef;
@@ -76,7 +77,7 @@ export const albumsLoader = async () => {
   const fetchOptions = {
     method: 'GET',
     headers: authJson
-,  }
+  }
   const resp = await fetch(baseUrl + '/albums', fetchOptions);
   return resp;
 }

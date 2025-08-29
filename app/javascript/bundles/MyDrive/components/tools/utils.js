@@ -1,5 +1,5 @@
 import ReactOnRails from 'react-on-rails';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export const fetchAndCallback = async (url, method, body=null, callback=null, json=true) => {
   const fetchOptions = {
