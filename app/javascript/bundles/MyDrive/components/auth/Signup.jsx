@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from '../styles/Credentials.module.css';
 import { useNavigate, useRevalidator } from 'react-router-dom';
@@ -25,7 +24,7 @@ const Signup = () => {
 
     } else if (!email.match(emailRegx)) {
       toast('Please enter a valid email');
-      
+
     } else {
       let body = JSON.stringify({
         "user": {
@@ -61,7 +60,7 @@ const Signup = () => {
   const formKeyPress = (e) => {
     checkEnterPress(e, submitLogin);
   }
-  
+
   return (
     <div>
       <h2>Sign Up</h2>

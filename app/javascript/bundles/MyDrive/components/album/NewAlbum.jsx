@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { baseUrl } from '../tools/config.js';
@@ -14,7 +13,7 @@ const NewAlbum = () => {
   const navigate = useNavigate()
 
   const submitAlbum = () => {
-    
+
     let createAlbumPath = baseUrl + '/albums/'
 
     let data = {
@@ -46,7 +45,7 @@ const NewAlbum = () => {
 
     }, 2000);
   }
-  
+
   return (
     <div>
       <h2>New Album</h2>

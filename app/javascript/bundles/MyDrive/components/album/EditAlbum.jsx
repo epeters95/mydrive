@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useLoaderData, Link } from "react-router-dom";
 import { fetchAndCallback } from '../tools/utils.js'
@@ -31,8 +30,8 @@ const EditAlbum = () => {
     // send PATCH
     fetchAndCallback(album.path, 'PATCH', formData, null, false);
   }
-  
-  
+
+
   return (
     <div>
       <h2>Edit Album - {album.name}</h2>

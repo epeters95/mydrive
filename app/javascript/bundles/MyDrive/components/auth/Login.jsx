@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as style from '../styles/Credentials.module.css';
 import { useNavigate, useRevalidator } from 'react-router-dom';
@@ -52,7 +51,7 @@ const Login = () => {
       submitLogin()
     }
   }
-  
+
   return (
     <div>
       <h2>Sign In</h2>

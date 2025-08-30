@@ -4,7 +4,7 @@ import { Outlet, useLoaderData, NavLink as Link } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary.jsx';
 import * as style from './styles/Layout.module.css'
 
-const Layout = ({ children }) => {
+const Layout = () => {
 
   let navigationLinks = useLoaderData();
 
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
               </li>
               { navigationLinks }
             </ul>
-            
+
           </div>
         </nav>
       </header>

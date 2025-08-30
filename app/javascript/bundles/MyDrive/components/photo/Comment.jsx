@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import * as style from '../styles/Comment.module.css';
 import { useRevalidator } from "react-router-dom";
 
