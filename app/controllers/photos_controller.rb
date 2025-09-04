@@ -60,6 +60,25 @@ class PhotosController < ApplicationController
     render json: { photo: Photo.latest_commented.to_object }, status: :ok
   end
 
+  def share_photo
+    # TODO: create view
+    photo_id = params[:photo_id]
+    user_id = params[:user_id]
+    share_ids = params[:share_ids]
+
+    if share_ids.is_a? Array && !photo_id.nil? && !user_id.nil?
+      photo_share = PhotoShare.new(photo_id: photo_id, user_id: user_id, share_ids: share_ids.join(","))
+      if photo_share.save
+        render json: { message: "Success" }, status: :ok
+      else
+        render json: { error: photo_share.errors.join }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: "Invalid request" }, status: :unprocessable_entity
+    end
+  end
+
+
   private
 
   def photo_params
