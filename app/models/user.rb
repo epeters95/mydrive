@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :rememberable, :timeoutable, :registerable
 
   has_many :comments
+  has_many :shares, as: :sharer
 
   def latest_comments
     self.comments.order(created_at: "desc")
