@@ -67,9 +67,21 @@ class PhotosController < ApplicationController
     share_ids = params[:share_ids]
 
     if share_ids.is_a? Array && !photo_id.nil? && !user_id.nil?
-      photo_share = PhotoShare.new(photo_id: photo_id, user_id: user_id, share_ids: share_ids.join(","))
-      if photo_share.save
-        render json: { message: "Success" }, status: :ok
+      share = Share.new(sharer_id: user_id)
+
+
+      if share.save
+        result = true
+        share_ids.each do |s_id|
+          photo_share = PhotoShare.new(photo_id: photo_id, share_id: share.id, user_id: s_id)
+          result = result && photo_share.save
+        end
+
+        if result
+          render json: { message: "Success" }, status: :ok
+        else
+          render json: { message: "Failure" }, status: :unprocessable_entity
+        end
       else
         render json: { error: photo_share.errors.join }, status: :unprocessable_entity
       end
