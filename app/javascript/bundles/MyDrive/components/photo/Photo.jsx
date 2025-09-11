@@ -20,7 +20,8 @@ const Photo = ({ id,
                  comments,
                  handleDescSubmit,
                  handleCommentSubmit,
-                 handleCommentDelete }) => {
+                 handleCommentDelete,
+                 handleSharePhoto }) => {
 
 
   const [desc, setDesc] = useState(description);
@@ -69,6 +70,12 @@ const Photo = ({ id,
     return false;
   }
 
+  // const sharePhoto = (event) => {
+  //   return () => {
+  //     handleSharePhoto();
+  //   }
+  // }
+
   return (
     <div className={style.albums_image}>
       <p className={style.img_name} title={name}>
@@ -95,6 +102,7 @@ const Photo = ({ id,
       <p>Add a Comment:</p>
       <input type="text" className="comment-field" />
       <button onClick={commentSubmit}>Post Comment</button>
+      <button onClick={handleSharePhoto}>Share</button>
     </div>
   );
 };

@@ -99,6 +99,24 @@ const Album = (id, user_id, name, description, photos) => {
         }
       });
     }
+
+    onSharePhoto = () => {
+      // TODO: change this route to include specific photo id param
+      let sharePhotoPath = '/photos/share_photo'
+      let data = {
+        "photo" : {
+          "share_ids": [] // TODO: extract from UI modal
+        }
+      }
+      fetchAndCallback(sharePhotoPath, 'POST', JSON.stringify(data), (resp) => {
+        if (resp.status === 200) {
+          toast.success("Photo shared")
+          revalidator.revalidate();
+        } else {
+          toast.error("Error sharing photo")
+        }
+      });
+    }
   }
 
   return (
@@ -122,6 +140,7 @@ const Album = (id, user_id, name, description, photos) => {
                  handleDescSubmit={onDescSubmit}
                  handleCommentSubmit={onCommentSubmit}
                  handleCommentDelete={onCommentDelete}
+                 handleSharePhoto={onSharePhoto}
                  className="photo-container"/>
         ))}
 
