@@ -100,9 +100,9 @@ const Album = (id, user_id, name, description, photos) => {
       });
     }
 
-    onSharePhoto = () => {
+    onSharePhoto = (photoId) => {
       // TODO: change this route to include specific photo id param
-      let sharePhotoPath = '/photos/share_photo'
+      let sharePhotoPath = '/photos/' + photoId + '/share_photo'
       let data = {
         "photo" : {
           "share_ids": [] // TODO: extract from UI modal

@@ -70,11 +70,11 @@ const Photo = ({ id,
     return false;
   }
 
-  // const sharePhoto = (event) => {
-  //   return () => {
-  //     handleSharePhoto();
-  //   }
-  // }
+  const sharePhoto = (event) => {
+    return () => {
+      handleSharePhoto(id);
+    }
+  }
 
   return (
     <div className={style.albums_image}>
@@ -102,7 +102,7 @@ const Photo = ({ id,
       <p>Add a Comment:</p>
       <input type="text" className="comment-field" />
       <button onClick={commentSubmit}>Post Comment</button>
-      <button onClick={handleSharePhoto}>Share</button>
+      <button onClick={sharePhoto}>Share</button>
     </div>
   );
 };
