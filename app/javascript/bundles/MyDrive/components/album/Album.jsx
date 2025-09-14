@@ -104,9 +104,11 @@ const Album = (id, user_id, name, description, photos) => {
       // TODO: change this route to include specific photo id param
       let sharePhotoPath = '/photos/' + photoId + '/share_photo'
       let data = {
-        "photo" : {
-          "share_ids": [] // TODO: extract from UI modal
-        }
+        "shares": [
+          // E.g.
+          // { "photo_id" : id 
+          //   "sharee_id": user_id }
+        ]
       }
       fetchAndCallback(sharePhotoPath, 'POST', JSON.stringify(data), (resp) => {
         if (resp.status === 200) {
