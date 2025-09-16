@@ -3,14 +3,7 @@ import React, { useState } from 'react';
 import Comment from './Comment.jsx';
 import * as style from '../styles/Photo.module.css';
 import { getCurrentUserId } from '../auth/links.jsx';
-
-function debounce(func, timeout = 300){
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => { func.apply(this, args); }, timeout);
-  };
-}
+import toast, { Toaster } from 'react-hot-toast';
 
 const Photo = ({ id,
                  user_id,
@@ -54,12 +47,14 @@ const Photo = ({ id,
     let commentField = event.target.parentElement.querySelector("input.comment-field")
     if (commentField.value !== "" && commentField.value !== null) {
       handleCommentSubmit(commentField.value, id)
+      toast.success("Comment posted")
     }
   };
 
   const commentDelete = (commentId) => {
     return () => {
       handleCommentDelete(commentId)
+      toast.success("Comment deleted")
     }
   }
 
@@ -103,6 +98,7 @@ const Photo = ({ id,
       <input type="text" className="comment-field" />
       <button onClick={commentSubmit}>Post Comment</button>
       <button onClick={sharePhoto}>Share</button>
+      <Toaster />
     </div>
   );
 };
