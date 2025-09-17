@@ -3,7 +3,7 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
-    files: ["**/*.js*"],
+    files: ["**/*.js", "**/*.jsx"],
     plugins: {
       js,
     },

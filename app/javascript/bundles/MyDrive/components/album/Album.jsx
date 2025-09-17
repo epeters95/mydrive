@@ -101,7 +101,6 @@ const Album = (id, user_id, name, description, photos) => {
     }
 
     onSharePhoto = (photoId) => {
-      // TODO: change this route to include specific photo id param
       let sharePhotoPath = '/photos/' + photoId + '/share_photo'
       let data = {
         "shares": [
