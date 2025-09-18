@@ -6,6 +6,10 @@ class Comment < ApplicationRecord
     Comment.all.joins(:user).order(updated_at: "desc")
   end
 
+  def to_text
+    "#{self.created_at.strftime("%FT%T")} - #{self.user.name}: #{self.text}"
+  end
+
 
   def to_object
     {
