@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get    '/comments', to: 'comments#index'
   delete '/comments', to: 'comments#destroy'
   get    '/comments/latest_comments', to: 'comments#latest_comments'
+  get    '/comments/all_text', to: 'comments#all_comments_text'
 
   post    '/photos/:photo_id/share_photo', to: 'photos#share_photo'
     

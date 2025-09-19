@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def destroy
 
     comment = Comment.find(comment_params[:id])
