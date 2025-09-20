@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   post    '/photos/:photo_id/share_photo', to: 'photos#share_photo'
     
+  get    '/shares/all_text', to: 'shares#all_shares_text'
 
   devise_scope :user do
     get 'users', to: 'users/registrations#index'
