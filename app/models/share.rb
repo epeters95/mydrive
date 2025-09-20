@@ -10,4 +10,14 @@ class Share < ApplicationRecord
     end
     lines.join("\n")
   end
+
+  def to_object
+    {
+      id:        self.id,
+      sharer_id: self.sharer_id,
+      photos:    self.photos.map{ |ph| ph.to_object },
+      users:     self.users.map{ |u| u.to_object }
+    }
+  end
+
 end
