@@ -1,5 +1,5 @@
 class Album < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   has_many :photos
 
   validates :name, presence: true
