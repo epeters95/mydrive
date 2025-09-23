@@ -1,4 +1,4 @@
-<h2>Hi, Welcome to Chili's</h2>
+<h2>Hi, Welcome to MyDrive</h2>
 <p>Get ready...</p>
 <%= link_to "Create a New Album", new_album_path %>
 <br>
@@ -33,3 +33,16 @@
 </p>
 <% end %>
 
+<br>
+<% unless @shared_with.empty? %>
+  <ul>
+  <% @shared_with.each do |shared| %>
+
+    <li><span>
+      <%= link_to(photo_path(shared.photo_id), shared.photo.title) %>, shared by <%= shared.user.name %> on <%= shared.created_at %>
+    </span></li>
+
+  <% end %>
+  </ul>
+
+<% end %>
