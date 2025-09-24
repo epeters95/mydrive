@@ -39,7 +39,11 @@
   <% @shared_with.each do |shared| %>
 
     <li><span>
-      <%= link_to(photo_path(shared.photo_id), shared.photo.title) %>, shared by <%= shared.user.name %> on <%= shared.created_at %>
+      <ul>
+      <% shared.photo_shares.each do |ps| %>
+        <li><%= link_to(photo_path(ps.photo.id), ps.photo.name) %>, shared by <%= shared.sharer.name %> on <%= ps.created_at %></li>
+      <% end %>
+      </ul>
     </span></li>
 
   <% end %>

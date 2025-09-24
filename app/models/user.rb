@@ -10,5 +10,12 @@ class User < ApplicationRecord
   def latest_comments
     self.comments.order(created_at: "desc")
   end
+
+  def to_object
+    {
+      name: self.name,
+      email: self.email
+    }
+  end
          
 end
