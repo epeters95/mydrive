@@ -17,7 +17,8 @@ class Share < ApplicationRecord
       sharer:    self.sharer.to_object,
       sharer_id: self.sharer_id,
       photos:    self.photos.map{ |ph| ph.to_object },
-      users:     self.users.map{ |u| u.to_object }
+      users:     self.users.map{ |u| u.to_object },
+      photo_shares: self.photo_shares.map{ |ps| { photo: ps.photo.to_object } }
     }
   end
 
