@@ -88,3 +88,4 @@ gem "shakapacker", "= 8.0.2"
 gem 'react_on_rails', '~> 14.2', '>= 14.2.1'
 
 gem 'rswag'
+gem "rails_helper", "~> 2.2"
