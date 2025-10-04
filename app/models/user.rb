@@ -11,6 +11,10 @@ class User < ApplicationRecord
     self.comments.order(created_at: "desc")
   end
 
+  def photos_shared_with
+    Share.joins(:user).find(user_id: self.id).to_a.map{|sw| sw.to_object }
+  end
+
   def to_object
     {
       name: self.name,
