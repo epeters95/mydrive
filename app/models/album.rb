@@ -8,6 +8,10 @@ class Album < ApplicationRecord
     Album.find_by_sql("SELECT * FROM albums INNER JOIN photos ON photos.album_id = albums.id ORDER BY photos.created_at DESC").first
   end
 
+  def shares
+    self.photos.map{|ph| ph.shares }.flatten
+  end
+
   def to_object
     {
       name:        self.name,
