@@ -17,7 +17,8 @@ class Comment < ApplicationRecord
       author:    self.user.name,
       author_id: self.user.id,
       text:      self.text,
-      date:      self.created_at.strftime("%FT%T")
+      date:      self.created_at.strftime("%FT%T"),
+      to_text:   self.to_text 
     }
   end
 
