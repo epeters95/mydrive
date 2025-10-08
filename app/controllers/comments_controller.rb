@@ -17,6 +17,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+
+    comment = Comment.find(comment_params[:id])
+    if comment && current_user.id == comment.user.id
+      if comment.update(text: comment_params[:text])
+        render json: { message: "successfully updated" }, status: :ok
+      else
+        render json: { error: "Unable to update comment" }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: "couldn't find comment" }, status: :not_found
+    end
+  end
+
   def all_comments_text
     comments = Comment.all.order(created_at: "desc").map{|cm| cm.to_text }
     render json: { comments: comments }, status: :ok
@@ -34,7 +48,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:id)
+    params.require(:comment).permit(:id, :text)
   end
 
 end

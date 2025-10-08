@@ -3,7 +3,7 @@ class SharesController < ApplicationController
 
   def destroy
 
-    share = Share.find(params[:id])
+    share = Share.find(share_params[:id])
     if share
       if current_user.id == share.sharer.id
         share.destroy
@@ -18,6 +18,11 @@ class SharesController < ApplicationController
   
   def all_shares_text
     render json: { shares: Share.all.order(created_at: "desc").map{|sh| sh.to_text } }, status: :ok
+  end
+
+  private
+  def share_params
+    params.require(:share).permit(:id)
   end
   
 end
