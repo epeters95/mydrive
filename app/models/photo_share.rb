@@ -7,7 +7,7 @@ class PhotoShare < ApplicationRecord
     {
       id: self.id,
       photo: self.photo.to_object,
-      user: self.user.to_object,
+      user_id: self.user.id,
       created_at: self.created_at
     }
   end

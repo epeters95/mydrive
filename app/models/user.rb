@@ -24,8 +24,7 @@ class User < ApplicationRecord
       email: self.email,
       shares: self.shares.map{ |sh| sh.to_object },
       photos_shared_with: self.photos_shared_with,
-      albums: self.albums.map{ |al| al.to_object }
-      # TODO: verify this won't cause infinite nesting
+      albums: self.albums.map{ |al| al.name }
     }
   end
          
